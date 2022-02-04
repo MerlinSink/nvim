@@ -48,12 +48,12 @@ set showcmd
 set wildmenu
 set ignorecase
 set smartcase
-set shortmess+=c
-set inccommand=split
-set completeopt=longest,noinsert,menuone,noselect,preview
-set ttyfast "should make scrolling faster
-set lazyredraw "same as above
-set visualbell
+" set shortmess+=c
+" set inccommand=split
+" set completeopt=longest,noinsert,menuone,noselect,preview
+" set ttyfast "should make scrolling faster
+" set lazyredraw "same as above
+" set visualbell
 
 " ==============
 " Basic Mappings
@@ -115,6 +115,9 @@ call plug#begin('$HOME/.config/nvim/plugged')
 " NERDTree
 Plug 'preservim/nerdtree'
 
+" NERDCommenter
+Plug 'preservim/nerdcommenter'
+
 " Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -134,22 +137,43 @@ call plug#end()
 " ===============
 "set termguicolors " enable true colors support
 "let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-"set background=dark
 
 " ===deus===
 "color deus
 
 " ===OneDark===
-"color onedark
+" color onedark
 
 " ===Snazzy===
-color snazzy
 let g:SnazzyTransparent = 1
+color snazzy
+
+" set background=dark
 
 " ===Airline===
 let g:airline_theme='onedark'
 
 " ===================== Start of Plugin Settings =====================
+
+" ========
+" NERDTree
+" ========
+
+map tt :NERDTreeToggle<CR>
+
+" =============
+" NERDCommenter
+" =============
+
+let g:NERDCreateDefaultMappings = 1
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDAltDelims_java = 1
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDToggleCheckAllLines = 1
 
 " ================
 " Markdown Preview

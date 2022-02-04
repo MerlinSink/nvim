@@ -48,12 +48,12 @@ set showcmd
 set wildmenu
 set ignorecase
 set smartcase
-" set shortmess+=c
-" set inccommand=split
-" set completeopt=longest,noinsert,menuone,noselect,preview
-" set ttyfast "should make scrolling faster
-" set lazyredraw "same as above
-" set visualbell
+set shortmess+=c
+set inccommand=split
+set completeopt=longest,noinsert,menuone,noselect,preview
+set ttyfast "should make scrolling faster
+set lazyredraw "same as above
+set visualbell
 
 " ==============
 " Basic Mappings
@@ -109,7 +109,6 @@ map tl :+tabnext<CR>
 " ==============================
 " Install Plugings with Vim-Plug
 " ==============================
-
 call plug#begin('$HOME/.config/nvim/plugged')
 
 " NERDTree
@@ -126,6 +125,9 @@ Plug 'vim-airline/vim-airline-themes'
 "Plug 'theniceboy/nvim-deus'
 "Plug 'joshdick/onedark.vim'
 Plug 'connorholyday/vim-snazzy'
+
+" coc.nvim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Markdown Preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -158,13 +160,11 @@ let g:airline_theme='onedark'
 " ========
 " NERDTree
 " ========
-
 map tt :NERDTreeToggle<CR>
 
 " =============
 " NERDCommenter
 " =============
-
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
@@ -178,7 +178,6 @@ let g:NERDToggleCheckAllLines = 1
 " ================
 " Markdown Preview
 " ================
-
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 0
@@ -220,3 +219,55 @@ let g:mkdp_highlight_css = ''
 let g:mkdp_port = ''
 let g:mkdp_page_title = '「${name}」'
 let g:mkdp_filetypes = ['markdown']
+
+" ========
+" coc.nvim
+" ========
+let g:coc_global_extensions = [
+	\'coc-vimlsp',
+	\'coc-json']
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <C-o> to trigger completion.
+inoremap <silent><expr> <C-o> coc#refresh()
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `<LEADER>-` and `<LEADER>=` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
+nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use <LEADER>v to show documentation in preview window.
+nnoremap <silent> <LEADER>v :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction

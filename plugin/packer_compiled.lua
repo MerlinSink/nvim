@@ -69,6 +69,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["Comment.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\Comment.nvim",
+    url = "https://github.com/numToStr/Comment.nvim"
+  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\bufferline.nvim",
@@ -119,6 +124,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
   },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lspsaga.nvim",
+    url = "https://github.com/glepnir/lspsaga.nvim"
+  },
   ["lualine-lsp-progress"] = {
     loaded = true,
     path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lualine-lsp-progress",
@@ -128,6 +138,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["nvim-autopairs"] = {
+    loaded = true,
+    path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -169,10 +184,40 @@ _G.packer_plugins = {
     path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["project.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\project.nvim",
+    url = "https://github.com/ahmedkhalf/project.nvim"
+  },
+  ["suda.vim"] = {
+    loaded = true,
+    path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\suda.vim",
+    url = "https://github.com/lambdalisue/suda.vim"
+  },
+  ["surround.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\surround.nvim",
+    url = "https://github.com/ur4ltz/surround.nvim"
+  },
+  ["telescope.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
   ["vim-bbye"] = {
     loaded = true,
     path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-bbye",
     url = "https://github.com/moll/vim-bbye"
+  },
+  ["vim-visual-multi"] = {
+    loaded = true,
+    path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-visual-multi",
+    url = "https://github.com/mg979/vim-visual-multi"
   },
   ["vim-vsnip"] = {
     loaded = true,

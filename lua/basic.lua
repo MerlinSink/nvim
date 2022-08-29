@@ -8,7 +8,7 @@ vim.o.sidescrolloff = 8
 vim.wo.number = true
 vim.wo.relativenumber = true
 -- 高亮所在行
-vim.wo.cursorline = false
+vim.wo.cursorline = true
 -- 显示左侧图标指示列
 vim.wo.signcolumn = "yes"
 -- 右侧参考线，超过表示代码太长了，考虑换行
@@ -32,7 +32,7 @@ vim.o.smartindent = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 -- 搜索不要高亮
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 -- 边输入边搜索
 vim.o.incsearch = true
 -- 命令行高为2，提供足够的显示空间
@@ -67,7 +67,7 @@ vim.o.termguicolors = true
 vim.opt.termguicolors = true
 -- 不可见字符的显示，这里只把空格显示为一个点
 vim.o.list = false
-vim.o.listchars = "space:·"
+-- vim.o.listchars = "<TAB>,space:."
 -- 补全增强
 vim.o.wildmenu = true
 -- Dont' pass messages to |ins-completin menu|

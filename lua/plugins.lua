@@ -11,6 +11,30 @@ if fn.empty(fn.glob(install_path)) > 0 then
 })
 end
 
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]])
+
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  vim.notify("No found packer.nvim")
+  return
+end
+
+packer.init({
+	max_jobs = 16,
+	display = {
+		open_fn = function()
+			return require("packer.util").float({ border = "rounded" })
+		end,
+	},
+})
+
 return require('packer').startup(function(use)
 
 	-- Packer can manage itself
@@ -29,8 +53,23 @@ return require('packer').startup(function(use)
 	-- dashboard
 	use("glepnir/dashboard-nvim")
 
+	-- telescope
+  use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } }
+
+	-- project
+use("ahmedkhalf/project.nvim")
+
 	-- nvim-treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+
+	-- nvim-auropairs
+	use ({	"windwp/nvim-autopairs" })
+
+	-- comment.nvim
+	use ({ "numToStr/Comment.nvim" })
+
+	-- surround.nvim
+	use ({ "ur4ltz/surround.nvim" })
 
 	-- === Theme ===
 	-- Onedark
@@ -54,11 +93,24 @@ return require('packer').startup(function(use)
   -- 常见编程语言代码段
 	use("rafamadriz/friendly-snippets")
 
+	-- null-ls
+	-- use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
+
+	-- === Markdown ===
+	-- use ("iamcco/markdown-preview.nvim")
+
 	-- === UI ===
 	-- lspkind-nvim
   use("onsails/lspkind-nvim")
   -- inden-blankline
 	use("lukas-reineke/indent-blankline.nvim")
+	-- lspsaga 
+	use("glepnir/lspsaga.nvim")
+	
+	-- === Other ===
+	use("lambdalisue/suda.vim")
+
+	use("mg979/vim-visual-multi")
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

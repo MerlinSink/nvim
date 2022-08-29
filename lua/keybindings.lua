@@ -15,11 +15,16 @@ map("n", "Q", ":q<CR>", opt)
 -- noremap <C-q> :qa<CR>
 map("n", "W", ":w<CR>", opt)
 
--- Move
+-- Move Normal
 map("n", "J", "5j", opt)
 map("n", "K", "5k", opt)
 map("n", "H", "5h", opt)
 map("n", "L", "5l", opt)
+-- Move Visual
+map("v", "J", "5j", opt)
+map("v", "K", "5k", opt)
+map("v", "H", "5h", opt)
+map("v", "L", "5l", opt)
 
 -- Open lazygit
 map("n", "<C-g>", ":tabe<CR>:-tabmove<CR>:term lazygit<CR> i", opt)
@@ -87,23 +92,70 @@ map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
 map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
 
+-- === Telescope ===
+
+map("n", "<C-p>", ":Telescope find_files<CR>", opt)
+-- Globle Search
+map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+
+pluginKeys.telescopeList = {
+  i = {
+    -- Move UP&DOWN
+    ["<C-j>"] = "move_selection_next",
+    ["<C-k>"] = "move_selection_previous",
+    ["<Down>"] = "move_selection_next",
+    ["<Up>"] = "move_selection_previous",
+    -- History
+    ["<C-n>"] = "cycle_history_next",
+    ["<C-p>"] = "cycle_history_prev",
+    -- 关闭窗口
+    ["<C-c>"] = "close",
+    -- 预览窗口上下滚动
+    ["<C-u>"] = "preview_scrolling_up",
+    ["<C-d>"] = "preview_scrolling_down",
+  },
+}
+
+-- === Comment ===
+pluginKeys.comment = {
+  -- Normal 模式快捷键
+  toggler = {
+    line = "gcc", -- 行注释
+    block = "gbc", -- 块注释
+  },
+  -- Visual
+  opleader = {
+    line = "gc",
+    bock = "gb",
+  },
+}
+
 -- === LSP ===
 pluginKeys.mapLSP = function(mapbuf)
   -- rename
-  mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
+  -- mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
+	mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
   -- code action
-  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
+  -- mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
+	mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
   -- go
+  -- mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
+  -- mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
+  -- mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
+  mapbuf("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opt)
   mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
-  mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
+  mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
   mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
   mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
-  mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
   -- diagnostic
-  mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
-  mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
-  mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
-  mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
+  -- mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
+  -- mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
+  -- mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
+	mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
+  mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
+  mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
+	mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.format { auync = true } <CR>", opt)
+
   -- 没用到
   -- mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
   -- mapbuf("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
@@ -123,9 +175,9 @@ pluginKeys.cmp = function(cmp)
             c = cmp.mapping.close()
         }),
         -- 上一个
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
+        ["<TAB-k>"] = cmp.mapping.select_prev_item(),
         -- 下一个
-        ["<C-j>"] = cmp.mapping.select_next_item(),
+        ["<TAB>"] = cmp.mapping.select_next_item(),
         -- 确认
         ["<CR>"] = cmp.mapping.confirm({
             select = true,

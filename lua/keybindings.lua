@@ -106,7 +106,7 @@ pluginKeys.telescopeList = {
     ["<Down>"] = "move_selection_next",
     ["<Up>"] = "move_selection_previous",
     -- History
-    ["<C-n>"] = "cycle_history_next",
+    ["<C-o>"] = "cycle_history_next",
     ["<C-p>"] = "cycle_history_prev",
     -- 关闭窗口
     ["<C-c>"] = "close",

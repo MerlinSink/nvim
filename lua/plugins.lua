@@ -28,6 +28,12 @@ end
 
 packer.init({
 	max_jobs = 16,
+	git = {
+      -- default_url_format = "https://hub.fastgit.xyz/%s",
+      -- default_url_format = "https://mirror.ghproxy.com/https://github.com/%s",
+      -- default_url_format = "https://gitcode.net/mirrors/%s",
+      -- default_url_format = "https://gitclone.com/github.com/%s",
+    },
 	display = {
 		open_fn = function()
 			return require("packer.util").float({ border = "rounded" })
@@ -54,7 +60,8 @@ return require('packer').startup(function(use)
 	use("glepnir/dashboard-nvim")
 
 	-- telescope
-  use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } }
+  use({ 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } })
+	use("nvim-telescope/telescope-rg.nvim")
 
 	-- project
 use("ahmedkhalf/project.nvim")
@@ -71,19 +78,25 @@ use("ahmedkhalf/project.nvim")
 	-- surround.nvim
 	use ({ "ur4ltz/surround.nvim" })
 
-	-- === Theme ===
-	-- Onedark
-	use("ful1e5/onedark.nvim")
+	-- === Theme ===	
+	-- onedark
+	-- use("ful1e5/onedark.nvim")
+
+	-- nightfox
+	-- use("EdenEast/nightfox.nvim")
+
+	-- tokyonight
+  use("folke/tokyonight.nvim")
 
 	-- === LSP ===
   use({ "neovim/nvim-lspconfig" })
 	use({ "williamboman/nvim-lsp-installer", commit = "36b44679f7cc73968dbb3b09246798a19f7c14e0" })
 
-	-- 补全引擎
+	-- === cmp ===
 	use("hrsh7th/nvim-cmp")
 	-- snippet
 	use("hrsh7th/vim-vsnip")
-	-- 补全源
+
 	use("hrsh7th/cmp-vsnip")
 	use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
 	use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
@@ -99,19 +112,31 @@ use("ahmedkhalf/project.nvim")
 	-- === Markdown ===
 	-- use ("iamcco/markdown-preview.nvim")
 
+  -- === git ===
+	use("lewis6991/gitsigns.nvim") -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)}
+
 	-- === UI ===
 	-- lspkind-nvim
   use("onsails/lspkind-nvim")
+
   -- inden-blankline
 	use("lukas-reineke/indent-blankline.nvim")
+
 	-- lspsaga 
 	use("glepnir/lspsaga.nvim")
-	
-	-- === Other ===
+
+	-- === tools ===
+	-- suda
 	use("lambdalisue/suda.vim")
 
+  -- vim-visual-multi
 	use("mg979/vim-visual-multi")
 
+	-- session-manager
+	use("Shatur/neovim-session-manager")
+
+	-- sniprun
+  use({ 'michaelb/sniprun', run = 'bash ./install.sh'})
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

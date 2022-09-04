@@ -9,23 +9,26 @@ vim.api.nvim_command('packadd packer.nvim')
 
 local no_errors, error_msg = pcall(function()
 
-  local time
-  local profile_info
-  local should_profile = false
-  if should_profile then
-    local hrtime = vim.loop.hrtime
-    profile_info = {}
-    time = function(chunk, start)
-      if start then
-        profile_info[chunk] = hrtime()
-      else
-        profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
-      end
+_G._packer = _G._packer or {}
+_G._packer.inside_compile = true
+
+local time
+local profile_info
+local should_profile = false
+if should_profile then
+  local hrtime = vim.loop.hrtime
+  profile_info = {}
+  time = function(chunk, start)
+    if start then
+      profile_info[chunk] = hrtime()
+    else
+      profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
     end
-  else
-    time = function(chunk, start) end
   end
-  
+else
+  time = function(chunk, start) end
+end
+
 local function save_profiles(threshold)
   local sorted_times = {}
   for chunk_name, time_taken in pairs(profile_info) do
@@ -39,7 +42,6 @@ local function save_profiles(threshold)
     end
   end
 
-  _G._packer = _G._packer or {}
   _G._packer.profile_output = results
 end
 
@@ -114,6 +116,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\indent-blankline.nvim",
@@ -138,6 +145,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["neovim-session-manager"] = {
+    loaded = true,
+    path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neovim-session-manager",
+    url = "https://github.com/Shatur/neovim-session-manager"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -174,11 +186,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
-  ["onedark.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\onedark.nvim",
-    url = "https://github.com/ful1e5/onedark.nvim"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
@@ -194,6 +201,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\project.nvim",
     url = "https://github.com/ahmedkhalf/project.nvim"
   },
+  sniprun = {
+    loaded = true,
+    path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\sniprun",
+    url = "https://github.com/michaelb/sniprun"
+  },
   ["suda.vim"] = {
     loaded = true,
     path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\suda.vim",
@@ -204,10 +216,20 @@ _G.packer_plugins = {
     path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\surround.nvim",
     url = "https://github.com/ur4ltz/surround.nvim"
   },
+  ["telescope-rg.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope-rg.nvim",
+    url = "https://github.com/nvim-telescope/telescope-rg.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Sink\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-bbye"] = {
     loaded = true,
@@ -227,6 +249,13 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+
+_G._packer.inside_compile = false
+if _G._packer.needs_bufread == true then
+  vim.cmd("doautocmd BufRead")
+end
+_G._packer.needs_bufread = false
+
 if should_profile then save_profiles() end
 
 end)

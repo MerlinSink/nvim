@@ -1,5 +1,5 @@
-local status, db = pcall(require, "dashboard")
-if not status then
+local status_ok, db = pcall(require, "dashboard")
+if not status_ok then
   vim.notify("No found dashboard")
   return
 end

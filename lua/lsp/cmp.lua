@@ -1,6 +1,19 @@
 local cmp = require("cmp")
 
 cmp.setup({
+
+	source_names = {
+      nvim_lsp = "(LSP)",
+      treesitter = "(TS)",
+      emoji = "(Emoji)",
+      path = "(Path)",
+      calc = "(Calc)",
+      cmp_tabnine = "(Tabnine)",
+      vsnip = "(Snippet)",
+      luasnip = "(Snippet)",
+      buffer = "(Buffer)",
+      spell = "(Spell)",
+  },
   -- 指定 snippet 引擎
   snippet = {
     expand = function(args)
@@ -17,11 +30,20 @@ cmp.setup({
       -- require'snippy'.expand_snippet(args.body)
     end,
   },
+
+	window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+
   -- 补全源
-  sources = cmp.config.sources({
+  sources = cmp.config.sources{
     { name = "nvim_lsp" },
     -- For vsnip users.
     { name = "vsnip" },
+
+    { name = "buffer" },
+    { name = "path" },
 
     -- For luasnip users.
     -- { name = 'luasnip' },
@@ -31,13 +53,13 @@ cmp.setup({
 
     -- -- For snippy users.
     -- { name = 'snippy' },
-  }, { { name = "buffer" }, { name = "path" } }),
+  },
 
   -- Shotcut key
 	mapping = require("keybindings").cmp(cmp),
 
 	-- Use lspkind-nvim to show icon
-	formatting = require("lsp.ui").formatting
+	formatting = require("lsp.ui").formatting,
 })
 
 -- / 查找模式使用 buffer 源
@@ -48,12 +70,20 @@ cmp.setup.cmdline("/", {
   },
 })
 
+cmp.setup.cmdline('?', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
 -- : 命令行模式中使用 path 和 cmdline 源.
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = "path" },
-  }, {
     { name = "cmdline" },
+  }, {
+    { name = "path" },
   }),
 })

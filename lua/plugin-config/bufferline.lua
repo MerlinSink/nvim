@@ -1,5 +1,5 @@
-local status, bufferline = pcall(require, "bufferline")
-if not status then
+local status_ok, bufferline = pcall(require, "bufferline")
+if not status_ok then
     vim.notify("No found bufferline")
   return
 end

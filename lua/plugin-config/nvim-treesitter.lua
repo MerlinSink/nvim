@@ -1,5 +1,5 @@
-local status, treesitter = pcall(require, "nvim-treesitter.configs")
-if not status then
+local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
+if not status_ok then
     vim.notify("No found nvim-treesitter")
     return
 end
@@ -21,8 +21,3 @@ treesitter.setup({
 			},
   },
 })
-
--- Folding
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldlevel = 99

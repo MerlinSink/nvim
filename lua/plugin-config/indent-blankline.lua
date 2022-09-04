@@ -1,5 +1,5 @@
-local status, ident_blankline = pcall(require, "indent_blankline")
-if not status then
+local status_ok, ident_blankline = pcall(require, "indent_blankline")
+if not status_ok then
   vim.notify("No found indent_blankline")
   return
 end

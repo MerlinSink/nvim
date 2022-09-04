@@ -7,7 +7,7 @@ vim.g.mapleader = " "
 
 -- Nohlsearch
 map("n", "<LEADER><CR>", ":nohlsearch<CR>", opt)
--- Reload vimrc
+-- Reload init.lua
 map("n", "<C-n>", ":source $MYVIMRC<CR>", opt)
 
 -- Save & quit
@@ -51,7 +51,7 @@ map("n", "<LEFT>", ":vertical resize +5<CR>", opt)
 map("n", "<RIGHT>", ":vertical resize -5<CR>", opt)
 
 -- Create a tab and move
--- map("n", "tj", ":tabe<CR>", opt)
+map("n", "tj", ":tabe<CR>", opt)
 -- map("n", "th", ":-tabnext<CR>", opt)
 -- map("n", "tl", ":+tabnext<CR>", opt)
 
@@ -60,10 +60,10 @@ map("n", "<RIGHT>", ":vertical resize -5<CR>", opt)
 local pluginKeys = {}
 
 -- === Nvim-Tree === 
-map("n", "tt", ":NvimTreeToggle<CR>", opt)
--- Shotcut key
+map("n", "<LEADER>e", ":NvimTreeToggle<CR>", opt)
+
 pluginKeys.nvimTreeList = {
-  -- Open file or document
+	-- Open file or document
 	{ key = {"<CR>", "o", "<2-LeftMouse>"}, action = "edit" },
   -- 分屏打开文件
   { key = "v", action = "vsplit" },
@@ -83,52 +83,71 @@ pluginKeys.nvimTreeList = {
 }
 
 -- === Bufferline ===
-map("n", "th", ":BufferLineCyclePrev<CR>", opt)
-map("n", "tl", ":BufferLineCycleNext<CR>", opt)
+map("n", "E", ":BufferLineCyclePrev<CR>", opt)
+map("n", "R", ":BufferLineCycleNext<CR>", opt)
 -- 关闭
 --"moll/vim-bbye"
 map("n", "tw", ":Bdelete!<CR>", opt)
-map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
-map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
-map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
+map("n", "<LEADER>bl", ":BufferLineCloseRight<CR>", opt)
+map("n", "<LEADER>bh", ":BufferLineCloseLeft<CR>", opt)
+map("n", "<LEADER>bc", ":BufferLinePickClose<CR>", opt)
 
--- === Telescope ===
-
-map("n", "<C-p>", ":Telescope find_files<CR>", opt)
--- Globle Search
-map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
-
-pluginKeys.telescopeList = {
-  i = {
-    -- Move UP&DOWN
-    ["<C-j>"] = "move_selection_next",
-    ["<C-k>"] = "move_selection_previous",
-    ["<Down>"] = "move_selection_next",
-    ["<Up>"] = "move_selection_previous",
-    -- History
-    ["<C-o>"] = "cycle_history_next",
-    ["<C-p>"] = "cycle_history_prev",
-    -- 关闭窗口
-    ["<C-c>"] = "close",
-    -- 预览窗口上下滚动
-    ["<C-u>"] = "preview_scrolling_up",
-    ["<C-d>"] = "preview_scrolling_down",
-  },
-}
-
--- === Comment ===
+-- === comment ===
 pluginKeys.comment = {
   -- Normal 模式快捷键
   toggler = {
     line = "gcc", -- 行注释
     block = "gbc", -- 块注释
   },
-  -- Visual
+  -- Visual 模式
   opleader = {
     line = "gc",
     bock = "gb",
   },
 }
+
+-- === sorround ===
+pluginKeys.nestableList = {
+      b = { "(", ")" },
+      s = { "[", "]" },
+      c = { "{", "}" },
+      a = { "<", ">" }
+}
+pluginKeys.linearList = {
+      q = { "'", "'" },
+      t = { "`", "`" },
+      d = { '"', '"' },
+			i = { "*", "*" },
+			I = { "**", "**" },
+}
+
+-- === Telescope ===
+map("n", "<LEADER>f", ":Telescope find_files<CR>", opt)
+-- Globle Search
+map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+-- old file
+map("n", "<LEADER>o", ":Telescope oldfiles<CR>", opt)
+-- map("n", "<LEADER>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opt)
+
+pluginKeys.telescopeList = {
+	i = {
+    -- Move UP&DOWN
+    ["<C-j>"] = "move_selection_next",
+    ["<C-k>"] = "move_selection_previous",
+    ["<Down>"] = "move_selection_next",
+    ["<Up>"] = "move_selection_previous",
+    -- History
+    ["<C-n>"] = "cycle_history_next",
+    ["<C-p>"] = "cycle_history_prev",
+    -- 关闭窗口
+    ["<LEADER>c"] = "close",
+    -- 预览窗口上下滚动
+    ["<C-u>"] = "preview_scrolling_up",
+		["<C-d>"] = "preview_scrolling_down",
+	},
+}
+
+-- === gitsigns ===
 
 -- === LSP ===
 pluginKeys.mapLSP = function(mapbuf)
@@ -154,7 +173,7 @@ pluginKeys.mapLSP = function(mapbuf)
 	mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
   mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
   mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
-	mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.format { auync = true } <CR>", opt)
+	-- mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.format { auync = true } <CR>", opt)
 
   -- 没用到
   -- mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
@@ -165,9 +184,10 @@ pluginKeys.mapLSP = function(mapbuf)
   -- mapbuf('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
 end
 
+-- === cmp ===
 pluginKeys.cmp = function(cmp)
     return {
-        -- 出现补全
+       	-- 出现补全
         ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
         -- 取消
         ["<A-,>"] = cmp.mapping({
@@ -175,8 +195,9 @@ pluginKeys.cmp = function(cmp)
             c = cmp.mapping.close()
         }),
         -- 上一个
-        ["<TAB-k>"] = cmp.mapping.select_prev_item(),
+        ["<C-k>"] = cmp.mapping.select_prev_item(),
         -- 下一个
+        ["<C-j>"] = cmp.mapping.select_next_item(),
         ["<TAB>"] = cmp.mapping.select_next_item(),
         -- 确认
         ["<CR>"] = cmp.mapping.confirm({

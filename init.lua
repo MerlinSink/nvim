@@ -35,6 +35,7 @@ require("autocmds")
 
 -- === Theme ===
 require("colorscheme")
+-- require("lua.plugin-config.theme.nightfox")
 
 -- === Plingin ===
 require("plugin-config.nvim-tree")
@@ -47,6 +48,9 @@ require("plugin-config.nvim-treesitter")
 require("plugin-config.nvim-autopairs")
 require("plugin-config.comment")
 require("plugin-config.surround")
+-- require("plugin-config.sniprun")
+require("plugin-config.session-manager")
+require("plugin-config.gitsigns")
 
 -- === LSP ===
 require("lsp.setup")

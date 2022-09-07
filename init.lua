@@ -51,6 +51,7 @@ require("plugin-config.surround")
 -- require("plugin-config.sniprun")
 require("plugin-config.session-manager")
 require("plugin-config.gitsigns")
+require("plugin-config.nvim-colorizer")
 
 -- === LSP ===
 require("lsp.setup")
@@ -58,6 +59,11 @@ require("lsp.cmp")
 require("lsp.ui")
 -- require("lsp.null-ls")
 require("lsp.lspsaga")
+
+-- === dap ===
+require("dap.dap-config")
+require("dap.dap-ui")
+require("dap.dap-virtual-text")
 
 -- === UI ===
 require("plugin-config.indent-blankline")

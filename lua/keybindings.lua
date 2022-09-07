@@ -110,15 +110,18 @@ pluginKeys.comment = {
 pluginKeys.nestableList = {
       b = { "(", ")" },
       s = { "[", "]" },
+			o = { "[[", "]]"},
       c = { "{", "}" },
       a = { "<", ">" }
 }
 pluginKeys.linearList = {
       q = { "'", "'" },
-      t = { "`", "`" },
+      g = { "`", "`" },
       d = { '"', '"' },
 			i = { "*", "*" },
 			I = { "**", "**" },
+			u = { "$", "$" },
+			h = { "$^", "$" },
 }
 
 -- === Telescope ===
@@ -210,4 +213,19 @@ pluginKeys.cmp = function(cmp)
     }
 end
 
+-- === debuger ===
+-- debug
+map("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint(); require'user.dap.dap-util'.store_breakpoints(true)<cr>", opt)
+map("n", "<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", opt)
+-- map("n", "<leader>dr", "lua require'dap'.repl.open()<cr>", opt)
+map("n", "<F9>", "<cmd>lua require'dap'.run_last()<cr>", opt)
+map('n', '<F10>', '<cmd>lua require"user.dap.dap-util".reload_continue()<CR>', opt)
+map("n", "<F4>", "<cmd>lua require'dap'.terminate()<cr>", opt)
+map("n", "<F5>", "<cmd>lua require'dap'.continue()<cr>", opt)
+map("n", "<F6>", "<cmd>lua require'dap'.step_over()<cr>", opt)
+map("n", "<F7>", "<cmd>lua require'dap'.step_into()<cr>", opt)
+map("n", "<F8>", "<cmd>lua require'dap'.step_out()<cr>", opt)
+-- map("n", "K", "<cmd>lua require'dapui'.eval()<cr>", opt)
+-- map("n", "<leader>dt", "<cmd>lua require'dapui'.toggle()<cr>", opt)
+-- map("n", "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>", opt)
 return pluginKeys

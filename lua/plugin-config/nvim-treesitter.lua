@@ -5,7 +5,7 @@ if not status_ok then
 end
 
 treesitter.setup({
-  ensure_installed = { "c", "python", "lua", "html", "css", "markdown", "json" },
+  ensure_installed = { "c", "python", "lua", "html", "css", "markdown", "json", "vim" },
   -- 启用代码高亮模块
   highlight = {
     enable = true,

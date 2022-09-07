@@ -109,6 +109,16 @@ use("ahmedkhalf/project.nvim")
 	-- null-ls
 	-- use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
 
+	-- === debuger ===
+	-- DAPInstall
+	use("ravenxrz/DAPInstall.nvim")
+	-- nvim-dap
+	use("mfussenegger/nvim-dap")
+	-- nvim-dap-virtual-text 
+	use("theHamsta/nvim-dap-virtual-text")
+	-- nvim-dap-ui
+	use("rcarriga/nvim-dap-ui")
+
 	-- === Markdown ===
 	-- use ("iamcco/markdown-preview.nvim")
 
@@ -136,7 +146,11 @@ use("ahmedkhalf/project.nvim")
 	use("Shatur/neovim-session-manager")
 
 	-- sniprun
-  use({ 'michaelb/sniprun', run = 'bash ./install.sh'})
+  -- use({ "michaelb/sniprun", run = "bash ./install.sh" })
+
+	-- nvim-colorizer
+	use("norcalli/nvim-colorizer.lua")
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

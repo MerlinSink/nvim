@@ -3,7 +3,7 @@ local opt = {noremap = true, silent = true }
 
 -- Set <LEADER> as <SPACE>
 vim.g.mapleader = " "
--- vim.g.maplocalleader = " "
+vim.g.maplocalleader = " "
 
 -- Nohlsearch
 map("n", "<LEADER><CR>", ":nohlsearch<CR>", opt)
@@ -36,10 +36,10 @@ map("n", "sj", ":set splitbelow<CR>:split<CR>", opt)
 map("n", "sk", ":set nosplitbelow<CR>:split<CR>", opt)
 
 -- Change Split
-map("n", "<LEADER>j", "<C-w>j", opt)
-map("n", "<LEADER>k", "<C-w>k", opt)
-map("n", "<LEADER>h", "<C-w>h", opt)
-map("n", "<LEADER>l", "<C-w>l", opt)
+map("n", "<C-j>", "<C-w>j", opt)
+map("n", "<C-k>", "<C-w>k", opt)
+map("n", "<C-h>", "<C-w>h", opt)
+map("n", "<C-l>", "<C-w>l", opt)
 
 map("n", "su", "<C-w>t<C-w>H", opt)
 map("n", "si", "<C-w>t<C-w>K", opt)
@@ -150,6 +150,9 @@ pluginKeys.telescopeList = {
 	},
 }
 
+-- === markdown-preview ===
+map("n", "<LEADER>md", "<cmd>MarkdownPreviewToggle<CR>", opt)
+
 -- === gitsigns ===
 
 -- === LSP ===
@@ -213,19 +216,23 @@ pluginKeys.cmp = function(cmp)
     }
 end
 
+-- === sniprun ===
+map("n", "<leader>rf", ":%SnipRun<CR>", opt)
+map("v", "<leader>rs", ":%SnipRun<CR>", opt)
+
 -- === debuger ===
 -- debug
-map("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint(); require'user.dap.dap-util'.store_breakpoints(true)<cr>", opt)
-map("n", "<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", opt)
--- map("n", "<leader>dr", "lua require'dap'.repl.open()<cr>", opt)
-map("n", "<F9>", "<cmd>lua require'dap'.run_last()<cr>", opt)
-map('n', '<F10>', '<cmd>lua require"user.dap.dap-util".reload_continue()<CR>', opt)
-map("n", "<F4>", "<cmd>lua require'dap'.terminate()<cr>", opt)
-map("n", "<F5>", "<cmd>lua require'dap'.continue()<cr>", opt)
-map("n", "<F6>", "<cmd>lua require'dap'.step_over()<cr>", opt)
-map("n", "<F7>", "<cmd>lua require'dap'.step_into()<cr>", opt)
-map("n", "<F8>", "<cmd>lua require'dap'.step_out()<cr>", opt)
--- map("n", "K", "<cmd>lua require'dapui'.eval()<cr>", opt)
--- map("n", "<leader>dt", "<cmd>lua require'dapui'.toggle()<cr>", opt)
--- map("n", "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>", opt)
+map("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint(); require'dap.dap-util'.store_breakpoints(true)<CR>", opt)
+map("n", "<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<CR>", opt)
+-- map("n", "<leader>dr", "lua require'dap'.repl.open()<CR>", opt)
+map("n", "<F9>", "<cmd>lua require'dap'.run_last()<CR>", opt)
+map('n', '<F10>', '<cmd>lua require"dap.dap-util".reload_continue()<CR>', opt)
+map("n", "<F4>", "<cmd>lua require'dap'.terminate()<CR>", opt)
+map("n", "<F5>", "<cmd>lua require'dap'.continue()<CR>", opt)
+map("n", "<F6>", "<cmd>lua require'dap'.step_over()<CR>", opt)
+map("n", "<F7>", "<cmd>lua require'dap'.step_into()<CR>", opt)
+map("n", "<F8>", "<cmd>lua require'dap'.step_out()<CR>", opt)
+-- map("n", "K", "<cmd>lua require'dapui'.eval()<CR>", opt)
+-- map("n", "<leader>dt", "<cmd>lua require'dapui'.toggle()<CR>", opt)
+-- map("n", "<leader>dx", "<cmd>lua require'dap'.terminate()<CR>", opt)
 return pluginKeys

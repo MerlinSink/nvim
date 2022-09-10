@@ -1,11 +1,10 @@
-local status_ok, comment = pcall(require, "comment")
+local status_ok, comment = pcall(require, "Comment")
 if not status_ok then
   vim.notify("No found Comment")
   return
 end
 
 local default_opts = {
- comment.setup({
   -- Add a space b/w comment and the line
   -- @type boolean|fun():boolean
   padding = true,
@@ -73,7 +72,7 @@ local default_opts = {
   -- Post-hook, called after commenting is done
   -- @type fun(ctx: Ctx)
   post_hook = nil,
- })
 }
+
 -- 关闭了extra快捷键，只用keybindings里定义的基础快捷键
 comment.setup(vim.tbl_deep_extend("force", default_opts, require("keybindings").comment))

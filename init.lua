@@ -48,7 +48,7 @@ require("plugin-config.nvim-treesitter")
 require("plugin-config.nvim-autopairs")
 require("plugin-config.comment")
 require("plugin-config.surround")
--- require("plugin-config.sniprun")
+require("plugin-config.sniprun")
 require("plugin-config.session-manager")
 require("plugin-config.gitsigns")
 require("plugin-config.nvim-colorizer")
@@ -60,10 +60,13 @@ require("lsp.ui")
 -- require("lsp.null-ls")
 require("lsp.lspsaga")
 
--- === dap ===
+-- === debuger ===
 require("dap.dap-config")
 require("dap.dap-ui")
+require("dap.dap-util")
 require("dap.dap-virtual-text")
+-- require("dap.di-cpp")
+require("dap.dap-cpp")
 
 -- === UI ===
 require("plugin-config.indent-blankline")

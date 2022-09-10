@@ -67,9 +67,9 @@ gitsigns.setup {
       return '<Ignore>'
     end, {expr=true})
 
-		-- Navigation
-    map('n', '<C-j>', ':Gitsigns next_hunk<CR>')
-    map('n', '<C-k>',':Gitsigns prev_hunk<CR>')
+	  -- Navigation
+    map('n', "<LEADER>j", ":Gitsigns next_hunk<CR>")
+    map('n', "<LEADER>k",":Gitsigns prev_hunk<CR>")
 
     -- Actions
     map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')

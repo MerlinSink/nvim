@@ -115,12 +115,12 @@ use("ahmedkhalf/project.nvim")
 	-- nvim-dap
 	use("mfussenegger/nvim-dap")
 	-- nvim-dap-virtual-text 
-	use("theHamsta/nvim-dap-virtual-text")
+  use("theHamsta/nvim-dap-virtual-text")
 	-- nvim-dap-ui
 	use("rcarriga/nvim-dap-ui")
 
 	-- === Markdown ===
-	-- use ("iamcco/markdown-preview.nvim")
+	use ("iamcco/markdown-preview.nvim")
 
   -- === git ===
 	use("lewis6991/gitsigns.nvim") -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)}
@@ -146,7 +146,7 @@ use("ahmedkhalf/project.nvim")
 	use("Shatur/neovim-session-manager")
 
 	-- sniprun
-  -- use({ "michaelb/sniprun", run = "bash ./install.sh" })
+  use({ "michaelb/sniprun", run = "bash ./install.sh" })
 
 	-- nvim-colorizer
 	use("norcalli/nvim-colorizer.lua")

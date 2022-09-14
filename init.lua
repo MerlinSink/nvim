@@ -26,7 +26,7 @@
 
 require("basic")
 
-require("keybindings")
+require("keymaps")
 
 require("plugins")
 
@@ -51,22 +51,27 @@ require("plugin-config.surround")
 require("plugin-config.sniprun")
 require("plugin-config.session-manager")
 require("plugin-config.gitsigns")
-require("plugin-config.nvim-colorizer")
 
 -- === LSP ===
 require("lsp.setup")
 require("lsp.cmp")
 require("lsp.ui")
--- require("lsp.null-ls")
+require("lsp.null-ls")
 require("lsp.lspsaga")
 
--- === debuger ===
+-- === Debuger ===
 require("dap.dap-config")
 require("dap.dap-ui")
 require("dap.dap-util")
 require("dap.dap-virtual-text")
--- require("dap.di-cpp")
+require("dap.di-cpp")
 require("dap.dap-cpp")
+
+-- === Tools ===
+require("plugin-config.nvim-colorizer")
+require("plugin-config.markdown-preview")
+require("plugin-config.toggleterm")
+-- require("plugin-config.picgo")
 
 -- === UI ===
 require("plugin-config.indent-blankline")

@@ -3,6 +3,7 @@ if not status_ok then
     vim.notify("No found lualine")
   return
 end
+
 lualine.setup({
   options = {
     icons_enabled = true,
@@ -17,12 +18,12 @@ lualine.setup({
     lualine_a = {"mode"},
     lualine_b = {"branch", "diff", "diagnostics"},
     lualine_c = {"filename", {"lsp_progress",spinner_symbols = { " ", " ", " ", " ", " ", " " }}},
-    lualine_x = {"encoding", 
+    lualine_x = {"encoding",
 				{"fileformat",
 					symbols = {
           unix = "LF",
           dos = "CRLF",
-          mac = "CR", 
+          mac = "CR",
 					},
 				},
 					"filetype"},

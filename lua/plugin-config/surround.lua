@@ -8,9 +8,9 @@ surround.setup({
   mappings_style = "surround",
 
 	pairs = {
-    nestable = require("keybindings").nestableList,
+    nestable = require("keymaps").nestableList,
 
-		linear = require("keybindings").linearList,
+		linear = require("keymaps").linearList,
 
 	},
 })

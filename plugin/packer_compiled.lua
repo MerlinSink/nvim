@@ -159,10 +159,20 @@ _G.packer_plugins = {
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
   },
+  ["monokai.nvim"] = {
+    loaded = true,
+    path = "/home/sink/.local/share/nvim/site/pack/packer/start/monokai.nvim",
+    url = "https://github.com/tanvirtin/monokai.nvim"
+  },
   ["neovim-session-manager"] = {
     loaded = true,
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/neovim-session-manager",
     url = "https://github.com/Shatur/neovim-session-manager"
+  },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/sink/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -259,10 +269,10 @@ _G.packer_plugins = {
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["tokyonight.nvim"] = {
+  ["toggleterm.nvim"] = {
     loaded = true,
-    path = "/home/sink/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
-    url = "https://github.com/folke/tokyonight.nvim"
+    path = "/home/sink/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
+    url = "https://github.com/akinsho/toggleterm.nvim"
   },
   ["vim-bbye"] = {
     loaded = true,

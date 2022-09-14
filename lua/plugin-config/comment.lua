@@ -74,5 +74,5 @@ local default_opts = {
   post_hook = nil,
 }
 
--- 关闭了extra快捷键，只用keybindings里定义的基础快捷键
-comment.setup(vim.tbl_deep_extend("force", default_opts, require("keybindings").comment))
+-- 关闭了extra快捷键，只用keymaps里定义的基础快捷键
+comment.setup(vim.tbl_deep_extend("force", default_opts, require("keymaps").comment))

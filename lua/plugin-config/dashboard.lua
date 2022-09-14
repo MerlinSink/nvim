@@ -22,8 +22,8 @@ db.custom_center = {
   },
   {
     icon = "  ",
-    desc = "Edit keybindings                    ",
-    action = "edit C:/Users/Sink/AppData/Local/nvim/lua/keybindings.lua",
+    desc = "Edit keymaps                    ",
+    action = "edit C:/Users/Sink/AppData/Local/nvim/lua/keymaps.lua",
   },
   {
     icon = "  ",

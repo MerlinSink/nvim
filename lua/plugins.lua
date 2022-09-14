@@ -86,11 +86,15 @@ use("ahmedkhalf/project.nvim")
 	-- use("EdenEast/nightfox.nvim")
 
 	-- tokyonight
-  use("folke/tokyonight.nvim")
+  -- use("folke/tokyonight.nvim")
+
+	-- monokai
+	use("tanvirtin/monokai.nvim")
 
 	-- === LSP ===
   use({ "neovim/nvim-lspconfig" })
-	use({ "williamboman/nvim-lsp-installer", commit = "36b44679f7cc73968dbb3b09246798a19f7c14e0" })
+	use({ "williamboman/nvim-lsp-installer",
+			commit = "36b44679f7cc73968dbb3b09246798a19f7c14e0" })
 
 	-- === cmp ===
 	use("hrsh7th/nvim-cmp")
@@ -107,7 +111,7 @@ use("ahmedkhalf/project.nvim")
 	use("rafamadriz/friendly-snippets")
 
 	-- null-ls
-	-- use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
+	use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
 
 	-- === debuger ===
 	-- DAPInstall
@@ -150,6 +154,12 @@ use("ahmedkhalf/project.nvim")
 
 	-- nvim-colorizer
 	use("norcalli/nvim-colorizer.lua")
+
+	-- toggleterm.nvim
+	use("akinsho/toggleterm.nvim")
+
+	-- nvim-picgo
+	-- use("askfiy/nvim-picgo")
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

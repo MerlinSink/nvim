@@ -61,7 +61,7 @@ cmp.setup({
   },
 
   -- Shotcut key
-	mapping = require("keybindings").cmp(cmp),
+	mapping = require("keymaps").cmp(cmp),
 
 	-- Use lspkind-nvim to show icon
 	formatting = require("lsp.ui").formatting,

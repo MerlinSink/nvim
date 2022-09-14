@@ -1,4 +1,4 @@
-local status_ok, DapVirtualText = pcall(require, "dapui-virtual-text")
+local status_ok, DapVirtualText = pcall(require, "nvim-dap-virtual-text")
 if not status_ok then
 	vim.notify("No found dap-virtual-text")
 	return

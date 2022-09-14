@@ -4,7 +4,7 @@ if not status_ok then
   return
 end
 
-local list_keys = require('keybindings').nvimTreeList
+local list_keys = require('keymaps').nvimTreeList
 
 nvim_tree.setup({
     -- 不显示 git 状态图标

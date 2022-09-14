@@ -1,5 +1,5 @@
-local status, nightfox = pcall(require, "nightfox")
-if not status then
+local status_ok, nightfox = pcall(require, "nightfox")
+if not status_ok then
     vim.notify("No found nightfox")
   return
 end

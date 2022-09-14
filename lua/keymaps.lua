@@ -153,16 +153,20 @@ pluginKeys.telescopeList = {
 -- === markdown-preview ===
 map("n", "<LEADER>md", "<cmd>MarkdownPreviewToggle<CR>", opt)
 
+-- === picgo ===
+-- map("n", "pcc", "<cmd>lua require'nvim-picgo'.upload_clipboard()<cr>", opt)
+-- map("n", "pci", "<cmd>lua require'nvim-picgo'.upload_imagefile()<cr>", opt)
+
 -- === gitsigns ===
 
 -- === LSP ===
 pluginKeys.mapLSP = function(mapbuf)
   -- rename
-  -- mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
-	mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
+  -- mapbuf("n", "<LEADER>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
+	mapbuf("n", "<LEADER>rn", "<cmd>Lspsaga rename<CR>", opt)
   -- code action
-  -- mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
-	mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
+  -- mapbuf("n", "<LEADER>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
+	mapbuf("n", "<LEADER>ca", "<cmd>Lspsaga code_action<CR>", opt)
   -- go
   -- mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
   -- mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
@@ -179,10 +183,10 @@ pluginKeys.mapLSP = function(mapbuf)
 	mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
   mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
   mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
-	-- mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.format { auync = true } <CR>", opt)
+	-- mapbuf("n", "<LEADER>n", "<cmd>lua vim.lsp.buf.format { auync = true } <CR>", opt)
 
   -- 没用到
-  -- mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
+  -- mapbuf('n', '<LEADER>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
   -- mapbuf("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
   -- mapbuf('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opt)
   -- mapbuf('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opt)
@@ -216,15 +220,18 @@ pluginKeys.cmp = function(cmp)
     }
 end
 
+-- === null-ls ===
+map("n", "<LEADER>n", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opt)
+
 -- === sniprun ===
-map("n", "<leader>rf", ":%SnipRun<CR>", opt)
-map("v", "<leader>rs", ":%SnipRun<CR>", opt)
+map("n", "<LEADER>rf", ":%SnipRun<CR>", opt)
+map("v", "<LEADER>rs", ":%SnipRun<CR>", opt)
 
 -- === debuger ===
 -- debug
-map("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint(); require'dap.dap-util'.store_breakpoints(true)<CR>", opt)
-map("n", "<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<CR>", opt)
--- map("n", "<leader>dr", "lua require'dap'.repl.open()<CR>", opt)
+map("n", "<LEADER>db", "<cmd>lua require'dap'.toggle_breakpoint(); require'dap.dap-util'.store_breakpoints(true)<CR>", opt)
+map("n", "<LEADER>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<CR>", opt)
+-- map("n", "<LEADER>dr", "lua require'dap'.repl.open()<CR>", opt)
 map("n", "<F9>", "<cmd>lua require'dap'.run_last()<CR>", opt)
 map('n', '<F10>', '<cmd>lua require"dap.dap-util".reload_continue()<CR>', opt)
 map("n", "<F4>", "<cmd>lua require'dap'.terminate()<CR>", opt)
@@ -233,6 +240,6 @@ map("n", "<F6>", "<cmd>lua require'dap'.step_over()<CR>", opt)
 map("n", "<F7>", "<cmd>lua require'dap'.step_into()<CR>", opt)
 map("n", "<F8>", "<cmd>lua require'dap'.step_out()<CR>", opt)
 -- map("n", "K", "<cmd>lua require'dapui'.eval()<CR>", opt)
--- map("n", "<leader>dt", "<cmd>lua require'dapui'.toggle()<CR>", opt)
--- map("n", "<leader>dx", "<cmd>lua require'dap'.terminate()<CR>", opt)
+-- map("n", "<LEADER>dt", "<cmd>lua require'dapui'.toggle()<CR>", opt)
+-- map("n", "<LEADER>dx", "<cmd>lua require'dap'.terminate()<CR>", opt)
 return pluginKeys

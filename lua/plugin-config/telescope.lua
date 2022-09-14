@@ -56,7 +56,7 @@ telescope.setup({
 
     initial_mode = "insert",
 
-    mappings = require("keybindings").telescopeList,
+    mappings = require("keymaps").telescopeList,
 	},
   pickers = {
 

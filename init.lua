@@ -35,7 +35,9 @@ require("autocmds")
 
 -- === Theme ===
 require("colorscheme")
--- require("lua.plugin-config.theme.nightfox")
+require("plugin-config.theme.onedark")
+-- require("plugin-config.theme.nightfox")
+-- require("plugin-config.theme.monokai")
 
 -- === Plingin ===
 require("plugin-config.nvim-tree")
@@ -64,8 +66,8 @@ require("dap.dap-config")
 require("dap.dap-ui")
 require("dap.dap-util")
 require("dap.dap-virtual-text")
-require("dap.di-cpp")
-require("dap.dap-cpp")
+-- require("dap.di-cpp")
+-- require("dap.dap-cpp")
 
 -- === Tools ===
 require("plugin-config.nvim-colorizer")

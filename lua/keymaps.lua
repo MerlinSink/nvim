@@ -121,18 +121,26 @@ pluginKeys.linearList = {
 			i = { "*", "*" },
 			I = { "**", "**" },
 			u = { "$", "$" },
-			h = { "$^", "$" },
 }
 
 -- === Telescope ===
-map("n", "<LEADER>f", ":Telescope find_files<CR>", opt)
--- Globle Search
-map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
--- old file
-map("n", "<LEADER>o", ":Telescope oldfiles<CR>", opt)
+map("n", "<LEADER>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>", opt)
 -- map("n", "<LEADER>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opt)
+-- Globle Search
+map("n", "<C-f>", "<cmd>lua require('telescope.builtin').live_grep()<CR>", opt)
+-- old file
+map("n", "<LEADER>fo", "<cmd>lua require('telescope.builtin').oldfiles()<CR>", opt)
+-- buffer
+map("n", "<LEADER>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", opt)
+-- buffer_fuzzy
+map("n", "<LEADER>fs", "<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opt)
+-- map("n", "<", "Telescope current_buffer_fuzzy_find<CR>", opt)
 
 pluginKeys.telescopeList = {
+	n = {
+		-- close window
+    ["<LEADER>c"] = "close",
+	},
 	i = {
     -- Move UP&DOWN
     ["<C-j>"] = "move_selection_next",
@@ -142,7 +150,7 @@ pluginKeys.telescopeList = {
     -- History
     ["<C-n>"] = "cycle_history_next",
     ["<C-p>"] = "cycle_history_prev",
-    -- 关闭窗口
+    -- close window
     ["<LEADER>c"] = "close",
     -- 预览窗口上下滚动
     ["<C-u>"] = "preview_scrolling_up",
@@ -227,19 +235,33 @@ map("n", "<LEADER>n", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opt)
 map("n", "<LEADER>rf", ":%SnipRun<CR>", opt)
 map("v", "<LEADER>rs", ":%SnipRun<CR>", opt)
 
--- === debuger ===
--- debug
-map("n", "<LEADER>db", "<cmd>lua require'dap'.toggle_breakpoint(); require'dap.dap-util'.store_breakpoints(true)<CR>", opt)
-map("n", "<LEADER>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<CR>", opt)
--- map("n", "<LEADER>dr", "lua require'dap'.repl.open()<CR>", opt)
-map("n", "<F9>", "<cmd>lua require'dap'.run_last()<CR>", opt)
+-- === debugger ===
+-- debugger
+map("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint(); require'dap.dap-util'.store_breakpoints(true)<cr>", opt)
+map("n", "<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", opt)
+-- map("n", "<leader>dr", "lua require'dap'.repl.open()<cr>", opt)
+map("n", "<F9>", "<cmd>lua require'dap'.run_last()<cr>", opt)
 map('n', '<F10>', '<cmd>lua require"dap.dap-util".reload_continue()<CR>', opt)
-map("n", "<F4>", "<cmd>lua require'dap'.terminate()<CR>", opt)
-map("n", "<F5>", "<cmd>lua require'dap'.continue()<CR>", opt)
-map("n", "<F6>", "<cmd>lua require'dap'.step_over()<CR>", opt)
-map("n", "<F7>", "<cmd>lua require'dap'.step_into()<CR>", opt)
-map("n", "<F8>", "<cmd>lua require'dap'.step_out()<CR>", opt)
--- map("n", "K", "<cmd>lua require'dapui'.eval()<CR>", opt)
--- map("n", "<LEADER>dt", "<cmd>lua require'dapui'.toggle()<CR>", opt)
--- map("n", "<LEADER>dx", "<cmd>lua require'dap'.terminate()<CR>", opt)
+map("n", "<F4>", "<cmd>lua require'dap'.terminate()<cr>", opt)
+map("n", "<F5>", "<cmd>lua require'dap'.continue()<cr>", opt)
+map("n", "<F6>", "<cmd>lua require'dap'.step_over()<cr>", opt)
+map("n", "<F7>", "<cmd>lua require'dap'.step_into()<cr>", opt)
+map("n", "<F8>", "<cmd>lua require'dap'.step_out()<cr>", opt)
+-- map("n", "K", "<cmd>lua require'dapui'.eval()<cr>", opt)
+-- map("n", "<leader>dt", "<cmd>lua require'dapui'.toggle()<cr>", opt)
+-- map("n", "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>", opt)
+
+-- === dap-ui ===
+pluginKeys.dapui = {
+
+    -- Use a table to apply multiple mappings
+    expand = { "<CR>", "<2-LeftMouse>" },
+    open = "o",
+    remove = "d",
+    edit = "e",
+    repl = "r",
+    toggle = "t",
+
+}
+
 return pluginKeys

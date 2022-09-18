@@ -61,31 +61,25 @@ local function config_dapui()
 end
 
 local function config_debuggers()
-  local dap = require "dap"
+  -- local dap = require "dap"
   -- TODO: wait dap-ui for fixing temrinal layout
   -- the "30" of "30vsplit: doesn't work
-  dap.defaults.fallback.terminal_win_cmd = 'vsplit new' -- this will be overrided by dapui
-  dap.set_log_level("DEBUG")
+  -- dap.defaults.fallback.terminal_win_cmd = '30vsplit new' -- this will be overrided by dapui
+  -- dap.set_log_level("DEBUG")
 
   -- load from json file
   -- require('dap.ext.vscode').load_launchjs(nil, { cppdbg = { 'cpp' } })
   -- config per launage
-  require("dap.di-cpp")
-  -- require("dap.di-go")
-
-  require("dap.dap-cpp")
-  -- require("dap.dap-go")
-  -- require("dap.dap-python")
-  -- require("dap.dap-lua")
   -- require("dap.dap-cpp")
-  -- require("config.dap.python").setup()
-  -- require("config.dap.rust").setup()
-  -- require("config.dap.go").setup()
+	require("dap.dap-cpp")
+	-- require("dap.dap-cpp-codelldb")
+	-- require("dap.di-cpp")
+
 end
 
 function M.setup()
   config_dapi_and_sign()
-  config_dapui()
+	config_dapui()
   config_debuggers() -- Debugger
 end
 

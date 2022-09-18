@@ -44,122 +44,124 @@ packer.init({
 return require('packer').startup(function(use)
 
 	-- Packer can manage itself
-  use("wbthomason/packer.nvim")
+  use "wbthomason/packer.nvim"
 
 	-- nvim-tree
- 	use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
+ 	use { "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" }
 
 	-- bufferline
-	use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }})
+	use { "akinsho/bufferline.nvim", tag = "v2.*", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }}
 
 	-- lualine
-	use({ "nvim-lualine/lualine.nvim",requires = { "kyazdani42/nvim-web-devicons", opt = true }})
-	use("arkav/lualine-lsp-progress")
+	use { "nvim-lualine/lualine.nvim",requires = { "kyazdani42/nvim-web-devicons", opt = true }}
+	use "arkav/lualine-lsp-progress"
 
 	-- dashboard
-	use("glepnir/dashboard-nvim")
+	use "glepnir/dashboard-nvim"
 
 	-- telescope
-  use({ 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } })
-	use("nvim-telescope/telescope-rg.nvim")
+  use { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } }
+	use "nvim-telescope/telescope-rg.nvim"
 
 	-- project
-use("ahmedkhalf/project.nvim")
+  use "ahmedkhalf/project.nvim"
 
 	-- nvim-treesitter
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
 	-- nvim-auropairs
-	use ({	"windwp/nvim-autopairs" })
+	use 	"windwp/nvim-autopairs"
 
 	-- comment.nvim
-	use ({ "numToStr/Comment.nvim" })
+	use "numToStr/Comment.nvim"
 
 	-- surround.nvim
-	use ({ "ur4ltz/surround.nvim" })
+	use "ur4ltz/surround.nvim"
 
 	-- === Theme ===	
 	-- onedark
-	-- use("ful1e5/onedark.nvim")
+	use "navarasu/onedark.nvim"
 
 	-- nightfox
-	-- use("EdenEast/nightfox.nvim")
+	-- use "EdenEast/nightfox.nvim"
 
 	-- tokyonight
-  -- use("folke/tokyonight.nvim")
+  -- use "folke/tokyonight.nvim"
 
 	-- monokai
-	use("tanvirtin/monokai.nvim")
+	-- use "tanvirtin/monokai.nvim"
 
 	-- === LSP ===
-  use({ "neovim/nvim-lspconfig" })
-	use({ "williamboman/nvim-lsp-installer",
-			commit = "36b44679f7cc73968dbb3b09246798a19f7c14e0" })
+  use "neovim/nvim-lspconfig"
+	use { "williamboman/nvim-lsp-installer",
+			commit = "36b44679f7cc73968dbb3b09246798a19f7c14e0" }
 
 	-- === cmp ===
-	use("hrsh7th/nvim-cmp")
+	use "hrsh7th/nvim-cmp"
 	-- snippet
-	use("hrsh7th/vim-vsnip")
+	use "hrsh7th/vim-vsnip"
 
-	use("hrsh7th/cmp-vsnip")
-	use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
-	use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
-	use("hrsh7th/cmp-path") -- { name = 'path' }
-	use("hrsh7th/cmp-cmdline") -- { name = 'cmdline' }
+	use "hrsh7th/cmp-vsnip"
+	use "hrsh7th/cmp-nvim-lsp" -- { name = nvim_lsp }
+	use "hrsh7th/cmp-buffer" -- { name = 'buffer' },
+	use "hrsh7th/cmp-path" -- { name = 'path' }
+	use "hrsh7th/cmp-cmdline" -- { name = 'cmdline' }
 
   -- 常见编程语言代码段
-	use("rafamadriz/friendly-snippets")
+	use "rafamadriz/friendly-snippets"
 
 	-- null-ls
-	use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
+	use { "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" }
 
-	-- === debuger ===
+	-- === debugger ===
 	-- DAPInstall
-	use("ravenxrz/DAPInstall.nvim")
+	use "ravenxrz/DAPInstall.nvim"
 	-- nvim-dap
-	use("mfussenegger/nvim-dap")
+	use "mfussenegger/nvim-dap"
 	-- nvim-dap-virtual-text 
-  use("theHamsta/nvim-dap-virtual-text")
+  use "theHamsta/nvim-dap-virtual-text"
 	-- nvim-dap-ui
-	use("rcarriga/nvim-dap-ui")
+	use "rcarriga/nvim-dap-ui"
+	-- telescope-dap
+	use "nvim-telescope/telescope-dap.nvim"
 
 	-- === Markdown ===
-	use ("iamcco/markdown-preview.nvim")
+	use "iamcco/markdown-preview.nvim"
 
   -- === git ===
-	use("lewis6991/gitsigns.nvim") -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)}
+	use "lewis6991/gitsigns.nvim" -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)}
 
 	-- === UI ===
 	-- lspkind-nvim
-  use("onsails/lspkind-nvim")
+  use "onsails/lspkind-nvim"
 
   -- inden-blankline
-	use("lukas-reineke/indent-blankline.nvim")
+	use "lukas-reineke/indent-blankline.nvim"
 
 	-- lspsaga 
-	use("glepnir/lspsaga.nvim")
+	use "glepnir/lspsaga.nvim"
 
 	-- === tools ===
 	-- suda
-	use("lambdalisue/suda.vim")
+	use "lambdalisue/suda.vim"
 
   -- vim-visual-multi
-	use("mg979/vim-visual-multi")
+	use "mg979/vim-visual-multi"
 
 	-- session-manager
-	use("Shatur/neovim-session-manager")
+	use "Shatur/neovim-session-manager"
 
 	-- sniprun
-  use({ "michaelb/sniprun", run = "bash ./install.sh" })
+  use { "michaelb/sniprun", run = "bash ./install.sh" }
 
 	-- nvim-colorizer
-	use("norcalli/nvim-colorizer.lua")
+	use "norcalli/nvim-colorizer.lua"
 
 	-- toggleterm.nvim
-	use("akinsho/toggleterm.nvim")
+	use "akinsho/toggleterm.nvim"
 
 	-- nvim-picgo
-	-- use("askfiy/nvim-picgo")
+	-- use "askfiy/nvim-picgo"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

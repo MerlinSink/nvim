@@ -159,11 +159,6 @@ _G.packer_plugins = {
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
   },
-  ["monokai.nvim"] = {
-    loaded = true,
-    path = "/home/sink/.local/share/nvim/site/pack/packer/start/monokai.nvim",
-    url = "https://github.com/tanvirtin/monokai.nvim"
-  },
   ["neovim-session-manager"] = {
     loaded = true,
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/neovim-session-manager",
@@ -229,6 +224,11 @@ _G.packer_plugins = {
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
+  ["onedark.nvim"] = {
+    loaded = true,
+    path = "/home/sink/.local/share/nvim/site/pack/packer/start/onedark.nvim",
+    url = "https://github.com/navarasu/onedark.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -258,6 +258,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/surround.nvim",
     url = "https://github.com/ur4ltz/surround.nvim"
+  },
+  ["telescope-dap.nvim"] = {
+    loaded = true,
+    path = "/home/sink/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
+    url = "https://github.com/nvim-telescope/telescope-dap.nvim"
   },
   ["telescope-rg.nvim"] = {
     loaded = true,

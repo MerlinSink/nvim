@@ -1,20 +1,12 @@
-local status_ok, dapui = pcall(require, "dapui")
+local status_ok, dapui = pcall(require, 'dapui')
 if not status_ok then
-  vim.notify("No found dapui")
+  vim.notify("dapui not found")
   return
 end
 
 dapui.setup({
-  icons = { expanded = "▾", collapsed = "▸" },
-  mappings = {
-    -- Use a table to apply multiple mappings
-    expand = { "<CR>", "<2-LeftMouse>" },
-    open = "o",
-    remove = "d",
-    edit = "e",
-    repl = "r",
-    toggle = "t",
-  },
+  icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
+  mappings = require("keymaps").dapui,
   -- Expand lines larger than the window
   -- Requires >= 0.7
   expand_lines = vim.fn.has("nvim-0.7"),
@@ -57,5 +49,6 @@ dapui.setup({
   windows = { indent = 1 },
   render = {
     max_type_length = nil, -- Can be integer or nil.
+    max_value_lines = 100, -- Can be integer or nil.
   }
 })

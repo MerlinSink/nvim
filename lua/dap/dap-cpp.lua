@@ -4,7 +4,7 @@ local dbg_path = require("dap-install.config.settings").options["installation_pa
 dap.adapters.cppdbg = {
   id = 'cppdbg',
   type = "executable",
-  command = dbg_path .. "/home/sink/.local/share/nvim/dapinstall/ccppr_vsc/extension/debugAdapters/bin/OpenDebugAD7",
+  command = dbg_path .. "/extension/debugAdapters/bin/OpenDebugAD7",
 }
 dap.configurations.cpp = {
   -- launch exe

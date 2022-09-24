@@ -12,29 +12,29 @@ db.custom_footer = {
 db.custom_center = {
   {
     icon = "  ",
-    desc = "Projects                            ",
+    desc = "Projects                             ",
     action = "Telescope projects",
   },
   {
     icon = "  ",
-    desc = "Recently files                      ",
+    desc = "Recently files                       ",
     action = "Telescope oldfiles",
   },
   {
     icon = "  ",
-    desc = "Edit keymaps                    ",
-    action = "edit C:/Users/Sink/AppData/Local/nvim/lua/keymaps.lua",
+    desc = "Edit keymaps                         ",
+    action = "edit ~/.config/nvim/lua/keymaps.lua",
   },
   {
     icon = "  ",
-    desc = "Edit Projects                       ",
-    action = "edit C:/Users/Sink/AppData/Local/nvim-data/project_nvim/project_history",
+    desc = "Edit Projects                        ",
+    action = "edit ~/.local/share/nvim/project_nvim/project_history",
   },
-  -- {
-  --   icon = "  ",
-  --   desc = "Edit .bashrc                        ",
-  --   action = "edit ~/.bashrc",
-  -- },
+  {
+    icon = "  ",
+    desc = "Edit .zshrc                          ",
+    action = "edit ~/.zshrc",
+  },
   -- {
   --   icon = "  ",
   --   desc = "Change colorscheme                  ",
@@ -43,12 +43,12 @@ db.custom_center = {
    {
      icon = "  ",
      desc = "Edit init.lua                       ",
-     action = "edit C:/Users/Sink/AppData/Local/nvim/init.lua",
+     action = "edit	~/.config/nvim/init.lua",
    },
    {
      icon = "  ",
      desc = "Edit Plugins.lua                    ",
-     action = "edit C:/Users/Sink/AppData/Local/nvim/lua/plugins.lua",
+     action = "edit ~/.config/nvim/lua/plugins.lua",
    },
   -- {
   --   icon = "  ",

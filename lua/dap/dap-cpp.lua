@@ -1,6 +1,7 @@
 local dap = require('dap')
 
 local dbg_path = require("dap-install.config.settings").options["installation_path"] .. "ccppr_vsc/"
+-- local dbg_path = require("dap-install.config.settings").options["installation_path"] .. "cpptools/"
 dap.adapters.cppdbg = {
   id = 'cppdbg',
   type = "executable",

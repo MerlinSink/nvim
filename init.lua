@@ -35,7 +35,7 @@ require("autocmds")
 
 -- === Theme ===
 require("colorscheme")
-require("plugin-config.theme.onedark")
+-- require("plugin-config.theme.onedark")
 -- require("plugin-config.theme.nightfox")
 -- require("plugin-config.theme.monokai")
 
@@ -58,16 +58,16 @@ require("plugin-config.gitsigns")
 require("lsp.setup")
 require("lsp.cmp")
 require("lsp.ui")
-require("lsp.null-ls")
+-- require("lsp.null-ls")
 require("lsp.lspsaga")
 
 -- === Debuger ===
 require("dap.dap-config")
 require("dap.dap-ui")
-require("dap.dap-util")
+-- require("dap.dap-util")
 require("dap.dap-virtual-text")
 -- require("dap.di-cpp")
--- require("dap.dap-cpp")
+require("dap.dap-cpp")
 
 -- === Tools ===
 require("plugin-config.nvim-colorizer")

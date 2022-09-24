@@ -63,16 +63,16 @@ local pluginKeys = {}
 map("n", "<LEADER>e", ":NvimTreeToggle<CR>", opt)
 
 pluginKeys.nvimTreeList = {
-	-- Open file or document
-	{ key = {"<CR>", "o", "<2-LeftMouse>"}, action = "edit" },
+   -- Open file or document
+  { key = {"<CR>", "o", "<2-LeftMouse>"}, action = "edit" },
   -- 分屏打开文件
   { key = "v", action = "vsplit" },
   { key = "h", action = "split" },
   -- Show dotfiles
-	{ key = "i", action = "toggle_custom" }, -- 对应 filters 中的 custom (node_modules)
+  { key = "i", action = "toggle_custom" }, -- 对应 filters 中的 custom (node_modules)
   { key = ".", action = "toggle_dotfiles" }, -- Hide (dotfiles)
   -- Operate
-	{ key = "<F5>", action = "refresh" },
+  { key = "<F5>", action = "refresh" },
   { key = "a", action = "create" },
   { key = "d", action = "remove" },
   { key = "r", action = "rename" },
@@ -110,7 +110,7 @@ pluginKeys.comment = {
 pluginKeys.nestableList = {
       b = { "(", ")" },
       s = { "[", "]" },
-			o = { "[[", "]]"},
+      o = { "[[", "]]"},
       c = { "{", "}" },
       a = { "<", ">" }
 }
@@ -118,9 +118,9 @@ pluginKeys.linearList = {
       q = { "'", "'" },
       g = { "`", "`" },
       d = { '"', '"' },
-			i = { "*", "*" },
-			I = { "**", "**" },
-			u = { "$", "$" },
+      i = { "*", "*" },
+      I = { "**", "**" },
+      u = { "$", "$" },
 }
 
 -- === Telescope ===
@@ -133,15 +133,17 @@ map("n", "<LEADER>fo", "<cmd>lua require('telescope.builtin').oldfiles()<CR>", o
 -- buffer
 map("n", "<LEADER>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", opt)
 -- buffer_fuzzy
-map("n", "<LEADER>fs", "<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opt)
+map("n", "<LEADER>fs", "<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({ previewer = false }))<CR>", opt)
 -- map("n", "<", "Telescope current_buffer_fuzzy_find<CR>", opt)
+-- dap
+map("n", "<LEADER>fd", "<cmd>lua require'telescope'.extensions.dap.configurations(require('telescope.themes').get_dropdown({ previewer = false }))<CR>", opt)
 
 pluginKeys.telescopeList = {
 	n = {
 		-- close window
     ["<LEADER>c"] = "close",
 	},
-	i = {
+  i = {
     -- Move UP&DOWN
     ["<C-j>"] = "move_selection_next",
     ["<C-k>"] = "move_selection_previous",
@@ -154,8 +156,8 @@ pluginKeys.telescopeList = {
     ["<LEADER>c"] = "close",
     -- 预览窗口上下滚动
     ["<C-u>"] = "preview_scrolling_up",
-		["<C-d>"] = "preview_scrolling_down",
-	},
+    ["<C-d>"] = "preview_scrolling_down",
+  },
 }
 
 -- === markdown-preview ===
@@ -171,10 +173,10 @@ map("n", "<LEADER>md", "<cmd>MarkdownPreviewToggle<CR>", opt)
 pluginKeys.mapLSP = function(mapbuf)
   -- rename
   -- mapbuf("n", "<LEADER>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
-	mapbuf("n", "<LEADER>rn", "<cmd>Lspsaga rename<CR>", opt)
+  mapbuf("n", "<LEADER>rn", "<cmd>Lspsaga rename<CR>", opt)
   -- code action
   -- mapbuf("n", "<LEADER>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
-	mapbuf("n", "<LEADER>ca", "<cmd>Lspsaga code_action<CR>", opt)
+  mapbuf("n", "<LEADER>ca", "<cmd>Lspsaga code_action<CR>", opt)
   -- go
   -- mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
   -- mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
@@ -188,10 +190,10 @@ pluginKeys.mapLSP = function(mapbuf)
   -- mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
   -- mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
   -- mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
-	mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
+  mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
   mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
   mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
-	-- mapbuf("n", "<LEADER>n", "<cmd>lua vim.lsp.buf.format { auync = true } <CR>", opt)
+  -- mapbuf("n", "<LEADER>n", "<cmd>lua vim.lsp.buf.format { auync = true } <CR>", opt)
 
   -- 没用到
   -- mapbuf('n', '<LEADER>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
@@ -205,7 +207,7 @@ end
 -- === cmp ===
 pluginKeys.cmp = function(cmp)
     return {
-       	-- 出现补全
+        -- 出现补全
         ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
         -- 取消
         ["<A-,>"] = cmp.mapping({
@@ -237,15 +239,16 @@ map("v", "<LEADER>rs", ":%SnipRun<CR>", opt)
 
 -- === debugger ===
 -- debugger
-map("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint(); require'dap.dap-util'.store_breakpoints(true)<cr>", opt)
+-- map("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint(); require'dap.dap-util'.store_breakpoints(true)<cr>", opt)
+map("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opt)
 map("n", "<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", opt)
 -- map("n", "<leader>dr", "lua require'dap'.repl.open()<cr>", opt)
 map("n", "<F9>", "<cmd>lua require'dap'.run_last()<cr>", opt)
 map('n', '<F10>', '<cmd>lua require"dap.dap-util".reload_continue()<CR>', opt)
 map("n", "<F4>", "<cmd>lua require'dap'.terminate()<cr>", opt)
 map("n", "<F5>", "<cmd>lua require'dap'.continue()<cr>", opt)
-map("n", "<F6>", "<cmd>lua require'dap'.step_over()<cr>", opt)
-map("n", "<F7>", "<cmd>lua require'dap'.step_into()<cr>", opt)
+map("n", "<F6>", "<cmd>lua require'dap'.step_into()<cr>", opt)
+map("n", "<F7>", "<cmd>lua require'dap'.step_over()<cr>", opt)
 map("n", "<F8>", "<cmd>lua require'dap'.step_out()<cr>", opt)
 -- map("n", "K", "<cmd>lua require'dapui'.eval()<cr>", opt)
 -- map("n", "<leader>dt", "<cmd>lua require'dapui'.toggle()<cr>", opt)

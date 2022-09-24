@@ -1,10 +1,10 @@
--- local status_ok, DapVirtualText = pcall(require, "nvim-dap-virtual-text")
--- if not status_ok then
--- 	vim.notify("No found dap-virtual-text")
--- 	return
--- end
+local status_ok, DapVirtualText = pcall(require, "nvim-dap-virtual-text")
+if not status_ok then
+	vim.notify("No found dap-virtual-text")
+	return
+end
 
-require("nvim-dap-virtual-text").setup {
+DapVirtualText.setup {
     enabled = true,                        -- enable this plugin (the default)
     enabled_commands = true,               -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
     highlight_changed_variables = true,    -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText

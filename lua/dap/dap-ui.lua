@@ -1,8 +1,9 @@
-local status_ok, dapui = pcall(require, 'dapui')
+local status_ok, dapui = pcall (require, "dapui")
 if not status_ok then
   vim.notify("dapui not found")
   return
 end
+
 
 dapui.setup({
   icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
@@ -32,10 +33,16 @@ dapui.setup({
     {
       elements = {
         "repl",
-        "console",
       },
       size = 0.25, -- 25% of total lines
       position = "bottom",
+    },
+    {
+      elements = {
+        "console",
+      },
+      size = 0.25, -- 25% of total lines
+      position = "right",
     },
   },
   floating = {

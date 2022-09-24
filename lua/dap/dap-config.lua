@@ -1,10 +1,11 @@
-local M = {}
+  -- === dapinstall ===
 
-local function config_dapi_and_sign()
   local dap_install = require "dap-install"
   dap_install.setup {
     installation_path = vim.fn.stdpath "data" .. "/dapinstall/",
   }
+
+	-- === breakpoint ===
 
   local dap_breakpoint = {
     error = {
@@ -20,7 +21,7 @@ local function config_dapi_and_sign()
       numhl = "",
     },
     stopped = {
-      text = "⭐️",
+      text = "",
       texthl = "LspDiagnosticsSignInformation",
       linehl = "DiagnosticUnderlineInfo",
       numhl = "LspDiagnosticsSignInformation",
@@ -30,9 +31,10 @@ local function config_dapi_and_sign()
   vim.fn.sign_define("DapBreakpoint", dap_breakpoint.error)
   vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
   vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
-end
 
-local function config_dapui()
+
+	-- === dapui ===
+
   local dap, dapui = require "dap", require "dapui"
 
   local debug_open = function()
@@ -58,9 +60,8 @@ local function config_dapui()
   dap.listeners.before.disconnect["dapui_config"]       = function()
     debug_close()
   end
-end
 
-local function config_debuggers()
+-- local function config_debuggers()
   -- local dap = require "dap"
   -- TODO: wait dap-ui for fixing temrinal layout
   -- the "30" of "30vsplit: doesn't work
@@ -71,16 +72,7 @@ local function config_debuggers()
   -- require('dap.ext.vscode').load_launchjs(nil, { cppdbg = { 'cpp' } })
   -- config per launage
   -- require("dap.dap-cpp")
-	require("dap.dap-cpp")
+	-- require("dap.dap-cpp")
 	-- require("dap.dap-cpp-codelldb")
 	-- require("dap.di-cpp")
-
-end
-
-function M.setup()
-  config_dapi_and_sign()
-	config_dapui()
-  config_debuggers() -- Debugger
-end
-
-return M
+-- end

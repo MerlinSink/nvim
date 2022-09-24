@@ -80,7 +80,7 @@ return require('packer').startup(function(use)
 
 	-- === Theme ===	
 	-- onedark
-	use "navarasu/onedark.nvim"
+	-- use "navarasu/onedark.nvim"
 
 	-- nightfox
 	-- use "EdenEast/nightfox.nvim"
@@ -90,6 +90,9 @@ return require('packer').startup(function(use)
 
 	-- monokai
 	-- use "tanvirtin/monokai.nvim"
+
+	-- dracula
+	use "dracula/vim"
 
 	-- === LSP ===
   use "neovim/nvim-lspconfig"
@@ -111,7 +114,7 @@ return require('packer').startup(function(use)
 	use "rafamadriz/friendly-snippets"
 
 	-- null-ls
-	use { "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" }
+	-- use { "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" }
 
 	-- === debugger ===
 	-- DAPInstall

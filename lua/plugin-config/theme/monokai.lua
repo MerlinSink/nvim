@@ -1,9 +1,5 @@
-local status_ok, monokai = pcall(require, "monokai")
+local monokai = pcall(require, "monokai")
 local palette = monokai.classic
-if not status_ok then
-    vim.notify("No found monokai")
-  return
-end
 
 monokai.setup({
 	palette = {

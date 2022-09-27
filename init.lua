@@ -74,6 +74,7 @@ require("plugin-config.nvim-colorizer")
 require("plugin-config.markdown-preview")
 require("plugin-config.toggleterm")
 -- require("plugin-config.picgo")
+require("plugin-config.nvim-transparent")
 
 -- === UI ===
 require("plugin-config.indent-blankline")

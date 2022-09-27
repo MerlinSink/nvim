@@ -133,7 +133,7 @@ map("n", "<LEADER>fo", "<cmd>lua require('telescope.builtin').oldfiles()<CR>", o
 -- buffer
 map("n", "<LEADER>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", opt)
 -- buffer_fuzzy
-map("n", "<LEADER>fs", "<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({ previewer = false }))<CR>", opt)
+map("n", "<LEADER>fs", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({ previewer = false }))<CR>", opt)
 -- map("n", "<", "Telescope current_buffer_fuzzy_find<CR>", opt)
 -- dap
 map("n", "<LEADER>fd", "<cmd>lua require'telescope'.extensions.dap.configurations(require('telescope.themes').get_dropdown({ previewer = false }))<CR>", opt)
@@ -164,8 +164,20 @@ pluginKeys.telescopeList = {
 map("n", "<LEADER>md", "<cmd>MarkdownPreviewToggle<CR>", opt)
 
 -- === picgo ===
--- map("n", "pcc", "<cmd>lua require'nvim-picgo'.upload_clipboard()<cr>", opt)
--- map("n", "pci", "<cmd>lua require'nvim-picgo'.upload_imagefile()<cr>", opt)
+-- map("n", "<LEADER>pcc", "<cmd>lua require'nvim-picgo'.upload_clipboard()<cr>", opt)
+-- map("n", "<LEADER>pci", "<cmd>lua require'nvim-picgo'.upload_imagefile()<cr>", opt)
+--
+-- === vim-visual-multi ===
+vim.cmd[[
+let g:VM_maps = {}
+let g:VM_maps['Find Under']         = '<C-n>'           " replace C-n
+let g:VM_maps['Find Subword Under'] = '<C-n>'           " replace visual C-n
+let g:VM_maps['Remove Region']      = ''
+let g:VM_maps['Skip Region']        = 'q'
+let g:VM_maps['Remove Region']      = 'd'
+let g:VM_maps["Undo"]               = 'l'
+let g:VM_maps["Redo"]               = '<C-r>'
+]]
 
 -- === gitsigns ===
 
@@ -244,11 +256,11 @@ map("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opt)
 map("n", "<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", opt)
 -- map("n", "<leader>dr", "lua require'dap'.repl.open()<cr>", opt)
 map("n", "<F9>", "<cmd>lua require'dap'.run_last()<cr>", opt)
-map('n', '<F10>', '<cmd>lua require"dap.dap-util".reload_continue()<CR>', opt)
+-- map('n', '<F10>', '<cmd>lua require"dap.dap-util".reload_continue()<CR>', opt)
 map("n", "<F4>", "<cmd>lua require'dap'.terminate()<cr>", opt)
 map("n", "<F5>", "<cmd>lua require'dap'.continue()<cr>", opt)
-map("n", "<F6>", "<cmd>lua require'dap'.step_into()<cr>", opt)
-map("n", "<F7>", "<cmd>lua require'dap'.step_over()<cr>", opt)
+map("n", "<F6>", "<cmd>lua require'dap'.step_over()<cr>", opt)
+map("n", "<F7>", "<cmd>lua require'dap'.step_into()<cr>", opt)
 map("n", "<F8>", "<cmd>lua require'dap'.step_out()<cr>", opt)
 -- map("n", "K", "<cmd>lua require'dapui'.eval()<cr>", opt)
 -- map("n", "<leader>dt", "<cmd>lua require'dapui'.toggle()<cr>", opt)

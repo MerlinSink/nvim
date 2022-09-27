@@ -166,6 +166,10 @@ return require('packer').startup(function(use)
 	-- nvim-picgo
 	-- use "askfiy/nvim-picgo"
 
+	-- nvim-transparent
+  use "xiyaowong/nvim-transparent"
+
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

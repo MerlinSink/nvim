@@ -1,8 +1,4 @@
-local status_ok, onedark = pcall(require, "onedark")
-if not status_ok then
-	vim.notify("No found onedark")
-	return
-end
+local onedark = pcall(require, "onedark")
 
 onedark.setup  {
     -- Main options --

@@ -70,7 +70,7 @@ return require('packer').startup(function(use)
 	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
 	-- nvim-auropairs
-	use 	"windwp/nvim-autopairs"
+	use "windwp/nvim-autopairs"
 
 	-- comment.nvim
 	use "numToStr/Comment.nvim"
@@ -86,18 +86,20 @@ return require('packer').startup(function(use)
 	-- use "EdenEast/nightfox.nvim"
 
 	-- tokyonight
-  -- use "folke/tokyonight.nvim"
+  use "folke/tokyonight.nvim"
 
 	-- monokai
-	-- use "tanvirtin/monokai.nvim"
+	use "tanvirtin/monokai.nvim"
 
 	-- dracula
 	use "dracula/vim"
 
 	-- === LSP ===
   use "neovim/nvim-lspconfig"
-	use { "williamboman/nvim-lsp-installer",
-			commit = "36b44679f7cc73968dbb3b09246798a19f7c14e0" }
+
+  use "williamboman/mason.nvim"
+
+  use "williamboman/mason-lspconfig.nvim"
 
 	-- === cmp ===
 	use "hrsh7th/nvim-cmp"
@@ -142,9 +144,9 @@ return require('packer').startup(function(use)
 	use "lukas-reineke/indent-blankline.nvim"
 
 	-- lspsaga 
-	use "glepnir/lspsaga.nvim"
+	-- use "glepnir/lspsaga.nvim"
 
-	-- === tools ===
+	-- === Tools ===
 	-- suda
 	use "lambdalisue/suda.vim"
 
@@ -168,6 +170,9 @@ return require('packer').startup(function(use)
 
 	-- nvim-transparent
   use "xiyaowong/nvim-transparent"
+
+	-- todo-comments
+	use "folke/todo-comments.nvim"
 
 
   -- Automatically set up your configuration after cloning packer.nvim

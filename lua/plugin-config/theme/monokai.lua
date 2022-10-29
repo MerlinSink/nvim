@@ -1,8 +1,8 @@
-local monokai = pcall(require, "monokai")
+local monokai = require('monokai')
 local palette = monokai.classic
 
-monokai.setup({
-	palette = {
+monokai.setup {
+    palette = {
         diff_text = '#133337',
     },
     custom_hlgroups = {
@@ -22,4 +22,4 @@ monokai.setup({
             bg = palette.base2
         },
     }
-})
+}

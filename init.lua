@@ -75,7 +75,7 @@ require("plugin-config.markdown-preview")
 require("plugin-config.toggleterm")
 -- require("plugin-config.picgo")
 require("plugin-config.nvim-transparent")
-require("plugin-config.aerial")
+require("plugin-config.symbols-outline")
 
 -- === AutoRun ===
 require("coderunner")

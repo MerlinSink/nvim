@@ -151,8 +151,8 @@ return require('packer').startup(function(use)
 	-- === which-key ===
   use "folke/which-key.nvim"
 
-	-- === aerial ===
-	use "stevearc/aerial.nvim"
+	-- === symbols-outline ===
+	use "simrat39/symbols-outline.nvim"
 
 	-- suda
 	use "lambdalisue/suda.vim"

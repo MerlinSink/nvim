@@ -84,11 +84,6 @@ _G.packer_plugins = {
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/DAPInstall.nvim",
     url = "https://github.com/ravenxrz/DAPInstall.nvim"
   },
-  ["aerial.nvim"] = {
-    loaded = true,
-    path = "/home/sink/.local/share/nvim/site/pack/packer/start/aerial.nvim",
-    url = "https://github.com/stevearc/aerial.nvim"
-  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
@@ -273,6 +268,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/surround.nvim",
     url = "https://github.com/ur4ltz/surround.nvim"
+  },
+  ["symbols-outline.nvim"] = {
+    loaded = true,
+    path = "/home/sink/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
+    url = "https://github.com/simrat39/symbols-outline.nvim"
   },
   ["telescope-dap.nvim"] = {
     loaded = true,

@@ -162,6 +162,24 @@ pluginKeys.telescopeList = {
   },
 }
 
+-- === symbols-outline ===
+pluginKeys.symbols_outline = {
+    -- These keymaps can be a string or a table for multiple keys
+    close = {"<Esc>", "q"},
+    goto_location = "<Cr>",
+    focus_location = "O",
+    hover_symbol = "<C-space>",
+    toggle_preview = "i",
+    rename_symbol = "r",
+    code_actions = "a",
+    fold = "i",
+    unfold = "o",
+    fold_all = "U",
+    unfold_all = "A",
+    fold_reset = "R",
+}
+keymap("n", "<LEADER>so", "<cmd>SymbolsOutline<CR>", opts)
+
 -- === aerial ===
 keymap("n", "<LEADER>a", "<cmd>AerialToggle<CR>", opts)
 keymap("n", "{", "<cmd>AerialPrev<CR>", opts)

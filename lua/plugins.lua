@@ -116,7 +116,7 @@ return require('packer').startup(function(use)
 	use "rafamadriz/friendly-snippets"
 
 	-- null-ls
-	-- use { "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" }
+	use { "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" }
 
 	-- === debugger ===
 	-- DAPInstall
@@ -144,9 +144,16 @@ return require('packer').startup(function(use)
 	use "lukas-reineke/indent-blankline.nvim"
 
 	-- lspsaga 
-	-- use "glepnir/lspsaga.nvim"
+	use "glepnir/lspsaga.nvim"
 
 	-- === Tools ===
+
+	-- === which-key ===
+  use "folke/which-key.nvim"
+
+	-- === aerial ===
+	use "stevearc/aerial.nvim"
+
 	-- suda
 	use "lambdalisue/suda.vim"
 

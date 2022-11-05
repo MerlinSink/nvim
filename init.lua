@@ -37,7 +37,7 @@ require("autocmds")
 require("colorscheme")
 -- require("plugin-config.theme.onedark")
 -- require("plugin-config.theme.nightfox")
-require("plugin-config.theme.monokai")
+-- require("plugin-config.theme.monokai")
 
 -- === Plingin ===
 require("plugin-config.nvim-tree")
@@ -56,12 +56,10 @@ require("plugin-config.gitsigns")
 require("plugin-config.todo-comments")
 
 -- === LSP ===
--- require("lsp.setup")
+require("lsp.lsp")
 require("lsp.cmp")
--- require("lsp.ui")
--- require("lsp.null-ls")
--- require("lsp.lspsaga")
-require("lsp.init")
+require("lsp.null-ls")
+require("lsp.lspsaga")
 
 -- === Debuger ===
 require("dap.dap-config")
@@ -71,11 +69,13 @@ require("dap.dap-virtual-text")
 require("dap.dap-cpp")
 
 -- === Tools ===
+require("plugin-config.which-key")
 require("plugin-config.nvim-colorizer")
 require("plugin-config.markdown-preview")
 require("plugin-config.toggleterm")
 -- require("plugin-config.picgo")
 require("plugin-config.nvim-transparent")
+require("plugin-config.aerial")
 
 -- === AutoRun ===
 require("coderunner")

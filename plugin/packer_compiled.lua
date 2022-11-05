@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/DAPInstall.nvim",
     url = "https://github.com/ravenxrz/DAPInstall.nvim"
   },
+  ["aerial.nvim"] = {
+    loaded = true,
+    path = "/home/sink/.local/share/nvim/site/pack/packer/start/aerial.nvim",
+    url = "https://github.com/stevearc/aerial.nvim"
+  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
@@ -139,6 +144,11 @@ _G.packer_plugins = {
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
   },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/home/sink/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
+    url = "https://github.com/glepnir/lspsaga.nvim"
+  },
   ["lualine-lsp-progress"] = {
     loaded = true,
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/lualine-lsp-progress",
@@ -173,6 +183,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/neovim-session-manager",
     url = "https://github.com/Shatur/neovim-session-manager"
+  },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/sink/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -308,6 +323,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/vim-vsnip",
     url = "https://github.com/hrsh7th/vim-vsnip"
+  },
+  ["which-key.nvim"] = {
+    loaded = true,
+    path = "/home/sink/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   }
 }
 

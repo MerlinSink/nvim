@@ -30,26 +30,26 @@ db.custom_center = {
     desc = "Edit Projects                        ",
     action = "edit ~/.local/share/nvim/project_nvim/project_history",
   },
-  {
-    icon = "  ",
-    desc = "Edit .zshrc                          ",
-    action = "edit ~/.zshrc",
-  },
   -- {
-  --   icon = "  ",
-  --   desc = "Change colorscheme                  ",
-  --   action = "ChangeColorScheme",
+  --   icon = "  ",
+  --   desc = "Edit .zshrc                          ",
+  --   action = "edit ~/.zshrc",
   -- },
-   {
-     icon = "  ",
-     desc = "Edit init.lua                       ",
-     action = "edit	~/.config/nvim/init.lua",
-   },
-   {
-     icon = "  ",
-     desc = "Edit Plugins.lua                    ",
-     action = "edit ~/.config/nvim/lua/plugins.lua",
-   },
+  {
+    icon = "  ",
+    desc = "Change colorscheme                  ",
+    action = "ChangeColorScheme",
+  },
+   -- {
+   --   icon = "  ",
+   --   desc = "Edit init.lua                       ",
+   --   action = "edit	~/.config/nvim/init.lua",
+   -- },
+   -- {
+   --   icon = "  ",
+   --   desc = "Edit Plugins.lua                    ",
+   --   action = "edit ~/.config/nvim/lua/plugins.lua",
+   -- },
   -- {
   --   icon = "  ",
   --   desc = "Find file                           ",

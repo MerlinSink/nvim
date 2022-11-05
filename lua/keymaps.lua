@@ -1,4 +1,4 @@
-local map = vim.api.nvim_set_keymap
+local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Set <LEADER> as <SPACE>
@@ -6,52 +6,52 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Nohlsearch
-map("n", "<LEADER><CR>", ":nohlsearch<CR>", opts)
+keymap("n", "<LEADER><CR>", ":nohlsearch<CR>", opts)
 -- Reload init.lua
-map("n", "<C-n>", ":source $MYVIMRC<CR>", opts)
+keymap("n", "<C-n>", ":source $MYVIMRC<CR>", opts)
 
 -- Save & quit
-map("n", "Q", ":q<CR>", opts)
+keymap("n", "Q", ":q<CR>", opts)
 -- noremap <C-q> :qa<CR>
-map("n", "W", ":w<CR>", opts)
+keymap("n", "W", ":w<CR>", opts)
 
 -- Move Normal
-map("n", "J", "5j", opts)
-map("n", "K", "5k", opts)
-map("n", "H", "5h", opts)
-map("n", "L", "5l", opts)
+keymap("n", "J", "5j", opts)
+keymap("n", "K", "5k", opts)
+keymap("n", "H", "5h", opts)
+keymap("n", "L", "5l", opts)
 -- Move Visual
-map("v", "J", "5j", opts)
-map("v", "K", "5k", opts)
-map("v", "H", "5h", opts)
-map("v", "L", "5l", opts)
+keymap("v", "J", "5j", opts)
+keymap("v", "K", "5k", opts)
+keymap("v", "H", "5h", opts)
+keymap("v", "L", "5l", opts)
 
 -- Open lazygit
-map("n", "<C-g>", ":tabe<CR>:-tabmove<CR>:term lazygit<CR> i", opts)
+keymap("n", "<C-g>", ":tabe<CR>:-tabmove<CR>:term lazygit<CR> i", opts)
 
 -- Split
-map("n", "sl", ":set splitright<CR>:vsplit<CR>", opts)
-map("n", "sh", ":set nosplitright<CR>:vsplit<CR>", opts)
-map("n", "sj", ":set splitbelow<CR>:split<CR>", opts)
-map("n", "sk", ":set nosplitbelow<CR>:split<CR>", opts)
+keymap("n", "sl", ":set splitright<CR>:vsplit<CR>", opts)
+keymap("n", "sh", ":set nosplitright<CR>:vsplit<CR>", opts)
+keymap("n", "sj", ":set splitbelow<CR>:split<CR>", opts)
+keymap("n", "sk", ":set nosplitbelow<CR>:split<CR>", opts)
 
 -- Change Split
-map("n", "<C-j>", "<C-w>j", opts)
-map("n", "<C-k>", "<C-w>k", opts)
-map("n", "<C-h>", "<C-w>h", opts)
-map("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<C-j>", "<C-w>j", opts)
+keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-l>", "<C-w>l", opts)
 
-map("n", "su", "<C-w>t<C-w>H", opts)
-map("n", "si", "<C-w>t<C-w>K", opts)
+keymap("n", "su", "<C-w>t<C-w>H", opts)
+keymap("n", "si", "<C-w>t<C-w>K", opts)
 
 -- Change Size
-map("n", "<UP>", ":resize +5<CR>", opts)
-map("n", "<DOWN>", ":resize -5<CR>", opts)
-map("n", "<LEFT>", ":vertical resize +5<CR>", opts)
-map("n", "<RIGHT>", ":vertical resize -5<CR>", opts)
+keymap("n", "<UP>", ":resize +5<CR>", opts)
+keymap("n", "<DOWN>", ":resize -5<CR>", opts)
+keymap("n", "<LEFT>", ":vertical resize +5<CR>", opts)
+keymap("n", "<RIGHT>", ":vertical resize -5<CR>", opts)
 
 -- Create a tab and move
-map("n", "tj", ":tabe<CR>", opts)
+keymap("n", "tj", ":tabe<CR>", opts)
 -- map("n", "th", ":-tabnext<CR>", opts)
 -- map("n", "tl", ":+tabnext<CR>", opts)
 
@@ -60,7 +60,7 @@ map("n", "tj", ":tabe<CR>", opts)
 local pluginKeys = {}
 
 -- === Nvim-Tree === 
-map("n", "<LEADER>e", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<LEADER>e", ":NvimTreeToggle<CR>", opts)
 
 pluginKeys.nvimTreeList = {
    -- Open file or document
@@ -83,14 +83,14 @@ pluginKeys.nvimTreeList = {
 }
 
 -- === Bufferline ===
-map("n", "E", ":BufferLineCyclePrev<CR>", opts)
-map("n", "R", ":BufferLineCycleNext<CR>", opts)
+keymap("n", "E", ":BufferLineCyclePrev<CR>", opts)
+keymap("n", "R", ":BufferLineCycleNext<CR>", opts)
 -- 关闭
 --"moll/vim-bbye"
-map("n", "tw", ":Bdelete!<CR>", opts)
-map("n", "<LEADER>bl", ":BufferLineCloseRight<CR>", opts)
-map("n", "<LEADER>bh", ":BufferLineCloseLeft<CR>", opts)
-map("n", "<LEADER>bc", ":BufferLinePickClose<CR>", opts)
+keymap("n", "tw", ":Bdelete!<CR>", opts)
+keymap("n", "<LEADER>bl", ":BufferLineCloseRight<CR>", opts)
+keymap("n", "<LEADER>bh", ":BufferLineCloseLeft<CR>", opts)
+keymap("n", "<LEADER>bc", ":BufferLinePickClose<CR>", opts)
 
 -- === comment ===
 pluginKeys.comment = {
@@ -124,19 +124,21 @@ pluginKeys.linearList = {
 }
 
 -- === Telescope ===
-map("n", "<LEADER>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>", opts)
+keymap("n", "<LEADER>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>", opts)
 -- map("n", "<LEADER>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
 -- Globle Search
-map("n", "<C-f>", "<cmd>lua require('telescope.builtin').live_grep()<CR>", opts)
+keymap("n", "<C-f>", "<cmd>lua require('telescope.builtin').live_grep()<CR>", opts)
 -- old file
-map("n", "<LEADER>fo", "<cmd>lua require('telescope.builtin').oldfiles()<CR>", opts)
+keymap("n", "<LEADER>fo", "<cmd>lua require('telescope.builtin').oldfiles()<CR>", opts)
 -- buffer
-map("n", "<LEADER>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", opts)
+keymap("n", "<LEADER>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", opts)
 -- buffer_fuzzy
-map("n", "<LEADER>fs", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({ previewer = false }))<CR>", opts)
+keymap("n", "<LEADER>fs", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({ previewer = false }))<CR>", opts)
 -- map("n", "<", "Telescope current_buffer_fuzzy_find<CR>", opts)
 -- dap
-map("n", "<LEADER>fd", "<cmd>lua require'telescope'.extensions.dap.configurations(require('telescope.themes').get_dropdown({ previewer = false }))<CR>", opts)
+keymap("n", "<LEADER>fd", "<cmd>lua require'telescope'.extensions.dap.configurations(require('telescope.themes').get_dropdown({ previewer = false }))<CR>", opts)
+-- todo-comment
+keymap("n", "<LEADER>ft", "<cmd>TodoTelescope<CR>", opts)
 
 pluginKeys.telescopeList = {
 	n = {
@@ -160,44 +162,57 @@ pluginKeys.telescopeList = {
   },
 }
 
+-- === aerial ===
+keymap("n", "<LEADER>a", "<cmd>AerialToggle<CR>", opts)
+keymap("n", "{", "<cmd>AerialPrev<CR>", opts)
+keymap("n", "}", "<cmd>AerialNext<CR>", opts)
+
 -- === markdown-preview ===
-map("n", "<LEADER>md", "<cmd>MarkdownPreviewToggle<CR>", opts)
+keymap("n", "<LEADER>md", "<cmd>MarkdownPreviewToggle<CR>", opts)
 
 -- === picgo ===
 -- map("n", "<LEADER>pcc", "<cmd>lua require'nvim-picgo'.upload_clipboard()<cr>", opts)
 -- map("n", "<LEADER>pci", "<cmd>lua require'nvim-picgo'.upload_imagefile()<cr>", opts)
---
+
 -- === vim-visual-multi ===
 vim.cmd[[
 let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<C-n>'           " replace C-n
 let g:VM_maps['Find Subword Under'] = '<C-n>'           " replace visual C-n
 let g:VM_maps['Remove Region']      = ''
-let g:VM_maps['Skip Region']        = 'p'
-let g:VM_maps['Remove Region']      = 'd'
-let g:VM_maps["Undo"]               = 'l'
+let g:VM_maps['Skip Region']        = 's'
+let g:VM_maps['Remove Region']      = 'r'
+let g:VM_maps["Undo"]               = 'u'
 let g:VM_maps["Redo"]               = '<C-r>'
 ]]
 
 -- === gitsigns ===
 
 -- === LSP ===
--- pluginKeys.mapLSP = function (lsp_keymaps(bufnr))
---  map(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
---  map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
---  map(bufnr, "n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
---  map(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
---  map(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
---  map(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
---  map(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
---  map(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
---  map(bufnr, "n", "<leader>lI", "<cmd>LspInstallInfo<cr>", opts)
---  map(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
---  map(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
---  map(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
---  map(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
---  map(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
---  map(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+-- pluginKeys.lsp_keymaps = function (bufnr)
+-- 	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+-- 	keymap(bufnr, "n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+-- 	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+-- 	-- keymap(bufnr, "n", "gd", "<cmd>Lspsaga preview_definition()<CR>", opts)
+-- 	-- keymap(bufnr, "n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+-- 	keymap(bufnr, "n", "gh", "<cmd>Lspsaga hover_doc<CR>", opts)
+-- 	keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+-- 	-- keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+-- 	keymap(bufnr, "n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opts)
+-- 	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+-- 	keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<CR>", opts)
+-- 	keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<CR>", opts)
+-- 	keymap(bufnr, "n", "<leader>lm", "<cmd>Mason<CR>", opts)
+-- 	-- keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+-- 	keymap(bufnr, "n", "<leader>la", "<cmd>Lspsaga code_action<CR>", opts)
+-- 	-- keymap(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", opts)
+-- 	-- keymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<CR>", opts)
+-- 	keymap(bufnr, "n", "<leader>lj", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+-- 	keymap(bufnr, "n", "<leader>lk", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+-- 	-- keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+-- 	keymap(bufnr, "n", "<leader>lr", "<cmd>Lspsaga rename<CR>", opts)
+-- 	keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+-- 	keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 -- end
 
 -- === cmp ===
@@ -227,31 +242,31 @@ pluginKeys.cmp = function(cmp)
 end
 
 -- === null-ls ===
--- -- map("n", "<LEADER>n", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
+-- -- keymap("n", "<LEADER>n", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
 
 -- === sniprun ===
-map("n", "<LEADER>rf", ":%SnipRun<CR>", opts)
-map("v", "<LEADER>rs", ":%SnipRun<CR>", opts)
+keymap("n", "<LEADER>rf", ":%SnipRun<CR>", opts)
+keymap("v", "<LEADER>rs", ":%SnipRun<CR>", opts)
 
 -- === Transparent
-map("n", "<LEADER>'t", ":TransparentToggle<CR>", opts)
+keymap("n", "<LEADER>'t", ":TransparentToggle<CR>", opts)
 
 -- === debugger ===
 -- debugger
--- map("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint(); require'dap.dap-util'.store_breakpoints(true)<cr>", opts)
-map("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
-map("n", "<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", opts)
--- map("n", "<leader>dr", "lua require'dap'.repl.open()<cr>", opts)
-map("n", "<F9>", "<cmd>lua require'dap'.run_last()<cr>", opts)
--- map('n', '<F10>', '<cmd>lua require"dap.dap-util".reload_continue()<CR>', opts)
-map("n", "<F4>", "<cmd>lua require'dap'.terminate()<cr>", opts)
-map("n", "<F5>", "<cmd>lua require'dap'.continue()<cr>", opts)
-map("n", "<F6>", "<cmd>lua require'dap'.step_over()<cr>", opts)
-map("n", "<F7>", "<cmd>lua require'dap'.step_into()<cr>", opts)
-map("n", "<F8>", "<cmd>lua require'dap'.step_out()<cr>", opts)
--- map("n", "K", "<cmd>lua require'dapui'.eval()<cr>", opts)
--- map("n", "<leader>dt", "<cmd>lua require'dapui'.toggle()<cr>", opts)
--- map("n", "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>", opts)
+-- keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint(); require'dap.dap-util'.store_breakpoints(true)<cr>", opts)
+keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
+keymap("n", "<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", opts)
+-- keymap("n", "<leader>dr", "lua require'dap'.repl.open()<cr>", opts)
+keymap("n", "<F9>", "<cmd>lua require'dap'.run_last()<cr>", opts)
+-- keymap('n', '<F10>', '<cmd>lua require"dap.dap-util".reload_continue()<CR>', opts)
+keymap("n", "<F4>", "<cmd>lua require'dap'.terminate()<cr>", opts)
+keymap("n", "<F5>", "<cmd>lua require'dap'.continue()<cr>", opts)
+keymap("n", "<F6>", "<cmd>lua require'dap'.step_over()<cr>", opts)
+keymap("n", "<F7>", "<cmd>lua require'dap'.step_into()<cr>", opts)
+keymap("n", "<F8>", "<cmd>lua require'dap'.step_out()<cr>", opts)
+-- keymap("n", "K", "<cmd>lua require'dapui'.eval()<cr>", opts)
+-- keymap("n", "<leader>dt", "<cmd>lua require'dapui'.toggle()<cr>", opts)
+-- keymap("n", "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 -- === dap-ui ===
 pluginKeys.dapui = {

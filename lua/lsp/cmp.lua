@@ -64,7 +64,7 @@ cmp.setup({
 	mapping = require("keymaps").cmp(cmp),
 
 	-- Use lspkind-nvim to show icon
-	formatting = require("lsp.ui").formatting,
+	-- formatting = require("lsp.ui").formatting,
 })
 
 -- / 查找模式使用 buffer 源

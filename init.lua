@@ -32,6 +32,7 @@ require("plugins")
 
 -- === Autocmd ===
 require("autocmds")
+require("md-snippets")
 
 -- === Theme ===
 require("colorscheme")

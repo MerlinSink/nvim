@@ -77,6 +77,8 @@ require("plugin-config.toggleterm")
 -- require("plugin-config.picgo")
 require("plugin-config.nvim-transparent")
 require("plugin-config.symbols-outline")
+require('leap').add_default_mappings()
+require("plugin-config.flit")
 
 -- === AutoRun ===
 require("coderunner")

@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/DAPInstall.nvim",
     url = "https://github.com/ravenxrz/DAPInstall.nvim"
   },
+  LuaSnip = {
+    loaded = true,
+    path = "/home/sink/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
@@ -119,6 +124,11 @@ _G.packer_plugins = {
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
     url = "https://github.com/glepnir/dashboard-nvim"
   },
+  ["flit.nvim"] = {
+    loaded = true,
+    path = "/home/sink/.local/share/nvim/site/pack/packer/start/flit.nvim",
+    url = "https://github.com/ggandor/flit.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -133,6 +143,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sink/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
+  ["leap.nvim"] = {
+    loaded = true,
+    path = "/home/sink/.local/share/nvim/site/pack/packer/start/leap.nvim",
+    url = "https://github.com/ggandor/leap.nvim"
   },
   ["lspkind-nvim"] = {
     loaded = true,

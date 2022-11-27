@@ -204,6 +204,10 @@ let g:VM_maps["Undo"]               = 'u'
 let g:VM_maps["Redo"]               = '<C-r>'
 ]]
 
+-- === leap.nvim ===
+vim.keymap.set({'x', 'o', 'n'}, '<LEADER>s', '<Plug>(leap-forward-to)')
+vim.keymap.set({'x', 'o', 'n'}, '<LEADER>S', '<Plug>(leap-backward-to)')
+
 -- === gitsigns ===
 
 -- === LSP ===
@@ -256,7 +260,31 @@ pluginKeys.cmp = function(cmp)
         -- 如果窗口内容太多，可以滚动
         ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
         ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
-    }
+
+	      ["<Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+          elseif luasnip.expandable() then
+            luasnip.expand()
+          elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          elseif check_backspace() then
+            fallback()
+          else
+            fallback()
+          end
+        end, {"i", "s"}),
+
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+          else
+            fallback()
+          end
+        end, {"i", "s"}),
+        }
 end
 
 -- === null-ls ===

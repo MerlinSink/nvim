@@ -112,6 +112,8 @@ return require('packer').startup(function(use)
 	use "hrsh7th/cmp-path" -- { name = 'path' }
 	use "hrsh7th/cmp-cmdline" -- { name = 'cmdline' }
 
+	use {"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"}
+
   -- 常见编程语言代码段
 	use "rafamadriz/friendly-snippets"
 
@@ -150,6 +152,10 @@ return require('packer').startup(function(use)
 
 	-- === which-key ===
   use "folke/which-key.nvim"
+
+	-- === leep.nvim ===
+	use "ggandor/leap.nvim"
+	use "ggandor/flit.nvim"
 
 	-- === symbols-outline ===
 	use "simrat39/symbols-outline.nvim"

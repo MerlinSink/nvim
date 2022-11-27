@@ -25,4 +25,7 @@ augroup fix_yank
     autocmd TextYankPost * if v:event.operator ==# 'y' | call system('/mnt/c/Windows/System32/clip.exe', @0) | endif
 augroup END
 
+" leap
+autocmd ColorScheme * lua require('leap').init_highlight(true)
+
 ]]

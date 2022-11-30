@@ -19,6 +19,13 @@ local function CodeRunner()
             --     "<ESC>:w<CR>:split<CR>:te clang -std=c11 -Wshadow -Wall -o %:t:r.out % -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG && time ./%:t:r.out<CR>i",
             --     { silent = true, noremap = true }
             -- )
+            vim.api.nvim_buf_set_keymap(
+                0,
+                "n",
+                "<F2>",
+                "<ESC>:w<CR>:split<CR>:te gcc -o %:t:r.out % -g",
+                { silent = true, noremap = true }
+            )
         end,
     })
 
@@ -40,6 +47,13 @@ local function CodeRunner()
             --     "<ESC>:w<CR>:split<CR>:te clang++ -std=c++20 -Wshadow -Wall -o %:t:r.out % -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG && time ./%:t:r.out<CR>i",
             --     { silent = true, noremap = true }
             -- )
+            vim.api.nvim_buf_set_keymap(
+                0,
+                "n",
+                "<F2>",
+                "<ESC>:w<CR>:split<CR>:te g++ -o %:t:r.out % -g",
+                { silent = true, noremap = true }
+            )
         end,
     })
 

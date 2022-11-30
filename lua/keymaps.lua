@@ -178,7 +178,7 @@ pluginKeys.symbols_outline = {
     unfold_all = "I",
     fold_reset = "R",
 }
-keymap("n", "<LEADER>so", "<cmd>SymbolsOutline<CR>", opts)
+keymap("n", "<LEADER>n", "<cmd>SymbolsOutline<CR>", opts)
 
 -- === aerial ===
 keymap("n", "<LEADER>a", "<cmd>AerialToggle<CR>", opts)

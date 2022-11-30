@@ -34,6 +34,9 @@ require("plugins")
 require("autocmds")
 require("md-snippets")
 
+-- === AutoRun ===
+require("coderunner")
+
 -- === Theme ===
 require("colorscheme")
 -- require("plugin-config.theme.onedark")
@@ -79,9 +82,6 @@ require("plugin-config.nvim-transparent")
 require("plugin-config.symbols-outline")
 require('leap').add_default_mappings()
 require("plugin-config.flit")
-
--- === AutoRun ===
-require("coderunner")
 
 -- === UI ===
 require("plugin-config.indent-blankline")

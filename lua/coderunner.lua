@@ -23,7 +23,7 @@ local function CodeRunner()
                 0,
                 "n",
                 "<F2>",
-                "<ESC>:w<CR>:split<CR>:te gcc -o %:t:r.out % -g",
+                "<ESC>:w<CR>:split<CR>:te gcc -o %:t:r.out % -g <CR> && :q<CR>",
                 { silent = true, noremap = true }
             )
         end,
@@ -51,7 +51,7 @@ local function CodeRunner()
                 0,
                 "n",
                 "<F2>",
-                "<ESC>:w<CR>:split<CR>:te g++ -o %:t:r.out % -g",
+                "<ESC>:w<CR>:split<CR>:te g++ -o %:t:r.out % -g <CR> && :q<CR>",
                 { silent = true, noremap = true }
             )
         end,

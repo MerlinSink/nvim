@@ -53,4 +53,4 @@ keymap("n", "tj", ":tabe<CR>", opts)
 -- map("n", "tl", ":+tabnext<CR>", opts)
 --
 -- lazy.nvim
-keymap("n", "<leader>ll", "<cmd>Lazy<Cr>", opts)
+keymap("n", "<leader>ll", "<Cmd>Lazy<Cr>", opts)

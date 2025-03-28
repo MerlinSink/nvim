@@ -27,10 +27,10 @@ keymap("v", "L", "5l", opts)
 keymap("n", "<C-g>", ":tabe<CR>:-tabmove<CR>:term lazygit<CR> i", opts)
 
 -- Split
-keymap("n", "<Space>sl", ":set splitright<CR>:vsplit<CR>", opts)
-keymap("n", "<Space>sh", ":set nosplitright<CR>:vsplit<CR>", opts)
-keymap("n", "<Space>sj", ":set splitbelow<CR>:split<CR>", opts)
-keymap("n", "<Space>sk", ":set nosplitbelow<CR>:split<CR>", opts)
+keymap("n", "<leader>sl", ":set splitright<CR>:vsplit<CR>", opts)
+keymap("n", "<leader>sh", ":set nosplitright<CR>:vsplit<CR>", opts)
+keymap("n", "<leader>sj", ":set splitbelow<CR>:split<CR>", opts)
+keymap("n", "<leader>sk", ":set nosplitbelow<CR>:split<CR>", opts)
 
 -- Change Split
 keymap("n", "<C-j>", "<C-w>j", opts)

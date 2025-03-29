@@ -1,6 +1,26 @@
 return {
 
   {
+  "folke/ts-comments.nvim",
+  event = "VeryLazy",
+  opts = {},
+},
+
+{
+  "folke/lazydev.nvim",
+  ft = "lua",
+  cmd = "LazyDev",
+  opts = {
+    library = {
+      { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      -- { path = "LazyVim", words = { "LazyVim" } },
+      { path = "snacks.nvim", words = { "Snacks" } },
+      -- { path = "lazy.nvim", words = { "LazyVim" } },
+    },
+  },
+},
+
+  {
   "echasnovski/mini.pairs",
   event = "VeryLazy",
   opts = {
@@ -30,11 +50,6 @@ return {
   },
   },
 
-  {
-  "folke/ts-comments.nvim",
-  event = "VeryLazy",
-  opts = {},
-},
 
 {
   "echasnovski/mini.ai",

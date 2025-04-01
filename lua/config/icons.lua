@@ -1,7 +1,7 @@
 local M = {}
 
   -- icons used by other plugins
-M.icons = {
+M = {
   dap = {
     Stopped = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
     Breakpoint = " ",

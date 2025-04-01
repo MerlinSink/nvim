@@ -45,7 +45,7 @@ return {
   },
   opts = function()
     ---@class PluginLspOpts
-    local C = require("config.icons")
+    local icons = require("config.icons")
     local ret = {
       -- options for vim.diagnostic.config()
       ---@type vim.diagnostic.Opts
@@ -63,10 +63,10 @@ return {
         severity_sort = true,
         signs = {
           text = {
-            [vim.diagnostic.severity.ERROR] = C.icons.diagnostics.Error,
-            [vim.diagnostic.severity.WARN] = C.icons.diagnostics.Warn,
-            [vim.diagnostic.severity.HINT] = C.icons.diagnostics.Hint,
-            [vim.diagnostic.severity.INFO] = C.icons.diagnostics.Info,
+            [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+            [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
+            [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+            [vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
           },
         },
       },

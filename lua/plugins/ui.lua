@@ -6,8 +6,8 @@ return {
     keys = {
       { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
-      { "E", "<Cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
-      { "R", "<Cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+      { "<leader>h", "<Cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
+      { "<leader>l", "<Cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
       { "<leader>br", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete Buffers to the Right" },
       { "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete Buffers to the Left" },
       { "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
@@ -44,7 +44,6 @@ return {
     event = "VeryLazy",
     opts = function()
       local icons = require("config.icons")
-
       local function fg(name)
         return function()
           ---@type {foreground?:number}?

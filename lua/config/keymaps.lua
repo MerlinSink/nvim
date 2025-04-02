@@ -53,4 +53,8 @@ keymap("n", "tj", ":tabe<CR>", opts)
 -- map("n", "tl", ":+tabnext<CR>", opts)
 --
 -- lazy.nvim
-keymap("n", "<leader>ll", "<Cmd>Lazy<Cr>", opts)
+keymap("n", "<leader>ol", "<Cmd>Lazy<Cr>", opts)
+-- Mason
+keymap("n", "<leader>om", "<Cmd>Mason<Cr>", opts)
+-- Conform
+keymap("n", "<leader>ci", "<cmd>ConformInfo<CR>", opts)

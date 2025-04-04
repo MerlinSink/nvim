@@ -9,6 +9,12 @@ return {
     ensure_installed = {
       "stylua",
       "shfmt",
+      "clangd",
+    },
+    ui = {
+      border = "single",
+      width = 0.7,
+      height = 0.7,
     },
   },
   ---@param opts MasonSettings | {ensure_installed: string[]}

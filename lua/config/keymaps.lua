@@ -1,7 +1,6 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-
 -- Nohlsearch
 keymap("n", "<LEADER><CR>", ":nohlsearch<CR>", opts)
 -- Reload init.lua
@@ -48,13 +47,11 @@ keymap("n", "<LEFT>", ":vertical resize +5<CR>", opts)
 keymap("n", "<RIGHT>", ":vertical resize -5<CR>", opts)
 
 -- Create a tab and move
-keymap("n", "tj", ":tabe<CR>", opts)
+keymap("n", "nt", ":tabe<CR>", opts)
 -- map("n", "th", ":-tabnext<CR>", opts)
 -- map("n", "tl", ":+tabnext<CR>", opts)
---
+
 -- lazy.nvim
 keymap("n", "<leader>ol", "<Cmd>Lazy<Cr>", opts)
--- Mason
-keymap("n", "<leader>om", "<Cmd>Mason<Cr>", opts)
 -- Conform
 keymap("n", "<leader>ci", "<cmd>ConformInfo<CR>", opts)

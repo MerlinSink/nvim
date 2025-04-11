@@ -13,7 +13,7 @@ return {
 				"clang-format",
 			},
 			ui = {
-				border = "single",
+				border = "double",
 				width = 0.7,
 				height = 0.7,
 			},
@@ -21,8 +21,8 @@ return {
 		---@param opts MasonSettings | {ensure_installed: string[]}
 		config = function(_, opts)
 			require("mason").setup(opts)
-			local mr = require("mason-registry")
-			mr:on("package:install:success", function()
+			local registry = require("mason-registry")
+			registry:on("package:install:success", function()
 				vim.defer_fn(function()
 					-- trigger FileType event to possibly load this newly installed LSP server
 					require("lazy.core.handler.event").trigger({
@@ -32,9 +32,9 @@ return {
 				end, 100)
 			end)
 
-			mr.refresh(function()
+			registry.refresh(function()
 				for _, tool in ipairs(opts.ensure_installed) do
-					local p = mr.get_package(tool)
+					local p = registry.get_package(tool)
 					if not p:is_installed() then
 						p:install()
 					end
@@ -73,7 +73,10 @@ return {
 				},
 				clangd = {
 					enabled = true,
-					cmd = { "clangd" },
+					cmd = {
+						"clangd",
+					},
+					root_markers = { ".clangd", "compile_commands.json" },
 					filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
 				},
 			},
@@ -131,6 +134,31 @@ return {
 			for server, _ in pairs(servers) do
 				setup(server)
 			end
+
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+				callback = function(event)
+					local map = function(mode, keys, func, desc)
+						vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
+					end
+
+					map("n", "<leader>cl", function() Snacks.picker.lsp_config() end, "Lsp Info")
+					map("n", "gd", function() Snacks.picker.lsp_definitions() end, "Goto Definition")
+					map("n", "gD", function() Snacks.picker.lsp_declarations() end, "Goto Declaration")
+					map("n", "gr", function() Snacks.picker.lsp_references() end, "References")
+					map("n", "gI", function() Snacks.picker.lsp_implementations() end, "Goto Implementation")
+					map("n", "gy", function() Snacks.picker.lsp_type_definitions() end, "Goto T[y]pe Definition")
+					map("n", "gh", function() return vim.lsp.buf.hover() end, "Hover")
+					map("n", "gk", function() return vim.lsp.buf.signature_help() end, "Signature Help")
+					map("i", "<C-k>", function() return vim.lsp.buf.signature_help() end, "Signature Help")
+					map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
+					map("n", "<leader>cr", vim.lsp.buf.rename, "Rename")
+					map({ "n", "t" }, "<C-n>", function() Snacks.words.jump(vim.v.count1) end, "Next Reference")
+					map({ "n", "t" }, "<C-p>", function() Snacks.words.jump(-vim.v.count1) end, "Prev Reference")
+					map("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, "LSP Symbols")
+					map("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, "LSP Workspace Symbols")
+				end,
+			})
 		end,
 	},
 }

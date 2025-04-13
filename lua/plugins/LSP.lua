@@ -83,20 +83,16 @@ return {
 		},
 		config = function(_, opts)
 			local icons = require("config.icons").diagnostics
-			local severity_signs = {
-				[vim.diagnostic.severity.ERROR] = icons.Error,
-				[vim.diagnostic.severity.WARN] = icons.Warn,
-				[vim.diagnostic.severity.HINT] = icons.Hint,
-				[vim.diagnostic.severity.INFO] = icons.Info,
-			}
-
-			if type(severity_signs) ~= "boolean" then
-				for severity, icon in pairs(severity_signs) do
-					local name = vim.diagnostic.severity[severity]:lower():gsub("^%l", string.upper)
-					name = "DiagnosticSign" .. name
-					vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
-				end
-			end
+			opts.diagnostics = vim.tbl_deep_extend("force", {
+				signs = {
+					text = {
+						[vim.diagnostic.severity.ERROR] = icons.Error,
+						[vim.diagnostic.severity.WARN] = icons.Warn,
+						[vim.diagnostic.severity.HINT] = icons.Hint,
+						[vim.diagnostic.severity.INFO] = icons.Info,
+					},
+				},
+			}, opts.diagnostics or {})
 
 			if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
 				opts.diagnostics.virtual_text.prefix = "●"

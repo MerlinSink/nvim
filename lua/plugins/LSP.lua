@@ -1,6 +1,9 @@
 return {
 	{
 		"williamboman/mason.nvim",
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
+		},
 		event = "VeryLazy",
 		build = ":MasonUpdate",
 		opts_extend = { "ensure_installed" },
@@ -8,8 +11,6 @@ return {
 			ensure_installed = {
 				"stylua",
 				"shfmt",
-				"lua-language-server",
-				"clangd",
 				"clang-format",
 			},
 			ui = {
@@ -20,6 +21,21 @@ return {
 		},
 		---@param opts MasonSettings | {ensure_installed: string[]}
 		config = function(_, opts)
+			local package = require("mason-lspconfig.mappings.server").lspconfig_to_package
+			local servers = require("lazy.core.config").plugins["nvim-lspconfig"].opts.servers
+
+			local package_names = {}
+			for name, config in pairs(servers) do
+				if config.enabled ~= false then
+					local pkg = package[name]
+					if pkg ~= nil then
+						table.insert(package_names, pkg)
+					end
+				end
+			end
+
+			opts.ensure_installed = vim.list_extend(package_names, opts.ensure_installed or {})
+
 			require("mason").setup(opts)
 			local registry = require("mason-registry")
 			registry:on("package:install:success", function()
@@ -137,22 +153,25 @@ return {
 					local map = function(mode, keys, func, desc)
 						vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
 					end
-
-					map("n", "<leader>cl", function() Snacks.picker.lsp_config() end, "Lsp Info")
-					map("n", "gd", function() Snacks.picker.lsp_definitions() end, "Goto Definition")
-					map("n", "gD", function() Snacks.picker.lsp_declarations() end, "Goto Declaration")
-					map("n", "gr", function() Snacks.picker.lsp_references() end, "References")
-					map("n", "gI", function() Snacks.picker.lsp_implementations() end, "Goto Implementation")
-					map("n", "gy", function() Snacks.picker.lsp_type_definitions() end, "Goto T[y]pe Definition")
+          -- stylua: ignore start
+          if Snacks and Snacks.picker then
+            map("n", "<leader>cl", function() Snacks.picker.lsp_config() end, "Lsp Info")
+				    map("n", "gd", function() Snacks.picker.lsp_definitions() end, "Goto Definition")
+				    map("n", "gD", function() Snacks.picker.lsp_declarations() end, "Goto Declaration")
+				    map("n", "gr", function() Snacks.picker.lsp_references() end, "References")
+				    map("n", "gI", function() Snacks.picker.lsp_implementations() end, "Goto Implementation")
+				    map("n", "gy", function() Snacks.picker.lsp_type_definitions() end, "Goto T[y]pe Definition")
+				    map({ "n", "t" }, "<C-n>", function() Snacks.words.jump(vim.v.count1) end, "Next Reference")
+				    map({ "n", "t" }, "<C-p>", function() Snacks.words.jump(-vim.v.count1) end, "Prev Reference")
+				    map("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, "LSP Symbols")
+				    map("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, "LSP Workspace Symbols")
+          end
 					map("n", "gh", function() return vim.lsp.buf.hover() end, "Hover")
 					map("n", "gk", function() return vim.lsp.buf.signature_help() end, "Signature Help")
 					map("i", "<C-k>", function() return vim.lsp.buf.signature_help() end, "Signature Help")
 					map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
 					map("n", "<leader>cr", vim.lsp.buf.rename, "Rename")
-					map({ "n", "t" }, "<C-n>", function() Snacks.words.jump(vim.v.count1) end, "Next Reference")
-					map({ "n", "t" }, "<C-p>", function() Snacks.words.jump(-vim.v.count1) end, "Prev Reference")
-					map("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, "LSP Symbols")
-					map("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, "LSP Workspace Symbols")
+					-- stylua: ignore end
 				end,
 			})
 		end,

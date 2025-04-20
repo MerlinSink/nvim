@@ -3,7 +3,9 @@ return {
 		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
-		opts = { style = "moon" },
+		opts = {
+      style = "moon",
+    },
 	},
 
 	{
@@ -20,18 +22,6 @@ return {
 			show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
 			term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
 
-			-- custom indent Rainbow highlight
-			custom_highlights = function()
-				return {
-					RainbowRed = { fg = "#E06C75" },
-					RainbowYellow = { fg = "#E5C07B" },
-					RainbowBlue = { fg = "#61AFEF" },
-					RainbowOrange = { fg = "#D19A66" },
-					RainbowGreen = { fg = "#98C379" },
-					RainbowViolet = { fg = "#C678DD" },
-					RainbowCyan = { fg = "#56B6C2" },
-				}
-			end,
 			integrations = {
 				aerial = true,
 				alpha = true,

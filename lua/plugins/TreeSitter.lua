@@ -4,16 +4,6 @@ return {
 		version = false, -- last release is way too old and doesn't work on Windows
 		build = ":TSUpdate",
 		event = "VeryLazy",
-		lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
-		init = function(plugin)
-			-- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
-			-- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
-			-- no longer trigger the **nvim-treesitter** module to be loaded in time.
-			-- Luckily, the only things that those plugins need are the custom queries, which we make available
-			-- during startup.
-			require("lazy.core.loader").add_to_rtp(plugin)
-			require("nvim-treesitter.query_predicates")
-		end,
 		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
 		keys = {
 			{ "<c-space>", desc = "Increment Selection" },
@@ -82,6 +72,13 @@ return {
 				},
 			},
 		},
+		config = function(_, opts)
+      local util = require("config.util")
+			require("nvim-treesitter.configs").setup(opts)
+      if type(opts.ensure_installed) == "table" then
+      opts.ensure_installed = util.dedup(opts.ensure_installed)
+    end
+		end,
 	},
 
 	{
@@ -91,9 +88,9 @@ return {
 		config = function()
 			-- If treesitter is already loaded, we need to run config again for textobjects
 			-- if LazyVim.is_loaded("nvim-treesitter") then
-			  -- local opts = LazyVim.opts("nvim-treesitter")
-  			-- require("nvim-treesitter.configs").setup({ textobjects = opts.textobjects })
-  		-- end
+			-- local opts = LazyVim.opts("nvim-treesitter")
+			-- require("nvim-treesitter.configs").setup({ textobjects = opts.textobjects })
+			-- end
 
 			-- When in diff mode, we want to use the default
 			-- vim text objects c & C instead of the treesitter ones.

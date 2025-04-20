@@ -21,23 +21,23 @@ return {
 		},
 		---@param opts MasonSettings | {ensure_installed: string[]}
 		config = function(_, opts)
+			local registry = require("mason-registry")
 			local package = require("mason-lspconfig.mappings.server").lspconfig_to_package
 			local servers = require("lazy.core.config").plugins["nvim-lspconfig"].opts.servers
 
-			local package_names = {}
+			local ensure_installed = {}
 			for name, config in pairs(servers) do
 				if config.enabled ~= false then
 					local pkg = package[name]
 					if pkg ~= nil then
-						table.insert(package_names, pkg)
+						table.insert(ensure_installed, pkg)
 					end
 				end
 			end
 
-			opts.ensure_installed = vim.list_extend(package_names, opts.ensure_installed or {})
+			opts.ensure_installed = vim.tbl_extend("force", ensure_installed, opts.ensure_installed or {})
 
 			require("mason").setup(opts)
-			local registry = require("mason-registry")
 			registry:on("package:install:success", function()
 				vim.defer_fn(function()
 					-- trigger FileType event to possibly load this newly installed LSP server

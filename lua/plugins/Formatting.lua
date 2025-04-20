@@ -1,55 +1,45 @@
 return {
-	{
-		"stevearc/conform.nvim",
-		dependencies = { "mason.nvim" },
-		lazy = true,
-		cmd = "ConformInfo",
-		keys = {
-			{
-				"<leader>cf",
-				function()
-					require("conform").format()
-				end,
-				mode = { "n", "v" },
-				desc = "Format Injected Langs",
-			},
+	"stevearc/conform.nvim",
+  lazy = true,
+	cmd = { "ConformInfo" },
+	keys = {
+		{
+			"<leader>cf",
+			function()
+				require("conform").format()
+			end,
+			mode = { "n", "v" },
+			desc = "Format buffer",
 		},
-		opts = function()
-			local plugin = require("lazy.core.config").plugins["conform.nvim"]
-			---@type conform.setupOpts
-			local opts = {
-				default_format_opts = {
-					timeout_ms = 3000,
-					async = false, -- not recommended to change
-					quiet = false, -- not recommended to change
-					lsp_format = "fallback", -- not recommended to change
-				},
-				formatters_by_ft = {
-					lua = { "stylua" },
-					fish = { "fish_indent" },
-					sh = { "shfmt" },
-					c = { "clang_format" },
-					cpp = { "clang_format" },
-				},
-				-- The options you set here will be merged with the builtin formatters.
-				-- You can also define any custom formatters here.
-				---@type table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
-				formatters = {
-					injected = { options = { ignore_errors = true } },
-					-- # Example of using dprint only when a dprint.json file is present
-					-- dprint = {
-					--   condition = function(ctx)
-					--     return vim.fs.find({ "dprint.json" }, { path = ctx.filename, upward = true })[1]
-					--   end,
-					-- },
-					--
-					-- # Example of using shfmt with extra args
-					-- shfmt = {
-					--   prepend_args = { "-i", "2", "-ci" },
-					-- },
-				},
-			}
-			return opts
-		end,
 	},
+	-- This will provide type hinting with LuaLS
+	---@module "conform"
+	---@type conform.setupOpts
+	opts = {
+		-- Define your formatters
+		formatters_by_ft = {
+			lua = { "stylua" },
+			sh = { "shfmt" },
+			fish = { "fish_indent" },
+			c = { "clang-format" },
+			cpp = { "clang-format" },
+		},
+		-- Set default options
+		default_format_opts = {
+			timeout_ms = 3000,
+			async = false,
+			quiet = false,
+			lsp_format = "fallback",
+		},
+		-- Customize formatters
+		formatters = {
+			-- shfmt = {
+			-- 	prepend_args = { "-i", "2" },
+			-- },
+		},
+	},
+	init = function()
+		-- If you want the formatexpr, here is the place to set it
+		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+	end,
 }

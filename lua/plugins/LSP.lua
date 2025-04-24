@@ -6,13 +6,7 @@ return {
 		},
 		event = "VeryLazy",
 		build = ":MasonUpdate",
-		opts_extend = { "ensure_installed" },
 		opts = {
-			ensure_installed = {
-				"stylua",
-				"shfmt",
-				"clang-format",
-			},
 			ui = {
 				border = "double",
 				width = 0.7,
@@ -21,35 +15,37 @@ return {
 		},
 		---@param opts MasonSettings | {ensure_installed: string[]}
 		config = function(_, opts)
+			require("mason").setup(opts)
 			local registry = require("mason-registry")
 			local package = require("mason-lspconfig.mappings.server").lspconfig_to_package
+      local util = require("config.util")
 			local servers = require("lazy.core.config").plugins["nvim-lspconfig"].opts.servers
+			local formatters = require("lazy.core.config").plugins["conform.nvim"].opts.formatters_by_ft
 
+      -- LSP Servers
 			local ensure_installed = {}
-			for name, config in pairs(servers) do
-				if config.enabled ~= false then
-					local pkg = package[name]
-					if pkg ~= nil then
-						table.insert(ensure_installed, pkg)
+			for lsp, _ in pairs(servers) do
+				local pkg = package[lsp]
+				if pkg ~= nil then
+					table.insert(ensure_installed, pkg)
+				end
+			end
+
+      -- Formatters
+			local seen = {}
+			for _, fmt in pairs(formatters) do
+				for _, tool in ipairs(fmt) do
+					if not seen[tool] and registry.has_package(tool) then
+						table.insert(ensure_installed, tool)
+						seen[tool] = true
 					end
 				end
 			end
 
-			opts.ensure_installed = vim.tbl_extend("force", ensure_installed, opts.ensure_installed or {})
-
-			require("mason").setup(opts)
-			registry:on("package:install:success", function()
-				vim.defer_fn(function()
-					-- trigger FileType event to possibly load this newly installed LSP server
-					require("lazy.core.handler.event").trigger({
-						event = "VeryLazy",
-						buf = vim.api.nvim_get_current_buf(),
-					})
-				end, 100)
-			end)
+      ensure_installed = util.dedup(ensure_installed)
 
 			registry.refresh(function()
-				for _, tool in ipairs(opts.ensure_installed) do
+				for _, tool in ipairs(ensure_installed) do
 					local p = registry.get_package(tool)
 					if not p:is_installed() then
 						p:install()

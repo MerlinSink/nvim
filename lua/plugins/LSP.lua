@@ -76,22 +76,7 @@ return {
 				virtual_line = false,
 				severity_sort = true,
 			},
-			servers = {
-				lua_ls = {
-					enabled = true,
-					settings = {
-						Lua = {},
-					},
-				},
-				clangd = {
-					enabled = true,
-					cmd = {
-						"clangd",
-					},
-					root_markers = { ".clangd", "compile_commands.json" },
-					filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-				},
-			},
+			servers = require("lang.servers")
 		},
 		config = function(_, opts)
 			local icons = require("config.icons").diagnostics

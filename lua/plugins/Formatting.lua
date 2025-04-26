@@ -25,6 +25,7 @@ return {
 			cpp = { "clang-format" },
 			json = { "prettier" },
 			yaml = { "prettier" },
+			toml = { "taplo" },
 		},
 		-- Set default options
 		default_format_opts = {
@@ -38,6 +39,11 @@ return {
 			-- shfmt = {
 			-- 	prepend_args = { "-i", "2" },
 			-- },
+			taplo = {
+				command = "taplo",
+				prepend_args = { "fmt", "--option", "--align-entries = true", "-" },
+				stdin = true,
+			},
 		},
 	},
 	init = function()

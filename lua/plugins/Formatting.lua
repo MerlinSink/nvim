@@ -1,6 +1,6 @@
 return {
 	"stevearc/conform.nvim",
-  lazy = true,
+	lazy = true,
 	cmd = { "ConformInfo" },
 	keys = {
 		{
@@ -23,7 +23,8 @@ return {
 			fish = { "fish_indent" },
 			c = { "clang-format" },
 			cpp = { "clang-format" },
-      json = { "prettier" },
+			json = { "prettier" },
+			yaml = { "prettier" },
 		},
 		-- Set default options
 		default_format_opts = {

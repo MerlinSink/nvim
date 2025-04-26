@@ -23,6 +23,7 @@ return {
 			fish = { "fish_indent" },
 			c = { "clang-format" },
 			cpp = { "clang-format" },
+      json = { "prettier" },
 		},
 		-- Set default options
 		default_format_opts = {

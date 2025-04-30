@@ -5,11 +5,17 @@ local function load(name)
 	end
 end
 
+-- Set RuntimePath
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+vim.opt.rtp:prepend(lazypath)
+require("config.util").lazy_file()
+
 local modules = {
 	"config.options",
-	"config.lazy",
 	"config.keymaps",
 	"config.highlights",
+	"config.autocmds",
+	"config.lazy",
 }
 
 for _, module in ipairs(modules) do

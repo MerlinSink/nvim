@@ -81,7 +81,7 @@ return {
 
 	{
 		"lewis6991/gitsigns.nvim",
-		event = "VeryLazy",
+		event = "LazyFile",
 		opts = {
 			signs = {
 				add = { text = "▎" },
@@ -188,7 +188,7 @@ return {
 	{
 		"folke/todo-comments.nvim",
 		cmd = { "TodoTrouble", "TodoTelescope" },
-		event = "VeryLazy",
+		event = "LazyFile",
 		opts = {},
     -- stylua: ignore
     keys = {

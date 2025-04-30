@@ -3,7 +3,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		version = false, -- last release is way too old and doesn't work on Windows
 		build = ":TSUpdate",
-		event = "VeryLazy",
+		event = { "LazyFile", "VeryLazy" },
 		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
 		keys = {
 			{ "<c-space>", desc = "Increment Selection" },
@@ -73,11 +73,11 @@ return {
 			},
 		},
 		config = function(_, opts)
-      local util = require("config.util")
+			local util = require("config.util")
 			require("nvim-treesitter.configs").setup(opts)
-      if type(opts.ensure_installed) == "table" then
-      opts.ensure_installed = util.dedup(opts.ensure_installed)
-    end
+			if type(opts.ensure_installed) == "table" then
+				opts.ensure_installed = util.dedup(opts.ensure_installed)
+			end
 		end,
 	},
 
@@ -117,7 +117,7 @@ return {
 
 	{
 		"windwp/nvim-ts-autotag",
-		event = "VeryLazy",
+		event = "LazyFile",
 		opts = {},
 	},
 }

@@ -3,27 +3,15 @@ local opts = { noremap = true, silent = true }
 
 -- Nohlsearch
 keymap("n", "<LEADER><CR>", ":nohlsearch<CR>", opts)
--- Reload init.lua
--- keymap("n", "<C-n>", ":source $MYVIMRC<CR>", opts)
 
 -- Save & quit
 keymap("n", "Q", ":q<CR>", opts)
--- noremap <C-q> :qa<CR>
-keymap("n", "W", ":w<CR>", opts)
 
--- Move Normal
-keymap("n", "J", "5j", opts)
-keymap("n", "K", "5k", opts)
-keymap("n", "H", "5h", opts)
-keymap("n", "L", "5l", opts)
 -- Move Visual
 keymap("v", "J", "5j", opts)
 keymap("v", "K", "5k", opts)
 keymap("v", "H", "5h", opts)
 keymap("v", "L", "5l", opts)
-
--- Open lazygit
-keymap("n", "<C-g>", ":tabe<CR>:-tabmove<CR>:term lazygit<CR> i", opts)
 
 -- Split
 keymap("n", "<leader>sl", ":set splitright<CR>:vsplit<CR>", opts)

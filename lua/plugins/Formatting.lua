@@ -26,6 +26,8 @@ return {
 			json = { "prettier" },
 			yaml = { "prettier" },
 			toml = { "taplo" },
+      html = { "prettier" },
+      css = { "prettier" },
 		},
 		-- Set default options
 		default_format_opts = {
@@ -39,11 +41,6 @@ return {
 			-- shfmt = {
 			-- 	prepend_args = { "-i", "2" },
 			-- },
-			taplo = {
-				command = "taplo",
-				prepend_args = { "fmt", "--option", "--align-entries = true", "-" },
-				stdin = true,
-			},
 		},
 	},
 	init = function()

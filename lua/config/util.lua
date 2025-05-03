@@ -24,4 +24,16 @@ function M.lazy_file()
 	Event.mappings["User LazyFile"] = Event.mappings.LazyFile
 end
 
+function M.on_supports_method(method, callback)
+	vim.api.nvim_create_autocmd("LspAttach", {
+		callback = function(args)
+			local client = vim.lsp.get_client_by_id(args.data.client_id)
+			local buffer = args.buf
+			if client and client.supports_method and client.supports_method(method) then
+				callback(client, buffer)
+			end
+		end,
+	})
+end
+
 return M

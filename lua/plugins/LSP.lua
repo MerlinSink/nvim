@@ -31,6 +31,21 @@ return {
 			virtual_line = false,
 			severity_sort = true,
 		},
+		inlay_hints = {
+			enabled = true,
+			exclude = { "vue" },
+		},
+		codelens = {
+			enabled = false,
+		},
+		capabilities = {
+			workspace = {
+				fileOperations = {
+					didRename = true,
+					willRename = true,
+				},
+			},
+		},
 		servers = require("lang.servers"),
 	},
 	config = function(_, opts)
@@ -45,6 +60,31 @@ return {
 				},
 			},
 		}, opts.diagnostics or {})
+
+		local util = require("config.util")
+		-- inlay hints
+		if opts.inlay_hints.enabled then
+			util.on_supports_method("textDocument/inlayHint", function(_, buffer)
+				if
+					vim.api.nvim_buf_is_valid(buffer)
+					and vim.bo[buffer].buftype == ""
+					and not vim.tbl_contains(opts.inlay_hints.exclude, vim.bo[buffer].filetype)
+				then
+					vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
+				end
+			end)
+		end
+
+		-- code lens
+		if opts.codelens.enabled and vim.lsp.codelens then
+			util.on_supports_method("textDocument/codeLens", function(_, buffer)
+				vim.lsp.codelens.refresh()
+				vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+					buffer = buffer,
+					callback = vim.lsp.codelens.refresh,
+				})
+			end)
+		end
 
 		if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
 			opts.diagnostics.virtual_text.prefix = "●"
@@ -83,7 +123,6 @@ return {
 		require("mason").setup()
 		local registry = require("mason-registry")
 		local pkg = require("mason-lspconfig.mappings.server").lspconfig_to_package
-		local util = require("config.util")
 		local formatters = require("lazy.core.config").plugins["conform.nvim"].opts.formatters_by_ft
 
 		local ensure_installed = {} ---@type string[]
@@ -146,7 +185,7 @@ return {
 				    map("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, "LSP Symbols")
 				    map("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, "LSP Workspace Symbols")
           end
-					map("n", "gh", function() return vim.lsp.buf.hover() end, "Hover")
+					map("n", "K", function() return vim.lsp.buf.hover() end, "Hover")
 					map("n", "gk", function() return vim.lsp.buf.signature_help() end, "Signature Help")
 					map("i", "<C-k>", function() return vim.lsp.buf.signature_help() end, "Signature Help")
 					map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")

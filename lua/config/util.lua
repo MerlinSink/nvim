@@ -36,4 +36,17 @@ function M.on_supports_method(method, callback)
 	})
 end
 
+function M.load(prefix, modules)
+	local config = {}
+	for _, mod in ipairs(modules) do
+		local ok, conf = pcall(require, prefix .. mod)
+		if ok and type(conf) == "table" then
+			config = vim.tbl_deep_extend("force", config, conf)
+		else
+			vim.notify("Failed to load module: " .. prefix .. mod, vim.log.levels.WARN)
+		end
+	end
+	return config
+end
+
 return M

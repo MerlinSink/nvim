@@ -46,7 +46,7 @@ return {
 				},
 			},
 		},
-		servers = require("lang.servers"),
+		servers = require("lang"),
 	},
 	config = function(_, opts)
 		local icons = require("config.icons").diagnostics

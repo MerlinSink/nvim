@@ -1,131 +1,5 @@
-return {
-	"folke/snacks.nvim",
-	priority = 1000,
-	lazy = false,
-	---@type snacks.Config
-	opts = {
-		bigfile = { enabled = true },
-
-		---@class snacks.dashboard.Config
-		dashboard = {
-			enabled = true,
-			preset = {
-				header = [[
-        ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z
-        ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z    
-        ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z       
-        ██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║ z         
-        ███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║           
-        ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝           
-        ]],
-        -- stylua: ignore
-        ---@type snacks.dashboard.Item[]
-        keys = {
-          { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-          { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-          { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-          { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-          { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-          { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
-          { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-        },
-			},
-			sections = {
-				{ section = "header" },
-				{
-					pane = 2,
-					section = "terminal",
-					-- cmd = "colorscript -e square",
-					height = 5,
-					padding = 1,
-				},
-				{ section = "keys", gap = 1, padding = 1 },
-				{ pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
-				{ pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
-				{
-					pane = 2,
-					icon = " ",
-					title = "Git Status",
-					section = "terminal",
-					enabled = function()
-						return Snacks.git.get_root() ~= nil
-					end,
-					cmd = "git status --short --branch --renames",
-					height = 5,
-					padding = 1,
-					ttl = 5 * 60,
-					indent = 3,
-				},
-				{ section = "startup" },
-			},
-		},
-
-		---@class snacks.explorer.Config
-		explorer = {
-			enabled = true,
-			replace_netrw = true,
-		},
-
-		---@class snacks.indent.Config
-		indent = {
-			indent = {
-				priority = 1,
-				enabled = true, -- enable indent guides
-				char = "│",
-				only_scope = false, -- only show indent guides of the scope
-				only_current = true, -- only show indent guides in the current window
-				hl = "SnacksIndent", ---@type string|string[] hl groups for indent guides
-				-- can be a list of hl groups to cycle through
-				-- hl = {
-				--     "SnacksIndent1",
-				--     "SnacksIndent2",
-				--     "SnacksIndent3",
-				--     "SnacksIndent4",
-				--     "SnacksIndent5",
-				--     "SnacksIndent6",
-				--     "SnacksIndent7",
-				--     "SnacksIndent8",
-				-- },
-			},
-			---@class snacks.indent.Scope.Config: snacks.scope.Config
-			scope = {
-				enabled = true, -- enable highlighting the current scope
-				priority = 200,
-				char = "│",
-				underline = false, -- underline the start of the scope
-				only_current = true, -- only show scope in the current window
-				-- hl = "SnacksIndentScope", ---@type string|string[] hl group for scopes
-				hl = {
-					"RainbowRed",
-					"RainbowYellow",
-					"RainbowBlue",
-					"RainbowOrange",
-					"RainbowGreen",
-					"RainbowViolet",
-					"RainbowCyan",
-				},
-			},
-		},
-
-		input = { enabled = true },
-		notifier = {
-			enabled = true,
-			timeout = 3000,
-		},
-		picker = { enabled = true },
-		quickfile = { enabled = true },
-		scope = { enabled = true },
-		scroll = { enabled = true },
-		statuscolumn = { enabled = true },
-		words = { enabled = true },
-		styles = {
-			notification = {
-				-- wo = { wrap = true } -- Wrap notifications
-			},
-		},
-	},
-	keys = {
+local M = {}
+M.key = {
     -- stylua: ignore start
 		-- Top Pickers & Explorer
 		-- { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
@@ -187,39 +61,40 @@ return {
 		-- { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
 		-- { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
 		{ "<C-/>", function() Snacks.terminal() end, desc = "Toggle Terminal" },
-		-- { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
-		-- {
-		--   "<leader>N",
-		--   desc = "Neovim News",
-		--   function()
-		--     Snacks.win({
-		--       file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-		--       width = 0.6,
-		--       height = 0.6,
-		--       wo = {
-		--         spell = false,
-		--         wrap = false,
-		--         signcolumn = "yes",
-		--         statuscolumn = " ",
-		--         conceallevel = 3,
-		--       },
-		--     })
-		--   end,
-		-- }
-		-- stylua: ignore end
-	},
-	init = function()
-		vim.api.nvim_create_autocmd("User", {
-			pattern = "VeryLazy",
-			callback = function()
-				-- Setup some globals for debugging (lazy-loaded)
-				_G.dd = function(...)
-					Snacks.debug.inspect(...)
-				end
-				_G.bt = function()
-					Snacks.debug.backtrace()
-				end
-				vim.print = _G.dd -- Override print to use snacks for `:=` command
+	-- { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
+	-- {
+	--   "<leader>N",
+	--   desc = "Neovim News",
+	--   function()
+	--     Snacks.win({
+	--       file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
+	--       width = 0.6,
+	--       height = 0.6,
+	--       wo = {
+	--         spell = false,
+	--         wrap = false,
+	--         signcolumn = "yes",
+	--         statuscolumn = " ",
+	--         conceallevel = 3,
+	--       },
+	--     })
+	--   end,
+	-- }
+	-- stylua: ignore end
+}
+
+M.toggle = function()
+	vim.api.nvim_create_autocmd("User", {
+		pattern = "VeryLazy",
+		callback = function()
+			-- Setup some globals for debugging (lazy-loaded)
+			_G.dd = function(...)
+				Snacks.debug.inspect(...)
+			end
+			_G.bt = function()
+				Snacks.debug.backtrace()
+			end
+			vim.print = _G.dd -- Override print to use snacks for `:=` command
 
 				-- Create some toggle mappings
         -- stylua: ignore start
@@ -234,8 +109,9 @@ return {
 				Snacks.toggle.inlay_hints():map("<leader>uh")
 				Snacks.toggle.indent():map("<leader>ug")
 				Snacks.toggle.dim():map("<leader>uD")
-				-- stylua: ignore end
-			end,
-		})
-	end,
-}
+			-- stylua: ignore end
+		end,
+	})
+end
+
+return M

@@ -2,10 +2,7 @@ local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Nohlsearch
-keymap("n", "<LEADER><CR>", ":nohlsearch<CR>", opts)
-
--- Save & quit
-keymap("n", "Q", ":q<CR>", opts)
+keymap("n", "<LEADER><SPACE>", ":nohlsearch<CR>", opts)
 
 -- Move Visual
 keymap("v", "J", "5j", opts)

@@ -4,9 +4,6 @@ local opts = { noremap = true, silent = true }
 -- Nohlsearch
 keymap("n", "<LEADER><CR>", ":nohlsearch<CR>", opts)
 
--- Save & quit
-keymap("n", "Q", ":q<CR>", opts)
-
 -- Move Visual
 keymap("v", "J", "5j", opts)
 keymap("v", "K", "5k", opts)

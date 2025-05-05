@@ -35,6 +35,9 @@ return {
 			nerd_font_variant = "mono",
 		},
 		completion = {
+			keyword = {
+				range = "full",
+			},
 			accept = {
 				-- experimental auto-brackets support
 				auto_brackets = {
@@ -44,6 +47,12 @@ return {
 			menu = {
 				draw = {
 					treesitter = { "lsp" },
+				},
+			},
+			list = {
+				selection = {
+					preselect = false,
+					auto_insert = true,
 				},
 			},
 			documentation = {

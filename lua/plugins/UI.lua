@@ -265,6 +265,7 @@ return {
 
 	{
 		"HiPhish/rainbow-delimiters.nvim",
+		event = "VeryLazy",
 		config = function()
 			local rainbow_delimiters = require("rainbow-delimiters")
 
@@ -288,5 +289,16 @@ return {
 				},
 			}
 		end,
+	},
+
+	{
+		"norcalli/nvim-colorizer.lua",
+		event = "LazyFile",
+		opts = {
+			"css",
+			"javascript",
+			mode = "foreground",
+			html = { mode = "background" },
+		},
 	},
 }

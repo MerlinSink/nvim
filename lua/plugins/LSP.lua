@@ -3,7 +3,7 @@ return {
 	event = "LazyFile",
 	dependencies = {
 		{
-			"williamboman/mason.nvim",
+			"mason-org/mason.nvim",
 			cmd = "Mason",
 			build = ":MasonUpdate",
 			opts = {
@@ -14,7 +14,7 @@ return {
 				},
 			},
 		},
-		{ "williamboman/mason-lspconfig.nvim", config = function() end },
+		{ "mason-org/mason-lspconfig.nvim", config = function() end },
 	},
 	opts = {
 		diagnostics = {
@@ -122,7 +122,7 @@ return {
 		-- get all the servers that are available through mason-lspconfig
 		require("mason").setup()
 		local registry = require("mason-registry")
-		local pkg = require("mason-lspconfig.mappings.server").lspconfig_to_package
+		local pkg = require("mason-lspconfig").get_mappings()
 		local formatters = require("lazy.core.config").plugins["conform.nvim"].opts.formatters_by_ft
 
 		local ensure_installed = {} ---@type string[]

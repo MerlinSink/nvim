@@ -22,7 +22,7 @@ opt.autowrite = true -- Enable auto write
 -- integration works automatically. Requires Neovim >= 0.10.0
 opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
-opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
+opt.conceallevel = 0 -- Hide * markup for bold and italic, but not markers with substitutions
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
@@ -83,3 +83,11 @@ opt.foldtext = ""
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+
+if vim.g.neovide then
+	vim.o.guifont = "JetBrainsMono Nerd Font Mono:h14:b"
+	vim.g.neovide_cursor_vfx_mode = "railgun"
+	vim.g.neovide_fullscreen = false
+	vim.g.neovide_opacity = 0.9
+	vim.g.neovide_scale_factor = 1.0
+end

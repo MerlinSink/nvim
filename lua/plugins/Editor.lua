@@ -69,12 +69,12 @@ return {
 		vscode = true,
 		---@type Flash.Config
 		opts = {
-      modes = {
-        char = {
-          keys = { "f", "F" },
-        }
-      }
-    },
+			modes = {
+				char = {
+					keys = { "f", "F" },
+				},
+			},
+		},
     -- stylua: ignore
     keys = {
       { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
@@ -205,5 +205,31 @@ return {
       { "<leader>st", function() Snacks.picker.todo_comments() end, desc = "Todo" },
       { "<leader>sT", function () Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "Todo/Fix/Fixme" },
     },
+	},
+
+	{
+		"echasnovski/mini.move",
+		event = "VeryLazy",
+		version = false,
+		opts = {
+			-- Module mappings. Use `''` (empty string) to disable one.
+			mappings = {
+				-- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+				left = "<M-h>",
+				right = "<M-l>",
+				down = "<M-j>",
+				up = "<M-k>",
+				-- Move current line in Normal mode
+				line_left = "<M-h>",
+				line_right = "<M-l>",
+				line_down = "<M-j>",
+				line_up = "<M-k>",
+			},
+			-- Options which control moving behavior
+			options = {
+				-- Automatically reindent selection during linewise vertical move
+				reindent_linewise = true,
+			},
+		},
 	},
 }

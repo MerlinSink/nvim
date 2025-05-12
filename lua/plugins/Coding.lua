@@ -119,8 +119,16 @@ return {
 	{
 		"gerazov/toggle-bool.nvim",
 		event = "VeryLazy",
+    keys = {
+			{
+				"<leader>bt",
+				function()
+          require("toggle-bool").toggle_bool()
+				end,
+				desc = "Toggle Bool",
+			},
+    },
 		opts = {
-			mapping = "<leader>tb",
 			additional_toggles = {
 				Yes = "No",
 				On = "Off",

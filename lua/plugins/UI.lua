@@ -290,15 +290,4 @@ return {
 			}
 		end,
 	},
-
-	{
-		"norcalli/nvim-colorizer.lua",
-		event = "LazyFile",
-		opts = {
-			"css",
-			"javascript",
-			mode = "foreground",
-			html = { mode = "background" },
-		},
-	},
 }

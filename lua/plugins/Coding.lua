@@ -119,15 +119,15 @@ return {
 	{
 		"gerazov/toggle-bool.nvim",
 		event = "VeryLazy",
-    keys = {
+		keys = {
 			{
-				"<leader>bt",
+				"<leader>tb",
 				function()
-          require("toggle-bool").toggle_bool()
+					require("toggle-bool").toggle_bool()
 				end,
 				desc = "Toggle Bool",
 			},
-    },
+		},
 		opts = {
 			additional_toggles = {
 				Yes = "No",
@@ -150,6 +150,22 @@ return {
 				Ingress = "Egress",
 				Allow = "Deny",
 				All = "None",
+			},
+		},
+	},
+
+	{
+		"uga-rosa/ccc.nvim",
+		event = "LazyFile",
+		keys = {
+			{ "<leader>uH", "<Cmd>CccHighlighterToggle<CR>", desc = "CccHighlighter Toggle" },
+			{ "<leader>th", "<Cmd>CccConvert<CR>", desc = "CccHighlighter Convert" },
+			{ "<leader>Hp", "<Cmd>CccPick<CR>", desc = "CccHighlighter Pick" },
+		},
+		opts = {
+			highlighter = {
+				auto_enable = true,
+				lsp = true,
 			},
 		},
 	},

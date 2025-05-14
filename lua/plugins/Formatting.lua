@@ -26,10 +26,10 @@ return {
 			json = { "prettier" },
 			yaml = { "prettier" },
 			toml = { "taplo" },
-      html = { "prettier" },
-      css = { "prettier" },
-      javascript = { "prettier" },
-      markdown = { "prettier" },
+			html = { "prettier" },
+			css = { "prettier" },
+			javascript = { "prettier" },
+			markdown = { "prettier" },
 		},
 		-- Set default options
 		default_format_opts = {

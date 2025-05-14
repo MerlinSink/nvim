@@ -21,7 +21,7 @@ M.key = {
 		{ "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
 		{ "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
 		{ "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
-		{ "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
+		{ "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
 		-- Grep
 		{ "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
 		{ "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },

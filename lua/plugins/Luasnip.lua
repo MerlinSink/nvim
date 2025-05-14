@@ -1,35 +1,57 @@
 return {
 	"L3MON4D3/LuaSnip",
 	lazy = true,
-	build = "make install_jsregexp",
+	build = not require("config.util").is_win
+			and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp"
+		or nil,
 	dependencies = {
 		{
 			"rafamadriz/friendly-snippets",
 			config = function()
 				require("luasnip.loaders.from_vscode").lazy_load()
-				require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
+				require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/Snippets" } })
 			end,
 		},
 	},
 	opts = {
 		history = true,
 		delete_check_events = "TextChanged",
+		enable_autosnippets = true,
 	},
-	config = function()
-		require("luasnip").config.set_config({
-			enable_autosnippets = true,
-			store_selection_keys = "`",
+	config = function(_, opts)
+		require("luasnip.loaders.from_lua").lazy_load({ paths = { vim.fn.stdpath("config") .. "/Snippets" } })
+
+		local actions = require("config.util").actions
+		actions.snippet_forward = function()
+			if require("luasnip").jumpable(1) then
+				vim.schedule(function()
+					require("luasnip").jump(1)
+				end)
+				return true
+			end
+		end
+		actions.snippet_stop = function()
+			if require("luasnip").expand_or_jumpable() then -- or just jumpable(1) is fine?
+				require("luasnip").unlink_current()
+				return true
+			end
+		end
+
+		local types = require("luasnip.util.types")
+		require("luasnip").config.setup({
+			ext_opts = {
+				[types.choiceNode] = {
+					active = {
+						virt_text = { { "●", "GruvboxOrange" } },
+					},
+				},
+				[types.insertNode] = {
+					active = {
+						virt_text = { { "●", "GruvboxBlue" } },
+					},
+				},
+			},
 		})
-		local load = require("luasnip.loaders.from_lua").load
-		if vim.fn.has("unix") == 1 then
-			load(vim.fn.expand("$HOME/.config/nvim/Snippets"))
-		elseif vim.fn.has("win32") == 1 then
-			load(vim.fn.expand("~/AppData/Local/nvim/Snippets"))
-		end
-		local auto_expand = require("luasnip").expand_auto
-		require("luasnip").expand_auto = function(...)
-			vim.o.undolevels = vim.o.undolevels
-			auto_expand(...)
-		end
+		require("luasnip").setup(opts)
 	end,
 }

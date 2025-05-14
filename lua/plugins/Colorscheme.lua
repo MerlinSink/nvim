@@ -4,8 +4,8 @@ return {
 		lazy = false,
 		priority = 1000,
 		opts = {
-      style = "moon",
-    },
+			style = "moon",
+		},
 	},
 
 	{
@@ -27,7 +27,7 @@ return {
 				alpha = true,
 				cmp = true,
 				dashboard = true,
-				flash = true,
+				flash = false,
 				fzf = true,
 				grug_far = true,
 				gitsigns = true,

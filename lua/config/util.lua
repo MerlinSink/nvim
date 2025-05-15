@@ -49,9 +49,9 @@ function M.load(prefix, modules)
 	return config
 end
 
--- check system
-function M.is_win()
-	return vim.uv.os_uname().sysname:find("Windows") ~= nil
+-- systermCheck
+function M.check_sys(sysname)
+	return vim.uv.os_uname().sysname:find(sysname) ~= nil
 end
 
 M.actions = {

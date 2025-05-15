@@ -81,6 +81,15 @@ opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
 opt.foldmethod = "expr"
 opt.foldtext = ""
 
+if Util.check_sys("Linux") then
+	vim.opt.shell = "fish"
+elseif Util.check_sys("Windows") then
+	vim.opt.shell = "pwsh"
+	vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command"
+	vim.opt.shellquote = ""
+	vim.opt.shellxquote = ""
+end
+
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
 

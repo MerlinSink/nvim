@@ -48,7 +48,7 @@ return {
 		servers = require("lang"),
 	},
 	config = function(_, opts)
-		local icons = require("config.icons").diagnostics
+		local icons = icons.diagnostics
 		opts.diagnostics = vim.tbl_deep_extend("force", {
 			signs = {
 				text = {

@@ -14,6 +14,7 @@ local modules = {
 }
 
 _G.Util = require("config.util")
+_G.icons = require("config.icons")
 
 for _, module in ipairs(modules) do
 	load(module)

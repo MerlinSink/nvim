@@ -13,6 +13,8 @@ local modules = {
 	"config.lazy",
 }
 
+_G.Util = require("config.util")
+
 for _, module in ipairs(modules) do
 	load(module)
 end

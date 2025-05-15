@@ -1,7 +1,7 @@
 return {
 	"L3MON4D3/LuaSnip",
 	lazy = true,
-	build = require("config.util").check_sys("Windows")
+	build = Util.check_sys("Windows")
 			and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp"
 		or nil,
 	dependencies = {
@@ -21,7 +21,7 @@ return {
 	config = function(_, opts)
 		require("luasnip.loaders.from_lua").lazy_load({ paths = { vim.fn.stdpath("config") .. "/Snippets" } })
 
-		local actions = require("config.util").actions
+		local actions = Util.actions
 		actions.snippet_forward = function()
 			if require("luasnip").jumpable(1) then
 				vim.schedule(function()

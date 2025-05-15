@@ -1,7 +1,7 @@
 return {
 	---@class snacks.picker.Config
 	picker = {
-    enabled = true,
+		enabled = true,
 		prompt = " ",
 		sources = {},
 		focus = "input",

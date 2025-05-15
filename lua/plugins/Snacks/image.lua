@@ -10,7 +10,7 @@ return {
 	---@field resolve? fun(file: string, src: string): string?
 	---@field convert? snacks.image.convert.Config
 	image = {
-    enabled = true,
+		enabled = true,
 		formats = {
 			"png",
 			"jpg",

@@ -7,26 +7,26 @@ return {
 	config = function()
 		local util = require("config.util")
 		local modules = {
-      "animate",
+			"animate",
 			"bigfile",
 			"dashboard",
-      "explorer",
+			"explorer",
 			"indent",
 			"image",
 			"input",
 			"notifier",
 			"picker",
-      "quickfile",
+			"quickfile",
 			"scope",
 			"scroll",
-      "statuscolumn",
+			"statuscolumn",
 			"styles",
-      "terminal",
+			"terminal",
 			"win",
-      "words",
+			"words",
 		}
 
 		local conf = util.load("plugins.Snacks.", modules)
-    require("snacks").setup(conf)
+		require("snacks").setup(conf)
 	end,
 }

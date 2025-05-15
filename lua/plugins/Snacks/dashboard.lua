@@ -1,5 +1,5 @@
 return {
-  ---@class snacks.dashboard.Config
+	---@class snacks.dashboard.Config
 	dashboard = {
 		enabled = true,
 		preset = {

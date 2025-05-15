@@ -3,7 +3,7 @@ return {
 	---@field max_size? number
 	---@field enabled? boolean
 	scope = {
-    enabled = true,
+		enabled = true,
 		-- absolute minimum size of the scope.
 		-- can be less if the scope is a top-level single line scope
 		min_size = 2,

@@ -54,6 +54,10 @@ function M.check_sys(sysname)
 	return vim.uv.os_uname().sysname:find(sysname) ~= nil
 end
 
+function M.has(name)
+  return require("lazy.core.config").spec.plugins[name] ~= nil
+end
+
 M.actions = {
 	-- Native Snippets
 	snippet_forward = function()

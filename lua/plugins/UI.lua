@@ -15,10 +15,15 @@ return {
 		},
 		opts = {
 			options = {
-        -- stylua: ignore
+				separator_style = "slope", -- "slant" | "slope" | "thick" | "thin" | { "any", "any" },
+        -- stylua: ignore start
         close_command = function(n) Snacks.bufdelete(n) end,
-        -- stylua: ignore
         right_mouse_command = function(n) Snacks.bufdelete(n) end,
+				-- stylua: ignore end
+				-- indicator = {
+				-- 	icon = "▎", -- this should be omitted if indicator style is not 'icon'
+				-- 	style = "underline", -- "icon" | "underline" | "none",
+				-- },
 				diagnostics = "nvim_lsp",
 				always_show_bufferline = true,
 				diagnostics_indicator = function(_, _, diag)

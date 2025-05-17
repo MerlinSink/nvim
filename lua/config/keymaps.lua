@@ -4,6 +4,9 @@ local opts = { noremap = true, silent = true }
 -- Nohlsearch
 keymap("n", "<Esc>", "<Cmd>nohlsearch<CR>", opts)
 
+-- Save
+keymap("n", "<leader>W", "<Cmd>w<CR>", opts)
+
 -- Quit
 keymap("n", "<leader>Q", "<Cmd>q<CR>", opts)
 

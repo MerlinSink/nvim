@@ -164,34 +164,31 @@ return {
 			end
 		end
 
-		vim.api.nvim_create_autocmd("LspAttach", {
-			group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
-			callback = function(event)
-				local keymap = function(mode, keys, func, desc)
-					vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
-				end
-          -- stylua: ignore start
-          if Snacks and Snacks.picker then
-            keymap("n", "<leader>cl", function() Snacks.picker.lsp_config() end, "Lsp Info")
-				    keymap("n", "gd", function() Snacks.picker.lsp_definitions() end, "Goto Definition")
-				    keymap("n", "gD", function() Snacks.picker.lsp_declarations() end, "Goto Declaration")
-				    keymap("n", "gr", function() Snacks.picker.lsp_references() end, "References")
-				    keymap("n", "gI", function() Snacks.picker.lsp_implementations() end, "Goto Implementation")
-				    keymap("n", "gy", function() Snacks.picker.lsp_type_definitions() end, "Goto T[y]pe Definition")
-				    keymap({ "n", "t" }, "<C-n>", function() Snacks.words.jump(vim.v.count1) end, "Next Reference")
-				    keymap({ "n", "t" }, "<C-p>", function() Snacks.words.jump(-vim.v.count1) end, "Prev Reference")
-				    keymap("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, "LSP Symbols")
-				    keymap("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, "LSP Workspace Symbols")
-          end
-					keymap("n", "K", function() return vim.lsp.buf.hover() end, "Hover")
-					keymap("n", "gk", function() return vim.lsp.buf.signature_help() end, "Signature Help")
-					keymap("i", "<C-k>", function() return vim.lsp.buf.signature_help() end, "Signature Help")
-					keymap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
-          keymap({ "n", "v" },"<leader>cc", vim.lsp.codelens.run, "Run Codelens")
-          keymap("n", "<leader>cC", vim.lsp.codelens.refresh, "Refresh & Display Codelens")
-					keymap("n", "<leader>cr", vim.lsp.buf.rename, "Rename")
-				-- stylua: ignore end
-			end,
-		})
+		Util.on_attach(function(client, buffer)
+			local keymap = function(mode, keys, func, desc)
+				vim.keymap.set(mode, keys, func, { buffer = buffer, desc = desc })
+			end
+      -- stylua: ignore start
+      if Snacks and Snacks.picker then
+        keymap("n", "<leader>cl", function() Snacks.picker.lsp_config() end, "Lsp Info")
+			  keymap("n", "gd", function() Snacks.picker.lsp_definitions() end, "Goto Definition")
+			  keymap("n", "gD", function() Snacks.picker.lsp_declarations() end, "Goto Declaration")
+			  keymap("n", "gr", function() Snacks.picker.lsp_references() end, "References")
+			  keymap("n", "gI", function() Snacks.picker.lsp_implementations() end, "Goto Implementation")
+			  keymap("n", "gy", function() Snacks.picker.lsp_type_definitions() end, "Goto T[y]pe Definition")
+			  keymap({ "n", "t" }, "<C-n>", function() Snacks.words.jump(vim.v.count1) end, "Next Reference")
+			  keymap({ "n", "t" }, "<C-p>", function() Snacks.words.jump(-vim.v.count1) end, "Prev Reference")
+			  keymap("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, "LSP Symbols")
+			  keymap("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, "LSP Workspace Symbols")
+      end
+			keymap("n", "K", function() return vim.lsp.buf.hover() end, "Hover")
+			keymap("n", "gk", function() return vim.lsp.buf.signature_help() end, "Signature Help")
+			keymap("i", "<C-k>", function() return vim.lsp.buf.signature_help() end, "Signature Help")
+			keymap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
+      keymap({ "n", "v" },"<leader>cc", vim.lsp.codelens.run, "Run Codelens")
+      keymap("n", "<leader>cC", vim.lsp.codelens.refresh, "Refresh & Display Codelens")
+			keymap("n", "<leader>cr", vim.lsp.buf.rename, "Rename")
+			-- stylua: ignore end
+		end)
 	end,
 }

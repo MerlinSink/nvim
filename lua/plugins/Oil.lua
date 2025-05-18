@@ -80,7 +80,7 @@ return {
 			["q"] = { "actions.close", mode = "n" },
 			["<leader>r"] = "actions.refresh",
 			["["] = { "actions.parent", mode = "n" },
-			["<leader>;"] = { "actions.open_cwd", mode = "n" },
+			["<leader>'"] = { "actions.open_cwd", mode = "n" },
 			["`"] = { "actions.cd", mode = "n" },
 			["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
 			["gs"] = { "actions.change_sort", mode = "n" },

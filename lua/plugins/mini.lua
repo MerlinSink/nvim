@@ -1,20 +1,78 @@
 return {
 	{
-		"folke/ts-comments.nvim",
+		"echasnovski/mini.ai",
 		event = "VeryLazy",
-		opts = {},
+		opts = function()
+			local ai = require("mini.ai")
+			return {
+				n_lines = 500,
+				custom_textobjects = {
+					o = ai.gen_spec.treesitter({ -- code block
+						a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+						i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+					}),
+					f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
+					c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
+					t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" }, -- tags
+					d = { "%f[%d]%d+" }, -- digits
+					e = { -- Word with case
+						{
+							"%u[%l%d]+%f[^%l%d]",
+							"%f[%S][%l%d]+%f[^%l%d]",
+							"%f[%P][%l%d]+%f[^%l%d]",
+							"^[%l%d]+%f[^%l%d]",
+						},
+						"^().*()$",
+					},
+					u = ai.gen_spec.function_call(), -- u for "Usage"
+					U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
+				},
+			}
+		end,
 	},
 
 	{
-		"folke/lazydev.nvim",
-		ft = "lua",
-		cmd = "LazyDev",
+		"echasnovski/mini.icons",
+		lazy = true,
 		opts = {
-			library = {
-				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-				-- { path = "LazyVim", words = { "LazyVim" } },
-				{ path = "snacks.nvim", words = { "Snacks" } },
-				-- { path = "lazy.nvim", words = { "LazyVim" } },
+			file = {
+				[".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },
+				["devcontainer.json"] = { glyph = "", hl = "MiniIconsAzure" },
+			},
+			filetype = {
+				dotenv = { glyph = "", hl = "MiniIconsYellow" },
+			},
+		},
+		init = function()
+			package.preload["nvim-web-devicons"] = function()
+				require("mini.icons").mock_nvim_web_devicons()
+				return package.loaded["nvim-web-devicons"]
+			end
+		end,
+	},
+
+	{
+		"echasnovski/mini.move",
+		event = "VeryLazy",
+		version = false,
+		opts = {
+			-- Module mappings. Use `''` (empty string) to disable one.
+			mappings = {
+				-- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+				left = "<M-h>",
+				right = "<M-l>",
+				down = "<M-j>",
+				up = "<M-k>",
+				-- Move current line in Normal mode
+				line_left = "<M-h>",
+				line_right = "<M-l>",
+				line_down = "<M-j>",
+				line_up = "<M-k>",
+			},
+			-- Options which control moving behavior
+			options = {
+				-- Automatically reindent selection during linewise vertical move
+				reindent_linewise = true,
 			},
 		},
 	},
@@ -50,38 +108,6 @@ return {
 	},
 
 	{
-		"echasnovski/mini.ai",
-		event = "VeryLazy",
-		opts = function()
-			local ai = require("mini.ai")
-			return {
-				n_lines = 500,
-				custom_textobjects = {
-					o = ai.gen_spec.treesitter({ -- code block
-						a = { "@block.outer", "@conditional.outer", "@loop.outer" },
-						i = { "@block.inner", "@conditional.inner", "@loop.inner" },
-					}),
-					f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
-					c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
-					t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" }, -- tags
-					d = { "%f[%d]%d+" }, -- digits
-					e = { -- Word with case
-						{
-							"%u[%l%d]+%f[^%l%d]",
-							"%f[%S][%l%d]+%f[^%l%d]",
-							"%f[%P][%l%d]+%f[^%l%d]",
-							"^[%l%d]+%f[^%l%d]",
-						},
-						"^().*()$",
-					},
-					u = ai.gen_spec.function_call(), -- u for "Usage"
-					U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
-				},
-			}
-		end,
-	},
-
-	{
 		"echasnovski/mini.surround",
 		event = "VeryLazy",
 		opts = {
@@ -114,59 +140,5 @@ return {
 				return vim.list_extend(mappings, keys)
 			end
 		end,
-	},
-
-	{
-		"gerazov/toggle-bool.nvim",
-		event = "VeryLazy",
-		keys = {
-			{
-				"<leader>tb",
-				function()
-					require("toggle-bool").toggle_bool()
-				end,
-				desc = "Toggle Bool",
-			},
-		},
-		opts = {
-			additional_toggles = {
-				Yes = "No",
-				On = "Off",
-				["0"] = "1",
-				Enable = "Disable",
-				Enabled = "Disabled",
-				First = "Last",
-				Before = "After",
-				Persistent = "Ephemeral",
-				Internal = "External",
-				Start = "Stop",
-				In = "Out",
-				Open = "Close",
-				Enter = "Exit",
-				Lock = "Unlock",
-				Connect = "Disconnect",
-				Mount = "Dismount",
-				Import = "Export",
-				Ingress = "Egress",
-				Allow = "Deny",
-				All = "None",
-			},
-		},
-	},
-
-	{
-		"uga-rosa/ccc.nvim",
-		event = "LazyFile",
-		keys = {
-			{ "<leader>uH", "<Cmd>CccHighlighterToggle<CR>", desc = "CccHighlighter Toggle" },
-			{ "<leader>th", "<Cmd>CccConvert<CR>", desc = "CccHighlighter Convert" },
-			{ "<leader>Hp", "<Cmd>CccPick<CR>", desc = "CccHighlighter Pick" },
-		},
-		opts = {
-			highlighter = {
-				auto_enable = true,
-				lsp = true,
-			},
-		},
 	},
 }

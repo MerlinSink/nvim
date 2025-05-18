@@ -19,6 +19,10 @@ require("lazy").setup({
 	spec = {
 		-- import/override with your plugins
 		{ import = "plugins" },
+		{ import = "plugins/Coding" },
+		{ import = "plugins/Colorscheme" },
+		{ import = "plugins/Editor" },
+		{ import = "plugins/UI" },
 		{ import = "lang/util" },
 	},
 	defaults = {

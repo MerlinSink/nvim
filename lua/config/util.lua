@@ -24,7 +24,6 @@ function M.lazy_file()
 	Event.mappings["User LazyFile"] = Event.mappings.LazyFile
 end
 
-
 function M.load(prefix, modules)
 	local config = {}
 	for _, mod in ipairs(modules) do
@@ -44,7 +43,7 @@ function M.check_sys(sysname)
 end
 
 function M.has(name)
-  return require("lazy.core.config").spec.plugins[name] ~= nil
+	return require("lazy.core.config").spec.plugins[name] ~= nil
 end
 
 M.actions = {
@@ -68,15 +67,15 @@ M.actions = {
 ---@param on_attach fun(client:vim.lsp.Client, buffer)
 ---@param name? string
 function M.on_attach(on_attach, name)
-  return vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(args)
-      local buffer = args.buf ---@type number
-      local client = vim.lsp.get_client_by_id(args.data.client_id)
-      if client and (not name or client.name == name) then
-        return on_attach(client, buffer)
-      end
-    end,
-  })
+	return vim.api.nvim_create_autocmd("LspAttach", {
+		callback = function(args)
+			local buffer = args.buf ---@type number
+			local client = vim.lsp.get_client_by_id(args.data.client_id)
+			if client and (not name or client.name == name) then
+				return on_attach(client, buffer)
+			end
+		end,
+	})
 end
 
 function M.on_supports_method(method, callback)

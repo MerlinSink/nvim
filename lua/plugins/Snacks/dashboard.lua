@@ -31,7 +31,7 @@ return {
 		sections = {
 			{
 				section = "terminal",
-				cmd = "chafa ~/Pictures/Wallpaper --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1",
+				cmd = "chafa C:\\Users\\lenovo\\Pictures\\Wallpaper\\001.png --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1",
 				height = 17,
 				padding = 1,
 			},

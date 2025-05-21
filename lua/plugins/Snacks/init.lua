@@ -5,7 +5,6 @@ return {
 	keys = require("plugins.Snacks.keymaps").key,
 	init = require("plugins.Snacks.keymaps").toggle,
 	config = function()
-		local util = require("config.util")
 		local modules = {
 			"animate",
 			"bigfile",
@@ -26,7 +25,7 @@ return {
 			"words",
 		}
 
-		local conf = util.load("plugins.Snacks.", modules)
+		local conf = Util.load("plugins.Snacks.", modules)
 		require("snacks").setup(conf)
 	end,
 }

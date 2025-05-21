@@ -3,8 +3,18 @@ return {
 		enabled = true,
 		settings = {
 			Lua = {
+				runtime = {
+					version = "LuaJIT",
+					path = vim.split(package.path, ";"),
+				},
+				diagnostics = {
+					globals = { "vim" },
+				},
 				workspace = {
 					checkThirdParty = false,
+					library = {
+						vim.env.VIMRUNTIME,
+					},
 				},
 				codeLens = {
 					enable = true,

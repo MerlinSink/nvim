@@ -20,4 +20,4 @@ for _, module in ipairs(modules) do
 	load(module)
 end
 
-vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme catppuccin]])

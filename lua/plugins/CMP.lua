@@ -48,6 +48,8 @@ return {
 				draw = {
 					treesitter = { "lsp" },
 				},
+				border = "rounded",
+				scrollbar = true,
 			},
 			list = {
 				selection = {
@@ -72,17 +74,22 @@ return {
 			-- with blink.compat
 			compat = {},
 			default = { "lsp", "path", "snippets", "buffer" },
+			providers = {
+				snippets = { score_offset = 1000 },
+			},
 		},
 
 		cmdline = {
-			enabled = false,
+			enabled = true,
+			keymap = { preset = "inherit" },
+			completion = { menu = { auto_show = true } },
 		},
 
 		keymap = {
 			preset = "none",
 			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 			["<C-e>"] = { "hide" },
-			["<CR>"] = { "select_and_accept", "fallback" },
+			["<CR>"] = { "accept", "fallback" },
 
 			["<C-k>"] = { "select_prev", "fallback" },
 			["<C-j>"] = { "select_next", "fallback" },
@@ -94,6 +101,9 @@ return {
 
 			["<Tab>"] = { "snippet_forward", "fallback" },
 			["<S-Tab>"] = { "snippet_backward", "fallback" },
+
+			["<C-u>"] = { "scroll_documentation_up", "fallback" },
+			["<C-d>"] = { "scroll_documentation_down", "fallback" },
 		},
 	},
 	---@param opts blink.cmp.Config | { sources: { compat: string[] } }

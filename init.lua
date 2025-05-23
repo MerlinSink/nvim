@@ -6,18 +6,18 @@ local function load(name)
 end
 
 local modules = {
-	"config.options",
-	"config.keymaps",
-	"config.highlights",
-	"config.autocmds",
-	"config.lazy",
+	"options",
+	"keymaps",
+	"highlights",
+	"autocmds",
+	"lazy",
 }
 
 _G.Util = require("config.util")
 _G.icons = require("config.icons")
 
 for _, module in ipairs(modules) do
-	load(module)
+	load("config." .. module)
 end
 
 vim.cmd([[colorscheme catppuccin]])

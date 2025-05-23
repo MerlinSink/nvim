@@ -23,6 +23,7 @@ require("lazy").setup({
 		{ import = "plugins/Colorscheme" },
 		{ import = "plugins/Editor" },
 		{ import = "plugins/UI" },
+		{ import = "plugins/Util" },
 		{ import = "lang/util" },
 	},
 	defaults = {

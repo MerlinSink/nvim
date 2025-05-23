@@ -52,19 +52,13 @@ return {
 			extensions = { "neo-tree", "lazy", "fzf" },
 		}
 
-		-- Inserts a component in lualine_.. at left section
-		local function ins_left(area, section, component)
-			table.insert(opts[area]["lualine_" .. section], component)
-		end
-
-		-- Inserts a component in lualine_.. at right section
-		local function ins_right(area, section, component)
+		-- Inserts a component in lualine_.. or winbar/tapline at any section
+		local function ins(area, section, component)
 			table.insert(opts[area]["lualine_" .. section], component)
 		end
 
 		local function Scrollbar()
 			local chars = { "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" }
-			-- local chars = { "▇", "▆", "▅", "▄", "▃", "▂", "▁", " " }
 			local current_line = vim.fn.line(".")
 			local total_lines = vim.fn.line("$")
 			local index = math.floor((current_line / total_lines) * #chars)
@@ -75,22 +69,23 @@ return {
 		end
 
 		-- Sections
-		ins_left("sections", "a", {
+		ins("sections", "a", {
 			function()
 				return " "
 			end,
 			padding = { left = 0, right = 0 },
 		})
 
-		ins_left("sections", "b", {
+		ins("sections", "b", {
 			"branch",
 			icon = "",
 			color = {
 				bg = "NONE",
 			},
+			padding = { left = 1, right = 0 },
 		})
 
-		ins_left("sections", "c", {
+		ins("sections", "c", {
 			"diff",
 			symbols = {
 				added = icons.git.added,
@@ -109,7 +104,7 @@ return {
 			end,
 		})
 
-		ins_left("sections", "c", {
+		ins("sections", "c", {
 			"diagnostics",
 			symbols = {
 				error = icons.diagnostics.Error,
@@ -117,17 +112,44 @@ return {
 				info = icons.diagnostics.Info,
 				hint = icons.diagnostics.Hint,
 			},
-			padding = { left = 0, right = 0 },
+			padding = { left = 1, right = 0 },
 		})
 
-		ins_right("sections", "x", {
+    -- stylua: ignore
+		ins("sections", "x", {
+			function() return require("noice").api.status.lsp_progress.get() end,
+			cond = function() return package.loaded["noice"] and require("noice").api.status.lsp_progress.has() end,
+			color = { fg = "#fab387" },
+		})
+
+	   -- stylua: ignore
+		ins("sections", "x", {
+			function() return Snacks.profiler.status() end,
+			cond = function() return Snacks and Snacks.profiler and Snacks.profiler.status end,
+		})
+
+	   -- stylua: ignore
+	   ins("sections", "x", {
+	     function() return require("noice").api.status.mode.get() end,
+	     cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+	     color = function() return { fg = Snacks.util.color("Constant") } end,
+	   })
+
+	   -- stylua: ignore
+	   ins("sections", "x", {
+	     function() return "  " .. require("dap").status() end,
+	     cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
+	     color = function() return { fg = Snacks.util.color("Debug") } end,
+	   })
+
+		ins("sections", "x", {
 			"filetype",
 			icon_only = true,
 			separator = "",
 			padding = { left = 0, right = 0 },
 		})
 
-		ins_right("sections", "x", {
+		ins("sections", "x", {
 			"filename",
 			symbols = {
 				modified = "",
@@ -138,27 +160,7 @@ return {
 			padding = { left = 0, right = 1 },
 		})
 
-    -- stylua: ignore
-		ins_right("sections", "x", {
-			function() return Snacks.profiler.status() end,
-			cond = function() return Snacks and Snacks.profiler and Snacks.profiler.status end,
-		})
-
-    -- stylua: ignore
-    ins_right("sections", "x", {
-      function() return require("noice").api.status.mode.get() end,
-      cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-      color = function() return { fg = Snacks.util.color("Constant") } end,
-    })
-
-    -- stylua: ignore
-    ins_right("sections", "x", {
-      function() return "  " .. require("dap").status() end,
-      cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-      color = function() return { fg = Snacks.util.color("Debug") } end,
-    })
-
-		ins_right("sections", "z", {
+		ins("sections", "z", {
 			Scrollbar,
 			color = function()
 				local mode = vim.fn.mode()
@@ -180,7 +182,7 @@ return {
 		})
 
 		-- Winbar
-		ins_left("winbar", "c", {
+		ins("winbar", "c", {
 			function()
 				return require("nvim-navic").get_location()
 			end,
@@ -189,7 +191,7 @@ return {
 			end,
 		})
 
-		ins_right("winbar", "x", {
+		ins("winbar", "x", {
 			require("lazy.status").updates,
 			cond = require("lazy.status").has_updates,
 			color = function()

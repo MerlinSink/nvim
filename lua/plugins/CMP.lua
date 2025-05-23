@@ -68,21 +68,41 @@ return {
 
 		-- experimental signature help support
 		-- signature = { enabled = true },
+		--
+		cmdline = {
+			enabled = true,
+			keymap = {
+				preset = "none",
+				["<CR>"] = { "accept_and_enter", "fallback" },
+
+				["<C-k>"] = { "select_prev", "fallback" },
+				["<C-j>"] = { "select_next", "fallback" },
+			},
+			completion = { menu = { auto_show = true } },
+		},
 
 		sources = {
 			-- adding any nvim-cmp sources here will enable them
 			-- with blink.compat
 			compat = {},
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lazydev", "lsp", "path", "snippets", "buffer" },
 			providers = {
-				snippets = { score_offset = 1000 },
+				lazydev = {
+					name = "LazyDev",
+					module = "lazydev.integrations.blink",
+					-- make lazydev completions top priority (see `:h blink.cmp`)
+					score_offset = 100,
+				},
+				cmdline = {
+					min_keyword_length = function(ctx)
+						-- when typing a command, only show when the keyword is 3 characters or longer
+						if ctx.mode == "cmdline" and string.find(ctx.line, " ") == nil then
+							return 3
+						end
+						return 0
+					end,
+				},
 			},
-		},
-
-		cmdline = {
-			enabled = true,
-			keymap = { preset = "inherit" },
-			completion = { menu = { auto_show = true } },
 		},
 
 		keymap = {

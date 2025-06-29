@@ -23,6 +23,7 @@ return {
 			fish = { "fish_indent" },
 			c = { "clang-format" },
 			cpp = { "clang-format" },
+      cs = { "csharpier", "clan-format" },
 			json = { "prettier" },
 			yaml = { "prettier" },
 			toml = { "taplo" },

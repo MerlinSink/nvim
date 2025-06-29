@@ -45,7 +45,6 @@ return {
 				},
 			},
 		},
-		servers = require("lang"),
 	},
 	config = function(_, opts)
 		local icons = icons.diagnostics
@@ -97,7 +96,7 @@ return {
 
 		vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
-		local servers = opts.servers
+		local servers = require("lang")
 		local has_blink, blink = pcall(require, "blink.cmp")
 		local capabilities = vim.tbl_deep_extend(
 			"force",
@@ -120,13 +119,13 @@ return {
 		-- get all the servers that are available through mason-lspconfig
 		require("mason").setup()
 		local registry = require("mason-registry")
-		local pkg = require("mason-lspconfig").get_mappings()
+		local pkgmap = require("mason-lspconfig.mappings").get_all().lspconfig_to_package
 		local formatters = require("lazy.core.config").plugins["conform.nvim"].opts.formatters_by_ft
 
 		local ensure_installed = {} ---@type string[]
-		-- LSP Servers
+		-- LSP Servs
 		for server, _ in pairs(servers) do
-			local temp = pkg[server]
+			local temp = pkgmap[server]
 			if registry.has_package(temp) then
 				table.insert(ensure_installed, temp)
 			end
@@ -183,7 +182,6 @@ return {
       end
 			keymap("n", "K", function() return vim.lsp.buf.hover() end, "Hover")
 			keymap("n", "gk", function() return vim.lsp.buf.signature_help() end, "Signature Help")
-			keymap("i", "<C-k>", function() return vim.lsp.buf.signature_help() end, "Signature Help")
 			keymap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
       keymap({ "n", "v" },"<leader>cc", vim.lsp.codelens.run, "Run Codelens")
       keymap("n", "<leader>cC", vim.lsp.codelens.refresh, "Refresh & Display Codelens")

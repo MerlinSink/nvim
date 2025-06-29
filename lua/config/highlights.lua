@@ -8,6 +8,10 @@ local Rainbow = {
 	RainbowCyan = { fg = "#56B6C2" },
 }
 
-for group, colors in pairs(Rainbow) do
-	vim.api.nvim_set_hl(0, group, colors)
-end
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = function()
+    for group, colors in pairs(Rainbow) do
+      vim.api.nvim_set_hl(0, group, colors)
+    end
+  end,
+})

@@ -20,4 +20,4 @@ for _, module in ipairs(modules) do
 	load("config." .. module)
 end
 
-vim.cmd([[colorscheme catppuccin]])
+vim.cmd([[colorscheme gruvbox-material]])

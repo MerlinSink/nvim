@@ -199,6 +199,10 @@ return {
 			end,
 		})
 
+		ins("winbar", "x", {
+			"fileformat",
+		})
+
 		return opts
 	end,
 }

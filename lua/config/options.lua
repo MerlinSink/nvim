@@ -77,9 +77,9 @@ opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 opt.smoothscroll = true
-opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
+opt.foldexpr = "v:lua.Util.foldexpr()"
 opt.foldmethod = "expr"
-opt.foldtext = ""
+opt.foldtext = "v:lua.Util.foldtext()"
 
 if Util.check_sys("Linux") then
 	vim.opt.shell = "fish"

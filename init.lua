@@ -5,6 +5,9 @@ local function load(name)
 	end
 end
 
+_G.Util = require("config.util")
+_G.icons = require("config.icons")
+
 local modules = {
 	"options",
 	"keymaps",
@@ -13,11 +16,9 @@ local modules = {
 	"lazy",
 }
 
-_G.Util = require("config.util")
-_G.icons = require("config.icons")
-
 for _, module in ipairs(modules) do
 	load("config." .. module)
 end
 
-vim.cmd([[colorscheme gruvbox-material]])
+vim.cmd([[colorscheme catppuccin]])
+

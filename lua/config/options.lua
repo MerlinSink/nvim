@@ -77,13 +77,13 @@ opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 opt.smoothscroll = true
-opt.foldexpr = "v:lua.Util.foldexpr()"
+opt.foldexpr = "v:lua.SinkVim.fold.foldexpr()"
 opt.foldmethod = "expr"
-opt.foldtext = "v:lua.Util.foldtext()"
+opt.foldtext = "v:lua.SinkVim.fold.foldtext()"
 
-if Util.check_sys("Linux") then
+if SinkVim.check_sys("Linux") then
 	vim.opt.shell = "fish"
-elseif Util.check_sys("Windows") then
+elseif SinkVim.check_sys("Windows") then
 	vim.opt.shell = "pwsh"
 	vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command"
 	vim.opt.shellquote = ""

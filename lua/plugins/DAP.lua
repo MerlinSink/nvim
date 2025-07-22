@@ -35,11 +35,11 @@ return {
 		-- stylua: ignore end
 		config = function(_, opts)
 			-- load mason-nvim-dap here, after all adapters have been setup
-			if Util.has("mason-nvim-dap.nvim") then
+			if SinkVim.has("mason-nvim-dap.nvim") then
 				require("mason-nvim-dap").setup(opts)
 			end
 			vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
-			for name, sign in pairs(icons.dap) do
+			for name, sign in pairs(SinkVim.icons.dap) do
 				sign = type(sign) == "table" and sign or { sign }
 				vim.fn.sign_define(
 					"Dap" .. name,

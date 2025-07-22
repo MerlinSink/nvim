@@ -25,7 +25,7 @@ return {
 			"words",
 		}
 
-		local conf = Util.load("plugins.Snacks.", modules)
+		local conf = SinkVim.load("plugins.Snacks.", modules)
 		require("snacks").setup(conf)
 	end,
 }

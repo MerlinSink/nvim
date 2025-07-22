@@ -3,7 +3,7 @@ return {
   event = "VeryLazy",
 	init = function()
 		vim.g.navic_silence = true
-		Util.on_attach(function(client, buffer)
+		SinkVim.lsp.on_attach(function(client, buffer)
 			if client.supports_method("textDocument/documentSymbol") then
 				require("nvim-navic").attach(client, buffer)
 			end
@@ -11,7 +11,7 @@ return {
 	end,
 	opts = function()
 		return {
-			icons = icons.kinds,
+			icons = SinkVim.icons.kinds,
 			lsp = {
 				auto_attach = false,
 				preference = nil,

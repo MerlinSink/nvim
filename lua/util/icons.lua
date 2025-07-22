@@ -1,4 +1,5 @@
 local M = {}
+
 -- icons used by other plugins
 M = {
 	dap = {
@@ -56,10 +57,6 @@ M = {
 		Value = " ",
 		Variable = " ",
 	},
-}
-
-M.renames = {
-	["windwp/nvim-spectre"] = "nvim-pack/nvim-spectre",
 }
 
 return M

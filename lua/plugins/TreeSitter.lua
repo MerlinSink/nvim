@@ -77,7 +77,7 @@ return {
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
 			if type(opts.ensure_installed) == "table" then
-				opts.ensure_installed = Util.dedup(opts.ensure_installed)
+				opts.ensure_installed = SinkVim.dedup(opts.ensure_installed)
 			end
 		end,
 	},

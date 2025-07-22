@@ -47,54 +47,54 @@ return {
 		},
 	},
 	config = function(_, opts)
-		local icons = icons.diagnostics
-		opts.diagnostics = vim.tbl_deep_extend("force", {
-			signs = {
-				text = {
-					[vim.diagnostic.severity.ERROR] = icons.Error,
-					[vim.diagnostic.severity.WARN] = icons.Warn,
-					[vim.diagnostic.severity.HINT] = icons.Hint,
-					[vim.diagnostic.severity.INFO] = icons.Info,
-				},
-			},
-		}, opts.diagnostics or {})
-
-		-- inlay hints
-		if opts.inlay_hints.enabled then
-			Util.on_supports_method("textDocument/inlayHint", function(_, buffer)
-				if
-					vim.api.nvim_buf_is_valid(buffer)
-					and vim.bo[buffer].buftype == ""
-					and not vim.tbl_contains(opts.inlay_hints.exclude, vim.bo[buffer].filetype)
-				then
-					vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
-				end
-			end)
-		end
-
-		-- code lens
-		if opts.codelens.enabled and vim.lsp.codelens then
-			Util.on_supports_method("textDocument/codeLens", function(_, buffer)
-				vim.lsp.codelens.refresh()
-				vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-					buffer = buffer,
-					callback = vim.lsp.codelens.refresh,
-				})
-			end)
-		end
-
-		if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
-			opts.diagnostics.virtual_text.prefix = "●"
-				or function(diagnostic)
-					for d, icon in pairs(icons) do
-						if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
-							return icon
-						end
-					end
-				end
-		end
-
-		vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
+		-- local icons = SinkVim.icons.diagnostics
+		-- opts.diagnostics = vim.tbl_deep_extend("force", {
+		-- 	signs = {
+		-- 		text = {
+		-- 			[vim.diagnostic.severity.ERROR] = icons.Error,
+		-- 			[vim.diagnostic.severity.WARN] = icons.Warn,
+		-- 			[vim.diagnostic.severity.HINT] = icons.Hint,
+		-- 			[vim.diagnostic.severity.INFO] = icons.Info,
+		-- 		},
+		-- 	},
+		-- }, opts.diagnostics or {})
+		--
+		-- -- inlay hints
+		-- if opts.inlay_hints.enabled then
+		-- 	SinkVim.lsp.on_supports_method("textDocument/inlayHint", function(_, buffer)
+		-- 		if
+		-- 			vim.api.nvim_buf_is_valid(buffer)
+		-- 			and vim.bo[buffer].buftype == ""
+		-- 			and not vim.tbl_contains(opts.inlay_hints.exclude, vim.bo[buffer].filetype)
+		-- 		then
+		-- 			vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
+		-- 		end
+		-- 	end)
+		-- end
+		--
+		-- -- code lens
+		-- if opts.codelens.enabled and vim.lsp.codelens then
+		-- 	SinkVim.lsp.on_supports_method("textDocument/codeLens", function(_, buffer)
+		-- 		vim.lsp.codelens.refresh()
+		-- 		vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+		-- 			buffer = buffer,
+		-- 			callback = vim.lsp.codelens.refresh,
+		-- 		})
+		-- 	end)
+		-- end
+		--
+		-- if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
+		-- 	opts.diagnostics.virtual_text.prefix = "●"
+		-- 		or function(diagnostic)
+		-- 			for d, icon in pairs(icons) do
+		-- 				if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
+		-- 					return icon
+		-- 				end
+		-- 			end
+		-- 		end
+		-- end
+		--
+		-- vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
 		local servers = require("lang")
 		local has_blink, blink = pcall(require, "blink.cmp")
@@ -142,7 +142,7 @@ return {
 			end
 		end
 
-		ensure_installed = Util.dedup(ensure_installed)
+		ensure_installed = SinkVim.dedup(ensure_installed)
 
 		registry.refresh(function()
 			for _, tool in ipairs(ensure_installed) do
@@ -163,30 +163,30 @@ return {
 			end
 		end
 
-		Util.on_attach(function(client, buffer)
-			local keymap = function(mode, keys, func, desc)
-				vim.keymap.set(mode, keys, func, { buffer = buffer, desc = desc })
-			end
-      -- stylua: ignore start
-      if Snacks and Snacks.picker then
-        keymap("n", "<leader>cl", function() Snacks.picker.lsp_config() end, "Lsp Info")
-			  keymap("n", "gd", function() Snacks.picker.lsp_definitions() end, "Goto Definition")
-			  keymap("n", "gD", function() Snacks.picker.lsp_declarations() end, "Goto Declaration")
-			  keymap("n", "gr", function() Snacks.picker.lsp_references() end, "References")
-			  keymap("n", "gI", function() Snacks.picker.lsp_implementations() end, "Goto Implementation")
-			  keymap("n", "gy", function() Snacks.picker.lsp_type_definitions() end, "Goto T[y]pe Definition")
-			  keymap({ "n", "t" }, "<C-n>", function() Snacks.words.jump(vim.v.count1) end, "Next Reference")
-			  keymap({ "n", "t" }, "<C-p>", function() Snacks.words.jump(-vim.v.count1) end, "Prev Reference")
-			  keymap("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, "LSP Symbols")
-			  keymap("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, "LSP Workspace Symbols")
-      end
-			keymap("n", "K", function() return vim.lsp.buf.hover() end, "Hover")
-			keymap("n", "gk", function() return vim.lsp.buf.signature_help() end, "Signature Help")
-			keymap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
-      keymap({ "n", "v" },"<leader>cc", vim.lsp.codelens.run, "Run Codelens")
-      keymap("n", "<leader>cC", vim.lsp.codelens.refresh, "Refresh & Display Codelens")
-			keymap("n", "<leader>cr", vim.lsp.buf.rename, "Rename")
-			-- stylua: ignore end
-		end)
+		-- SinkVim.lsp.on_attach(function(client, buffer)
+		-- 	local keymap = function(mode, keys, func, desc)
+		-- 		vim.keymap.set(mode, keys, func, { buffer = buffer, desc = desc })
+		-- 	end
+		--     -- stylua: ignore start
+		--     if Snacks and Snacks.picker then
+		--       keymap("n", "<leader>cl", function() Snacks.picker.lsp_config() end, "Lsp Info")
+		-- 	  keymap("n", "gd", function() Snacks.picker.lsp_definitions() end, "Goto Definition")
+		-- 	  keymap("n", "gD", function() Snacks.picker.lsp_declarations() end, "Goto Declaration")
+		-- 	  keymap("n", "gr", function() Snacks.picker.lsp_references() end, "References")
+		-- 	  keymap("n", "gI", function() Snacks.picker.lsp_implementations() end, "Goto Implementation")
+		-- 	  keymap("n", "gy", function() Snacks.picker.lsp_type_definitions() end, "Goto T[y]pe Definition")
+		-- 	  keymap({ "n", "t" }, "<C-n>", function() Snacks.words.jump(vim.v.count1) end, "Next Reference")
+		-- 	  keymap({ "n", "t" }, "<C-p>", function() Snacks.words.jump(-vim.v.count1) end, "Prev Reference")
+		-- 	  keymap("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, "LSP Symbols")
+		-- 	  keymap("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, "LSP Workspace Symbols")
+		--     end
+		-- 	keymap("n", "K", function() return vim.lsp.buf.hover() end, "Hover")
+		-- 	keymap("n", "gk", function() return vim.lsp.buf.signature_help() end, "Signature Help")
+		-- 	keymap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
+		--     keymap({ "n", "v" },"<leader>cc", vim.lsp.codelens.run, "Run Codelens")
+		--     keymap("n", "<leader>cC", vim.lsp.codelens.refresh, "Refresh & Display Codelens")
+		-- 	keymap("n", "<leader>cr", vim.lsp.buf.rename, "Rename")
+		-- 	-- stylua: ignore end
+		-- end)
 	end,
 }

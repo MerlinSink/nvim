@@ -5,14 +5,14 @@ local function load(name)
 	end
 end
 
-_G.Util = require("config.util")
-_G.icons = require("config.icons")
+_G.SinkVim = require("util")
 
 local modules = {
 	"options",
 	"keymaps",
 	"highlights",
 	"autocmds",
+  "lsp",
 	"lazy",
 }
 
@@ -21,4 +21,3 @@ for _, module in ipairs(modules) do
 end
 
 vim.cmd([[colorscheme catppuccin]])
-

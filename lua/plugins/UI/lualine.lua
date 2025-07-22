@@ -15,6 +15,7 @@ return {
 		-- PERF: we don't need this lualine require madness 🤷
 		local lualine_require = require("lualine_require")
 		lualine_require.require = require
+    local icons = SinkVim.icons
 
 		vim.o.laststatus = vim.g.lualine_laststatus
 
@@ -34,13 +35,7 @@ return {
 				lualine_b = {},
 				lualine_c = {},
 
-				lualine_x = {
-					-- {
-					--   function() return require("noice").api.status.command.get() end,
-					--   cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-					--   color = function() return { fg = Snacks.util.color("Statement") } end,
-					-- },
-				},
+				lualine_x = {},
 				lualine_y = {},
 				lualine_z = {},
 			},

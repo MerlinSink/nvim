@@ -15,7 +15,7 @@ return {
 		-- PERF: we don't need this lualine require madness 🤷
 		local lualine_require = require("lualine_require")
 		lualine_require.require = require
-    local icons = SinkVim.icons
+		local icons = SinkVim.icons
 
 		vim.o.laststatus = vim.g.lualine_laststatus
 
@@ -138,6 +138,21 @@ return {
 	   })
 
 		ins("sections", "x", {
+			"lsp_status",
+			icon = "", -- f013
+			symbols = {
+				-- Standard unicode symbols to cycle through for LSP progress:
+				spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+				-- Standard unicode symbol for when LSP is done:
+				done = "✓",
+				-- Delimiter inserted between LSP names:
+				separator = " ",
+			},
+			-- List of LSP names to ignore (e.g., `null-ls`):
+			ignore_lsp = {},
+		})
+
+		ins("sections", "x", {
 			"filetype",
 			icon_only = true,
 			separator = "",
@@ -176,26 +191,12 @@ return {
 			padding = { left = 0, right = 0 },
 		})
 
-		-- Winbar
-		ins("winbar", "c", {
-			function()
-				return require("nvim-navic").get_location()
-			end,
-			cond = function()
-				return require("nvim-navic").is_available()
-			end,
-		})
-
 		ins("winbar", "x", {
 			require("lazy.status").updates,
 			cond = require("lazy.status").has_updates,
 			color = function()
 				return { fg = Snacks.util.color("Special") }
 			end,
-		})
-
-		ins("winbar", "x", {
-			"fileformat",
 		})
 
 		return opts

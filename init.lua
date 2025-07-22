@@ -12,7 +12,7 @@ local modules = {
 	"keymaps",
 	"highlights",
 	"autocmds",
-  "lsp",
+	"lsp",
 	"lazy",
 }
 

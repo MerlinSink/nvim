@@ -68,6 +68,9 @@ end
 -- Setup diagnostic
 vim.diagnostic.config(diagnostics)
 
+-- Setup LSP Server
+vim.lsp.enable(SinkVim.lsp.get_lsp())
+
 -- Set Keymaps
 SinkVim.lsp.on_attach(function(client, buffer)
 	local keymap = function(mode, keys, func, desc)

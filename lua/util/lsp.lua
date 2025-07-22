@@ -1,5 +1,16 @@
 local M = {}
 
+function M.get_lsp()
+	local lsp = {}
+	for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath("config") .. "/lsp", [[v:val =~ '\.lua$']])) do
+		local name = file:match("^(.*)%.lua$")
+		if name then
+			table.insert(lsp, name)
+		end
+	end
+	return lsp
+end
+
 ---@param on_attach fun(client:vim.lsp.Client, buffer)
 ---@param name? string
 function M.on_attach(on_attach, name)

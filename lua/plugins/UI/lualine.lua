@@ -27,7 +27,7 @@ return {
 				section_separators = {},
 				disabled_filetypes = {
 					statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" },
-					winbar = { "dashboard", "alpha", "ministarter", "snacks_dashboard" },
+					-- winbar = { "dashboard", "alpha", "ministarter", "snacks_dashboard" },
 				},
 			},
 			sections = {
@@ -40,10 +40,6 @@ return {
 				lualine_z = {},
 			},
 
-			winbar = {
-				lualine_c = {},
-				lualine_x = {},
-			},
 			extensions = { "neo-tree", "lazy", "fzf" },
 		}
 

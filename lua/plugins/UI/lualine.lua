@@ -97,6 +97,7 @@ return {
 					}
 				end
 			end,
+			padding = { left = 1, right = 1 },
 		})
 
 		ins("sections", "c", {
@@ -108,6 +109,14 @@ return {
 				hint = icons.diagnostics.Hint,
 			},
 			padding = { left = 1, right = 0 },
+		})
+
+		ins("sections", "x", {
+			require("lazy.status").updates,
+			cond = require("lazy.status").has_updates,
+			color = function()
+				return { fg = Snacks.util.color("Special") }
+			end,
 		})
 
     -- stylua: ignore
@@ -142,21 +151,24 @@ return {
 			icon = "", -- f013
 			symbols = {
 				-- Standard unicode symbols to cycle through for LSP progress:
-				spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+				spinner = "" ,
+				-- spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
 				-- Standard unicode symbol for when LSP is done:
-				done = "✓",
+				done = "",
+				-- done = "✓",
 				-- Delimiter inserted between LSP names:
 				separator = " ",
 			},
 			-- List of LSP names to ignore (e.g., `null-ls`):
 			ignore_lsp = {},
+			padding = { left = 0, right = 1 },
 		})
 
 		ins("sections", "x", {
 			"filetype",
 			icon_only = true,
 			separator = "",
-			padding = { left = 0, right = 0 },
+			padding = { left = 1, right = 0 },
 		})
 
 		ins("sections", "x", {
@@ -191,13 +203,6 @@ return {
 			padding = { left = 0, right = 0 },
 		})
 
-		ins("winbar", "x", {
-			require("lazy.status").updates,
-			cond = require("lazy.status").has_updates,
-			color = function()
-				return { fg = Snacks.util.color("Special") }
-			end,
-		})
 
 		return opts
 	end,

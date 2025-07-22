@@ -1,18 +1,20 @@
--- This file is automatically loaded by plugins.core
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
-vim.g.autoformat = false
-vim.g.snacks_animate = true
-vim.g.lazyvim_picker = "auto"
-vim.g.lazyvim_cmp = "auto"
-vim.g.ai_cmp = true
-vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
-vim.g.root_lsp_ignore = { "copilot" }
-vim.g.deprecation_warnings = false
-vim.g.trouble_lualine = true
-
+local o = vim.o
+local g = vim.g
 local opt = vim.opt
+
+-- This file is automatically loaded by plugins.core
+g.mapleader = " "
+g.maplocalleader = "\\"
+
+g.autoformat = false
+g.snacks_animate = true
+g.lazyvim_picker = "auto"
+g.lazyvim_cmp = "auto"
+g.ai_cmp = true
+g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
+g.root_lsp_ignore = { "copilot" }
+g.deprecation_warnings = false
+g.trouble_lualine = true
 
 opt.encoding = "UTF-8"
 opt.fileencoding = "utf-8"
@@ -82,21 +84,24 @@ opt.foldmethod = "expr"
 opt.foldtext = "v:lua.SinkVim.fold.foldtext()"
 
 if SinkVim.check_sys("Linux") then
-	vim.opt.shell = "fish"
+	opt.shell = "fish"
 elseif SinkVim.check_sys("Windows") then
-	vim.opt.shell = "pwsh"
-	vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command"
-	vim.opt.shellquote = ""
-	vim.opt.shellxquote = ""
+	opt.shell = "pwsh"
+	opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command"
+	opt.shellquote = ""
+	opt.shellxquote = ""
 end
 
 -- Fix markdown indentation settings
-vim.g.markdown_recommended_style = 0
+g.markdown_recommended_style = 0
 
-if vim.g.neovide then
-	vim.o.guifont = "JetBrainsMono Nerd Font Mono:h14:b"
-	vim.g.neovide_cursor_vfx_mode = "railgun"
-	vim.g.neovide_fullscreen = false
-	vim.g.neovide_opacity = 0.9
-	vim.g.neovide_scale_factor = 1.0
+-- Set winborder
+-- o.winborder = "rounded" -- "none", "single", "double", "rounded", "solid", "shadow"
+
+if g.neovide then
+	o.guifont = "JetBrainsMono Nerd Font Mono:h14:b"
+	g.neovide_cursor_vfx_mode = "railgun"
+	g.neovide_fullscreen = false
+	g.neovide_opacity = 0.9
+	g.neovide_scale_factor = 1.0
 end

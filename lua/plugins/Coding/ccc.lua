@@ -2,7 +2,7 @@ return {
 	"uga-rosa/ccc.nvim",
 	event = "LazyFile",
 	keys = {
-		{ "<leader>th", "<Cmd>CccConvert<CR>", desc = "CccHighlighter Convert" },
+		{ "<leader>ch", "<Cmd>CccConvert<CR>", desc = "CccHighlighter Convert" },
 		{ "<leader>Hp", "<Cmd>CccPick<CR>", desc = "CccHighlighter Pick" },
 	},
 	opts = {

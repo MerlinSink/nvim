@@ -3,7 +3,7 @@ return {
 	event = "VeryLazy",
 	keys = {
 		{
-			"<leader>tb",
+			"<leader>cb",
 			function()
 				require("toggle-bool").toggle_bool()
 			end,

@@ -36,3 +36,17 @@ vim.api.nvim_create_autocmd("FileType", {
 		end)
 	end,
 })
+
+-- Smart colorscheme
+vim.api.nvim_create_autocmd("ColorScheme", {
+	group = augroup("smart_colorscheme"),
+	callback = function()
+		local path = vim.fn.stdpath("config") .. "/lua/config/setting.json"
+		local color = vim.g.colors_name or "none"
+		local current = SinkVim.json.read(path)
+		local pre = current and current.colorscheme or nil
+		if pre ~= color then
+			SinkVim.json.write({ colorscheme = color }, path)
+		end
+	end,
+})

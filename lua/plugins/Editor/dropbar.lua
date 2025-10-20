@@ -1,6 +1,6 @@
 return {
 	"Bekaboo/dropbar.nvim",
-  event = "LazyFile",
+	event = "LazyFile",
 	dependencies = {
 		{ "nvim-tree/nvim-web-devicons", opts = {} },
 	},

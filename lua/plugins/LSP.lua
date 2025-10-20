@@ -45,8 +45,6 @@ return {
 			end
 		end
 
-		ensure_installed = SinkVim.dedup(ensure_installed)
-
 		registry.refresh(function()
 			for _, tool in ipairs(ensure_installed) do
 				local p = registry.get_package(tool)

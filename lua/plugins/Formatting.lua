@@ -23,7 +23,7 @@ return {
 			fish = { "fish_indent" },
 			c = { "clang-format" },
 			cpp = { "clang-format" },
-      cs = { "csharpier" },
+			cs = { "csharpier" },
 			json = { "prettier" },
 			yaml = { "prettier" },
 			toml = { "taplo" },
@@ -31,6 +31,7 @@ return {
 			css = { "prettier" },
 			javascript = { "prettier" },
 			markdown = { "prettier" },
+			py = { "ruff", "prettier" },
 		},
 		-- Set default options
 		default_format_opts = {

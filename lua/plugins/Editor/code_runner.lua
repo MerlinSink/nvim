@@ -1,15 +1,57 @@
 return {
 	"CRAG666/code_runner.nvim",
 	event = "VeryLazy",
-  keys ={
-		{ "<leader>rr", function() require("code_runner").run_code() end, desc = "Run Code" },
-		{ "<leader>rf", function() require("code_runner").run_from_fn() end, desc = "Run File" },
-		{ "<leader>rft", function() require("code_runner").run_filetype() end, desc = "Run FileType" },
-		{ "<leader>rp", function() require("code_runner").run_project() end, desc = "Run Project" },
-		{ "<leader>rc", function() require("code_runner").run_close() end, desc = "Run Close" },
-		{ "<leader>rgf", function() require("code_runner").get_filetype_command() end, desc = "Get FileType Command" },
-		{ "<leader>rgp", function() require("code_runner").get_project_command() end, desc = "Get Project Command" },
-  },
+	keys = {
+		{
+			"<leader>rr",
+			function()
+				require("code_runner").run_code()
+			end,
+			desc = "Run Code",
+		},
+		{
+			"<leader>rf",
+			function()
+				require("code_runner").run_from_fn()
+			end,
+			desc = "Run File",
+		},
+		{
+			"<leader>rft",
+			function()
+				require("code_runner").run_filetype()
+			end,
+			desc = "Run FileType",
+		},
+		{
+			"<leader>rp",
+			function()
+				require("code_runner").run_project()
+			end,
+			desc = "Run Project",
+		},
+		{
+			"<leader>rc",
+			function()
+				require("code_runner").run_close()
+			end,
+			desc = "Run Close",
+		},
+		{
+			"<leader>rgf",
+			function()
+				require("code_runner").get_filetype_command()
+			end,
+			desc = "Get FileType Command",
+		},
+		{
+			"<leader>rgp",
+			function()
+				require("code_runner").get_project_command()
+			end,
+			desc = "Get Project Command",
+		},
+	},
 	opts = {
 		filetype = {
 			-- java = {
@@ -17,7 +59,18 @@ return {
 			-- 	"javac $fileName &&",
 			-- 	"java $fileNameWithoutExt",
 			-- },
-			python = "python3 -u",
+			-- python = "python3 -u",
+			python = function()
+				local venv = os.getenv("VIRTUAL_ENV")
+				local conda = os.getenv("CONDA_DEFAULT_ENV")
+				if venv then
+					return venv .. "/Scripts/python -u"
+				elseif conda then
+					return "python -u"
+				else
+					return "python -u"
+				end
+			end,
 			-- typescript = "deno run",
 			-- rust = {
 			-- 	"cd $dir &&",

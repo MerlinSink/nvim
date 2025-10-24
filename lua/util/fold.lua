@@ -48,9 +48,9 @@ function M.foldtext()
 	local result = {}
 	fold_virt_text(result, start_text, vim.v.foldstart - 1)
 	table.insert(result, { " ", nil })
-	table.insert(result, { "", "@comment.warning.gitcommit" })
+	-- table.insert(result, { "", "@comment.warning.gitcommit" })
 	table.insert(result, { "↙ " .. nline .. " lines", "@comment.warning" })
-	table.insert(result, { "", "@comment.warning.gitcommit" })
+	-- table.insert(result, { "", "@comment.warning.gitcommit" })
 	return result
 end
 

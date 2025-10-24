@@ -25,7 +25,7 @@ return {
 
 		local ensure_installed = {} ---@type string[]
 
-		-- LSP Servs
+		-- LSP Servers
     local lsp = SinkVim.lsp.get_lsp()
 		for server in pairs(lsp) do
 			local t = pkgmap[server]

@@ -3,7 +3,7 @@ return {
 	event = "LazyFile",
 	keys = {
 		{ "<leader>ch", "<Cmd>CccConvert<CR>", desc = "CccHighlighter Convert" },
-		{ "<leader>Hp", "<Cmd>CccPick<CR>", desc = "CccHighlighter Pick" },
+		{ "<leader>cp", "<Cmd>CccPick<CR>", desc = "CccHighlighter Pick" },
 	},
 	opts = {
 		highlighter = {

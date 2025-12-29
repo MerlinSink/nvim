@@ -1,21 +1,20 @@
 return {
-	"neovim/nvim-lspconfig",
-	event = "LazyFile",
+	"mason-org/mason.nvim",
+	cmd = "Mason",
 	dependencies = {
-		{
-			"mason-org/mason.nvim",
-			cmd = "Mason",
-			opts = {
-				ui = {
-					border = "double",
-					width = 0.7,
-					height = 0.7,
-				},
-			},
-		},
 		{ "mason-org/mason-lspconfig.nvim", config = function() end },
+		{
+			"neovim/nvim-lspconfig",
+			event = "LazyFile",
+		},
 	},
-	opts = {},
+	opts = {
+		ui = {
+			border = "double",
+			width = 0.7,
+			height = 0.7,
+		},
+	},
 	config = function(_, opts)
 		-- get all the servers that are available through mason-lspconfig
 		require("mason").setup()
@@ -26,11 +25,11 @@ return {
 		local ensure_installed = {} ---@type string[]
 
 		-- LSP Servers
-    local lsp = SinkVim.lsp.get_lsp()
-		for server in pairs(lsp) do
-			local t = pkgmap[server]
-			if registry.has_package(t) then
-				table.insert(ensure_installed, t)
+		local lsp = SinkVim.lsp.get_lsp()
+		for _, server in ipairs(lsp) do
+			local pkg = pkgmap[server]
+			if registry.has_package(pkg) then
+				table.insert(ensure_installed, pkg)
 			end
 		end
 

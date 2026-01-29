@@ -12,16 +12,6 @@ setmetatable(M, {
 	end,
 })
 
--- define events
-local lazy_file_events = { "BufReadPost", "BufNewFile", "BufWritePre" }
-
--- Add LazyFile event
-function M.lazy_file()
-	local Event = require("lazy.core.handler.event")
-	Event.mappings.LazyFile = { id = "LazyFile", event = lazy_file_events }
-	Event.mappings["User LazyFile"] = Event.mappings.LazyFile
-end
-
 ---@param list table<string>
 ---@return table<string>
 function M.dedup(list)
@@ -36,8 +26,8 @@ function M.dedup(list)
 	return result
 end
 
-function M.load(prefix, modules)
-	local config = {}
+function M.load(prefix, modules, opts)
+	local config = opts or {}
 	for _, mod in ipairs(modules) do
 		local ok, conf = pcall(require, prefix .. mod)
 		if ok and type(conf) == "table" then
@@ -56,6 +46,11 @@ end
 
 function M.has(name)
 	return require("lazy.core.config").spec.plugins[name] ~= nil
+end
+
+
+function M.keymap(mode, keys, func, desc)
+	 vim.keymap.set(mode, keys, func, { desc = desc })
 end
 
 return M

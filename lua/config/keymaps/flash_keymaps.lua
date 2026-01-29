@@ -1,0 +1,5 @@
+SinkVim.keymap({ "n", "x", "o" }, "s", function() require("flash").jump() end, "Flash")
+SinkVim.keymap({ "n", "x", "o" },"S",  function() require("flash").treesitter() end, "Flash Treesitter")
+SinkVim.keymap("o",  "r", function() require("flash").remote() end, "Remote Flash")
+SinkVim.keymap({ "o", "x" },"R",  function() require("flash").treesitter_search() end, "Treesitter Search")
+SinkVim.keymap("c",  "<c-s>", function() require("flash").toggle() end, "Toggle Flash Search")

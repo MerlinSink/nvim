@@ -1,7 +1,6 @@
-return {
-	"folke/tokyonight.nvim",
-	lazy = true,
-	opts = {
-		style = "moon",
-	},
+local opts = {
+
+	style = "moon",
 }
+
+require("tokyonight").setup(opts)

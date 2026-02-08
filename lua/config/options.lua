@@ -30,7 +30,7 @@ opt.linebreak = true -- Wrap lines at convenient points
 opt.list = false -- Show some invisible characters (tabs...
 opt.mouse = "a" -- Enable mouse mode
 opt.number = true -- Print line number
-opt.pumblend = 10 -- Popup blend
+opt.pumblend = 0 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
 opt.relativenumber = true -- Relative line numbers
 opt.ruler = false -- Disable the default ruler
@@ -86,7 +86,7 @@ opt.foldlevel = 99
 g.markdown_recommended_style = 0
 
 -- Set winborder
--- o.winborder = "rounded" -- "none", "single", "double", "rounded", "solid", "shadow"
+o.winborder = "rounded" -- "none", "single", "double", "rounded", "solid", "shadow"
 
 if g.neovide then
 	o.guifont = "JetBrainsMono Nerd Font Mono:h14:b"

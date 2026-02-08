@@ -14,13 +14,13 @@ SinkVim.keymap("n", "<leader>rl", "<Cmd>source %<CR>", "Source config")
 SinkVim.keymap("n", "<leader>rs", "<Cmd>restart<CR>", "Restart NeoVim")
 
 -- Change Split
-SinkVim.keymap("n", "<C-j>", "<C-w>j", "Split Down")
-SinkVim.keymap("n", "<C-k>", "<C-w>k", "Split Up")
-SinkVim.keymap("n", "<C-h>", "<C-w>h", "Split Left")
-SinkVim.keymap("n", "<C-l>", "<C-w>l", "Split Right")
+SinkVim.keymap("n", "<C-j>", "<C-w>j", "Go to the down window")
+SinkVim.keymap("n", "<C-k>", "<C-w>k", "Go to the up window")
+SinkVim.keymap("n", "<C-h>", "<C-w>h", "Go to the left window")
+SinkVim.keymap("n", "<C-l>", "<C-w>l", "Go to the right window")
 
-SinkVim.keymap("n", "su", "<C-w>t<C-w>H", "Split to vertical")
-SinkVim.keymap("n", "si", "<C-w>t<C-w>K", "Split to horizontal")
+SinkVim.keymap("n", "<leader>cu", "<C-w>t<C-w>H", "Split to vertical")
+SinkVim.keymap("n", "<leader>ci", "<C-w>t<C-w>K", "Split to horizontal")
 
 -- Create a tab and move
 SinkVim.keymap("n", "nt", vim.cmd.tabnew, "New Tab")

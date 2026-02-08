@@ -1,6 +1,0 @@
-SinkVim.keymap("n", "<leader>?", function()
-	require("which-key").show({ global = false })
-end, "Buffer Keymaps (which-key)")
-SinkVim.keymap("n", "<c-w><space>", function()
-	require("which-key").show({ keys = "<c-w>", loop = true })
-end, "Window Hydra Mode (which-key)")

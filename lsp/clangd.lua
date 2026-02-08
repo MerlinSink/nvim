@@ -1,4 +1,24 @@
+-- Ensure mason installs the server
 return {
+	keys = {
+		{ "<leader>ch", "<cmd>LspClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
+	},
+	root_markers = {
+		"compile_commands.json",
+		"compile_flags.txt",
+		"configure.ac", -- AutoTools
+		"Makefile",
+		"configure.ac",
+		"configure.in",
+		"config.h.in",
+		"meson.build",
+		"meson_options.txt",
+		"build.ninja",
+		".git",
+	},
+	capabilities = {
+		offsetEncoding = { "utf-16" },
+	},
 	cmd = {
 		"clangd",
 		"--background-index",
@@ -8,30 +28,9 @@ return {
 		"--function-arg-placeholders",
 		"--fallback-style=llvm",
 	},
-	filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-	root_markers = {
-		".clangd",
-		".clang-tidy",
-		".clang-format",
-		"compile_commands.json",
-		"compile_flags.txt",
-		"configure.ac", -- AutoTools
-		".git",
-	},
-	capabilities = {
-		textDocument = {
-			completion = {
-				editsNearCursor = true,
-			},
-		},
-		offsetEncoding = { "utf-8", "utf-16" },
-	},
 	init_options = {
 		usePlaceholders = true,
 		completeUnimported = true,
 		clangdFileStatus = true,
-	},
-	keys = {
-		{ "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
 	},
 }

@@ -56,10 +56,8 @@ ins("sections", "a", {
 ins("sections", "b", {
 	"branch",
 	icon = "",
-	color = {
-		bg = "NONE",
-	},
-	padding = { left = 1, right = 0 },
+	color = { bg = "NONE" },
+	padding = { left = 1, right = 1 },
 })
 
 ins("sections", "c", {
@@ -90,7 +88,7 @@ ins("sections", "c", {
 		info = icons.diagnostics.Info,
 		hint = icons.diagnostics.Hint,
 	},
-	padding = { left = 1, right = 0 },
+	padding = { left = 0, right = 0 },
 })
 
 		-- ins("sections", "x", {
@@ -109,36 +107,36 @@ ins("sections", "c", {
 		})
 
 	   -- stylua: ignore
-	   -- ins("sections", "x", {
-	   --   function() return require("noice").api.status.mode.get() end,
-	   --   cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-	   --   color = function() return { fg = Snacks.util.color("Constant") } end,
-	   -- })
+	   ins("sections", "x", {
+	     function() return require("noice").api.status.mode.get() end,
+	     cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+	     color = function() return { fg = Snacks.util.color("Constant") } end,
+	   })
 
 	   -- stylua: ignore
-	   -- ins("sections", "x", {
-	   --   function() return "  " .. require("dap").status() end,
-	   --   cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-	   --   color = function() return { fg = Snacks.util.color("Debug") } end,
-	   -- })
+	   ins("sections", "x", {
+	     function() return "  " .. require("dap").status() end,
+	     cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
+	     color = function() return { fg = Snacks.util.color("Debug") } end,
+	   })
 
-		ins("sections", "x", {
-			"lsp_status",
-			icon = "", -- f013
-			symbols = {
-				-- Standard unicode symbols to cycle through for LSP progress:
-				spinner = "" ,
-				-- spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
-				-- Standard unicode symbol for when LSP is done:
-				done = "",
-				-- done = "✓",
-				-- Delimiter inserted between LSP names:
-				separator = " ",
-			},
-			-- List of LSP names to ignore (e.g., `null-ls`):
-			ignore_lsp = {},
-			padding = { left = 0, right = 1 },
-		})
+ins("sections", "x", {
+	"lsp_status",
+	icon = "", -- f013
+	symbols = {
+		-- Standard unicode symbols to cycle through for LSP progress:
+		spinner = "",
+		-- spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+		-- Standard unicode symbol for when LSP is done:
+		done = "",
+		-- done = "✓",
+		-- Delimiter inserted between LSP names:
+		separator = " ",
+	},
+	-- List of LSP names to ignore (e.g., `null-ls`):
+	ignore_lsp = {},
+	padding = { left = 0, right = 1 },
+})
 
 ins("sections", "x", {
 	"filetype",

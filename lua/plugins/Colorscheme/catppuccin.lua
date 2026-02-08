@@ -63,6 +63,10 @@ local opts = {
 	integrations = {
 		aerial = true,
 		alpha = true,
+		blink_cmp = {
+			enabled = true,
+			style = "bordered",
+		},
 		cmp = true,
 		dashboard = true,
 		flash = false,
@@ -101,7 +105,7 @@ local opts = {
 }
 
 if (vim.g.colors_name or ""):find("catppuccin") then
-  opts.highlights = require("catppuccin.groups.integrations.bufferline").get()
+	opts.highlights = require("catppuccin.groups.integrations.bufferline").get()
 end
 
 require("catppuccin").setup(opts)

@@ -72,14 +72,42 @@ vim.diagnostic.config(diagnostics)
 local lsp = {
 	"lua_ls",
 	"clangd",
+	"pyright",
+}
+
+local capabilities = {
+  textDocument = {
+    foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true
+    }
+  }
 }
 
 vim.lsp.enable(lsp)
+vim.lsp.config("*", capabilities)
 
 -- Set Keymaps
-SinkVim.lsp.on_attach(function(client, buffer)
+SinkVim.lsp.on_attach(function(client, bufnr)
+	if client.server_capabilities.documentHighlightProvider then
+		local group = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = false })
+		vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+
+		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+			buffer = bufnr,
+			group = group,
+			callback = vim.lsp.buf.document_highlight,
+		})
+
+		vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+			buffer = bufnr,
+			group = group,
+			callback = vim.lsp.buf.clear_references,
+		})
+	end
+
 	local keymap = function(mode, keys, func, desc)
-		vim.keymap.set(mode, keys, func, { buffer = buffer, desc = desc })
+		vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
 	end
     -- stylua: ignore start
 	if Snacks and Snacks.picker then

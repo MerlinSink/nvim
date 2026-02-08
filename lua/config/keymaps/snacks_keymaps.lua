@@ -3,7 +3,7 @@
 SinkVim.keymap("n", "<leader><CR>", function() Snacks.picker.smart({ layout = "telescope" }) end, "Smart Find Files")
 SinkVim.keymap("n", "<leader>/", function() Snacks.picker.grep() end, "Grep")
 SinkVim.keymap("n", "<leader>:", function() Snacks.picker.command_history() end, "Command History")
-SinkVim.keymap("n", "<leader>e", function() Snacks.explorer() end, "File Explorer")
+-- SinkVim.keymap("n", "<leader>e", function() Snacks.explorer() end, "File Explorer")
 
 -- find
 SinkVim.keymap("n", "<leader>fb", function() Snacks.picker.buffers({ layout = "select" }) end, "Buffers")
@@ -79,5 +79,3 @@ SinkVim.keymap("n", "<C-/>", function() Snacks.terminal() end, "Toggle Terminal"
 --   end,
 -- }
 -- stylua: ignore end
-
-

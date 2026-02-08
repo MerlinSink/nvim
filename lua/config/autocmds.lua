@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 -- Snacks_keymaps
 vim.api.nvim_create_autocmd("BufReadPost", {
-    group = augroup("Snacks_toggle_set"),
+	group = augroup("Snacks_toggle_set"),
 	callback = function()
 		-- Setup some globals for debugging (lazy-loaded)
 		_G.dd = function(...)

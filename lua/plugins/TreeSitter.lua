@@ -19,4 +19,4 @@ local opts = {
 	},
 }
 
-require("nvim-treesitter.config").setup(opts)
+require("nvim-treesitter").setup(opts)

@@ -31,14 +31,34 @@ if settings and settings.colorscheme then
 end
 
 -- === Setup Plugins ===
--- mason & Conform & luasnip
+-- Snacks
+require("plugins.Sancks")
+
+-- Butterline & lualine & gitsigns
+require("plugins.bufferline")
+require("plugins.lualine")
+require("plugins.gitsigns")
+
+-- mason & Conform & blink.cmp
 require("plugins.mason")
 require("plugins.conform")
-require("plugins.luasnip")
-
--- treesitter & blink.cmp
-require("plugins.treesitter")
 require("plugins.blink")
+
+-- flash & noice & which-key
+require("plugins.noice")
+require("plugins.trouble")
+require("plugins.which-key")
+
+-- multicursor
+require("plugins.multicursor")
+
+-- oil & mini
+require("plugins.oil")
+require("plugins.mini")
+
+-- treesitter & luasnip
+require("plugins.treesitter")
+require("plugins.luasnip")
 
 -- lazydev
 require("lazydev").setup({
@@ -49,20 +69,3 @@ require("lazydev").setup({
 		{ path = "snacks.nvim", words = { "Snacks" } },
 	},
 })
-
--- Butterline & lualine
-require("plugins.bufferline")
-require("plugins.lualine")
-
--- flash & snacks & noice & which-key
-require("flash").setup()
-require("plugins.Snacks")
-require("plugins.noice")
-require("plugins.which-key")
-
--- gitsigns
-require("plugins.gitsigns")
-
--- oil & mini
-require("plugins.oil")
-require("plugins.mini")

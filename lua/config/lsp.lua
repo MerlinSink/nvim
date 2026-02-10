@@ -70,9 +70,10 @@ vim.diagnostic.config(diagnostics)
 
 -- Setup LSP Server
 local lsp = {
+    "astro",
 	"lua_ls",
 	"clangd",
-	"pyright",
+	"basedpyright",
 }
 
 local capabilities = {

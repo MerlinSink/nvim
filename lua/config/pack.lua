@@ -59,6 +59,9 @@ vim.pack.add({
 	-- c
 	{ src = "https://github.com/p00f/clangd_extensions.nvim" },
 
+	-- python
+	{ src = "https://github.com/linux-cultist/venv-selector.nvim" },
+
 	-- markdown
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 })

@@ -123,6 +123,7 @@ local opts = {
 		preset = "none",
 		["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
 		["<C-e>"] = { "hide" },
+		["<C-y>"] = { "accept", "fallback" },
 		["<CR>"] = { "accept", "fallback" },
 
 		["<C-k>"] = { "select_prev", "fallback" },

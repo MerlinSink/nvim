@@ -5,8 +5,8 @@ local opts = {
 	formatters_by_ft = {
 		lua = { "stylua" },
 		fish = { "fish_indent" },
-		c = { "clang-format" },
-		cpp = { "clang-format" },
+		c = { "clang_format" },
+		cpp = { "clang_format" },
 		py = { "ruff_organize_imports", "ruff_format" },
 	},
 	-- Set default options
@@ -18,6 +18,13 @@ local opts = {
 	},
 	-- Customize formatters
 	formatters = {
+		clang_format = {
+			args = {
+				-- "--style=file",
+				-- "--style=Google", -- Google / LLVM / Mozilla / WebKit
+                "--style={BasedOnStyle: Google, IndentWidth: 4, TabWidth: 4, ColumnLimit: 0}",
+			},
+		},
 		-- shfmt = {
 		-- 	prepend_args = { "-i", "2" },
 		-- },

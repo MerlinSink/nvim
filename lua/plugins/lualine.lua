@@ -77,7 +77,7 @@ ins("sections", "c", {
 			}
 		end
 	end,
-	padding = { left = 1, right = 1 },
+	padding = { left = 0, right = 0 },
 })
 
 ins("sections", "c", {
@@ -88,37 +88,29 @@ ins("sections", "c", {
 		info = icons.diagnostics.Info,
 		hint = icons.diagnostics.Hint,
 	},
-	padding = { left = 0, right = 0 },
+	padding = { left = 1, right = 0 },
 })
 
-		-- ins("sections", "x", {
-		-- 	require("lazy.status").updates,
-		-- 	cond = require("lazy.status").has_updates,
-		-- 	color = function()
-		-- 		return { fg = Snacks.util.color("Special") }
-		-- 	end,
-		-- })
+    -- stylua: ignore
+    ins("sections", "x", {
+        function() return require("noice").api.status.lsp_progress.get() end,
+        cond = function() return package.loaded["noice"] and require("noice").api.status.lsp_progress.has() end,
+        color = { fg = "#fab387" },
+    })
 
     -- stylua: ignore
-		ins("sections", "x", {
-			function() return require("noice").api.status.lsp_progress.get() end,
-			cond = function() return package.loaded["noice"] and require("noice").api.status.lsp_progress.has() end,
-			color = { fg = "#fab387" },
-		})
+    ins("sections", "x", {
+        function() return require("noice").api.status.mode.get() end,
+        cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+        color = function() return { fg = Snacks.util.color("Constant") } end,
+    })
 
-	   -- stylua: ignore
-	   ins("sections", "x", {
-	     function() return require("noice").api.status.mode.get() end,
-	     cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-	     color = function() return { fg = Snacks.util.color("Constant") } end,
-	   })
-
-	   -- stylua: ignore
-	   ins("sections", "x", {
-	     function() return "  " .. require("dap").status() end,
-	     cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-	     color = function() return { fg = Snacks.util.color("Debug") } end,
-	   })
+    -- stylua: ignore
+    ins("sections", "x", {
+        function() return "  " .. require("dap").status() end,
+        cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
+        color = function() return { fg = Snacks.util.color("Debug") } end,
+    })
 
 ins("sections", "x", {
 	"lsp_status",

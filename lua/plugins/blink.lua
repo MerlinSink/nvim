@@ -23,18 +23,17 @@ local opts = {
 		},
 		menu = {
 			enabled = true,
-			winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
 			draw = {
 				treesitter = { "lsp" },
 				columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
 				components = {
 					kind_icon = {
 						text = function(ctx)
-							local icon = ctx.kind_icon
+							local icon = ctx.kind_icon .. " "
 							if vim.tbl_contains({ "Path" }, ctx.source_name) then
 								local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
 								if dev_icon then
-									icon = dev_icon
+									icon = dev_icon .. " "
 								end
 							else
 								icon = SinkVim.icons.kinds[ctx.kind] or ""
@@ -99,13 +98,19 @@ local opts = {
 		-- adding any nvim-cmp sources here will enable them
 		-- with blink.compat
 		-- compat = {},
-		default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+		default = { "lazydev", "avante", "lsp", "path", "snippets", "buffer" },
 		providers = {
 			lazydev = {
 				name = "LazyDev",
 				module = "lazydev.integrations.blink",
 				-- make lazydev completions top priority (see `:h blink.cmp`)
 				score_offset = 100,
+			},
+			avante = {
+				module = "blink-cmp-avante",
+				name = "Avante",
+				opts = {
+				},
 			},
 			cmdline = {
 				min_keyword_length = function(ctx)

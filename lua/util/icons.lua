@@ -58,6 +58,12 @@ M.kinds = {
 	Unit = " ",
 	Value = " ",
 	Variable = " ",
+
+	-- Avante
+	Avante = " ",
+	AvanteCmd = " ",
+	AvanteMention = " ",
+	AvanteShortcut = " ",
 }
 
 return M

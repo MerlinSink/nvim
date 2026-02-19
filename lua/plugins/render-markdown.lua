@@ -1,4 +1,5 @@
 local opts = {
+	file_types = { "markdown", "vimwiki", "Avante" },
 	heading = {
 		enabled = true,
 		render_modes = false,

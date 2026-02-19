@@ -11,7 +11,6 @@ local modules = {
 	"options",
 	"pack",
 	"keymaps",
-	"highlights",
 	"autocmds",
 	"lsp",
 }
@@ -23,6 +22,7 @@ end
 -- Set Colorscheme
 require("plugins.Colorscheme.tokyonight")
 require("plugins.Colorscheme.catppuccin")
+require("plugins.Colorscheme.everforest")
 
 local path = vim.fn.stdpath("config") .. "/lua/config/setting.json"
 local settings = SinkVim.json.read(path)
@@ -34,10 +34,11 @@ end
 -- Snacks
 require("plugins.Sancks")
 
--- Butterline & lualine & gitsigns
+-- Butterline & lualine & gitsigns & rainbow-delimiters
 require("plugins.bufferline")
 require("plugins.lualine")
 require("plugins.gitsigns")
+require("plugins.rainbow-delimiters")
 
 -- mason & Conform & blink.cmp
 require("plugins.mason")
@@ -48,13 +49,17 @@ require("plugins.blink")
 require("plugins.noice")
 require("plugins.trouble")
 require("plugins.which-key")
-
--- multicursor
-require("plugins.multicursor")
+require("plugins.todo-comments")
 
 -- oil & mini
 require("plugins.oil")
 require("plugins.mini")
+
+-- render-markdown
+require("plugins.render-markdown")
+
+-- AI
+require("plugins.avante")
 
 -- treesitter & luasnip
 require("plugins.treesitter")

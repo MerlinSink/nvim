@@ -10,8 +10,8 @@ local opts = {
 		functions = {},
 		variables = {},
 		-- Background styles. Can be "dark", "transparent" or "normal"
-		sidebars = "dark",
-		floats = "dark",
+		sidebars = "normal",
+		floats = "normal",
 	},
 }
 

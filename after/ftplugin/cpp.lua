@@ -1,2 +1,5 @@
 require("plugins.dap")
-require("plugins.C_CPP")
+
+if vim.lsp.is_enabled("clangd") then
+	require("plugins.C_CPP")
+end

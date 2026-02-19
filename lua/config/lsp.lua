@@ -70,23 +70,26 @@ vim.diagnostic.config(diagnostics)
 
 -- Setup LSP Server
 local lsp = {
-    "astro",
+	"astro",
 	"lua_ls",
-	"clangd",
+	"ccls",
+    "fish_lsp",
+	-- "clangd",
+    "bash_ls",
 	"basedpyright",
 }
 
 local capabilities = {
-  textDocument = {
-    foldingRange = {
-      dynamicRegistration = false,
-      lineFoldingOnly = true
-    }
-  }
+	textDocument = {
+		foldingRange = {
+			dynamicRegistration = false,
+			lineFoldingOnly = true,
+		},
+	},
 }
 
-vim.lsp.enable(lsp)
 vim.lsp.config("*", capabilities)
+vim.lsp.enable(lsp)
 
 -- Set Keymaps
 SinkVim.lsp.on_attach(function(client, bufnr)

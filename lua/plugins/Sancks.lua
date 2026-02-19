@@ -1,24 +1,25 @@
 local opts = {
-	explorer = { enabled = false },
+	explorer = { enabled = true },
 	dashboard = { enabled = false },
 	indent = {
 		enabled = true,
 		scope = {
 			enabled = true, -- enable highlighting the current scope
 			hl = {
-				"RainbowRed",
-				"RainbowYellow",
-				"RainbowBlue",
-				"RainbowOrange",
-				"RainbowGreen",
-				"RainbowViolet",
-				"RainbowCyan",
+				"RainbowDelimiterRed",
+				"RainbowDelimiterYellow",
+				"RainbowDelimiterBlue",
+				"RainbowDelimiterOrange",
+				"RainbowDelimiterGreen",
+				"RainbowDelimiterViolet",
+				"RainbowDelimiterCyan",
 			},
 		},
 	},
 	notifier = { enabled = true },
 	picker = { enabled = true },
 	scroll = { enabled = true },
+	terminal = { enabled = true, win = { style = "terminal" } },
 }
 
 require("snacks").setup(opts)

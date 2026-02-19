@@ -3,7 +3,7 @@
 SinkVim.keymap("n", "<leader><CR>", function() Snacks.picker.smart({ layout = "telescope" }) end, "Smart Find Files")
 SinkVim.keymap("n", "<leader>/", function() Snacks.picker.grep() end, "Grep")
 SinkVim.keymap("n", "<leader>:", function() Snacks.picker.command_history() end, "Command History")
--- SinkVim.keymap("n", "<leader>e", function() Snacks.explorer() end, "File Explorer")
+SinkVim.keymap("n", "<leader>fe", function() Snacks.explorer() end, "File Explorer")
 
 -- find
 SinkVim.keymap("n", "<leader>fb", function() Snacks.picker.buffers({ layout = "select" }) end, "Buffers")
@@ -58,7 +58,7 @@ SinkVim.keymap("n", "<leader>n", function() Snacks.notifier.show_history() end, 
 SinkVim.keymap("n", "<leader>bd", function() Snacks.bufdelete() end, "Delete Buffer")
 SinkVim.keymap("n", "<leader>cR", function() Snacks.rename.rename_file() end, "Rename File")
 SinkVim.keymap("n", "<leader>un", function() Snacks.notifier.hide() end, "Dismiss All Notifications")
-SinkVim.keymap("n", "<C-/>", function() Snacks.terminal() end, "Toggle Terminal")
+SinkVim.keymap("n", "<leader>tt", function() Snacks.terminal() end, "Toggle Terminal")
 -- { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
 -- {
 --   "<leader>N",

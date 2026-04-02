@@ -44,8 +44,21 @@ function M.check_sys(sysname)
 	return vim.uv.os_uname().sysname:find(sysname) ~= nil
 end
 
-function M.has(name)
-	return require("lazy.core.config").spec.plugins[name] ~= nil
+function M.check_nixos()
+	if not M.check_sys("Linux") then
+		return false
+	end
+
+	local ok, lines = pcall(vim.fn.readfile, "/etc/os-release")
+	if ok then
+		for _, line in ipairs(lines) do
+			if line:match("^ID=nixos") then
+				return true
+			end
+		end
+	end
+
+	return vim.uv.fs_stat("/run/current-system/nixos-version") ~= nil
 end
 
 function M.keymap(mode, keys, func, desc)

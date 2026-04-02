@@ -19,51 +19,14 @@ for _, module in ipairs(modules) do
 	load("config." .. module)
 end
 
--- Set Colorscheme
-require("plugins.Colorscheme.tokyonight")
-require("plugins.Colorscheme.catppuccin")
-require("plugins.Colorscheme.everforest")
-
-local path = vim.fn.stdpath("config") .. "/lua/config/setting.json"
-local settings = SinkVim.json.read(path)
-if settings and settings.colorscheme then
-	vim.cmd("colorscheme " .. settings.colorscheme)
-end
+require("plugins.colorscheme")
+require("plugins.Sancks")
+require("plugins.mini")
+require("plugins.LuaSnip")
+require("plugins.mason")
 
 -- === Setup Plugins ===
--- Snacks
-require("plugins.Sancks")
-
--- Butterline & lualine & gitsigns & rainbow-delimiters
-require("plugins.bufferline")
-require("plugins.lualine")
-require("plugins.gitsigns")
-require("plugins.rainbow-delimiters")
-
--- mason & Conform & blink.cmp
-require("plugins.mason")
-require("plugins.conform")
-require("plugins.blink")
-
--- flash & noice & which-key
-require("plugins.noice")
-require("plugins.trouble")
-require("plugins.which-key")
-require("plugins.todo-comments")
-
--- oil & mini
-require("plugins.oil")
-require("plugins.mini")
-
--- render-markdown
 require("plugins.render-markdown")
-
--- AI
-require("plugins.avante")
-
--- treesitter & luasnip
-require("plugins.treesitter")
-require("plugins.luasnip")
 
 -- lazydev
 require("lazydev").setup({

@@ -33,10 +33,8 @@ require("luasnip").config.setup({
 	},
 })
 
-local opts = {
+require("luasnip").setup({
 	history = true,
 	delete_check_events = "TextChanged",
 	enable_autosnippets = true,
-}
-
-require("luasnip").setup(opts)
+})

@@ -1,4 +1,4 @@
-local opts = {
+require("todo-comments").setup({
 	signs = true, -- show icons in the signs column
 	sign_priority = 8, -- sign priority
 	-- keywords recognized as todo comments
@@ -61,7 +61,7 @@ local opts = {
 		pattern = [[\b(KEYWORDS):]], -- ripgrep regex
 		-- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
 	},
-}
+})
 
 -- stylua: ignore start
 SinkVim.keymap("n", "]t", function() require("todo-comments").jump_next() end, "Next Todo Comment")
@@ -71,5 +71,3 @@ SinkVim.keymap("n", "<leader>xT", "<cmd>Trouble todo toggle filter = {tag = {TOD
 SinkVim.keymap("n", "<leader>st", "<cmd>TodoTelescope<cr>", "Todo")
 SinkVim.keymap("n", "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", "Todo/Fix/Fixme")
 -- stylua: ignore end
-
-require("todo-comments").setup(opts)

@@ -1,4 +1,4 @@
-local opts = {
+require("avante").setup({
 	instructions_file = "avante.md",
 	provider = "SiliconCloud",
 	providers = {
@@ -75,7 +75,7 @@ local opts = {
 			rounded = true,
 		},
 	},
-}
+})
 
 SinkVim.keymap({ "n", "v" }, "<leader>aa", "<cmd>AvanteAsk<CR>", "Ask Avate")
 SinkVim.keymap("n", "<leader>ac", "<cmd>AvanteChat<CR>", "Chat with Avante")
@@ -89,5 +89,3 @@ SinkVim.keymap("n", "<leader>ar", "<cmd>AvanteRefresh<CR>", "Refresh Avante")
 SinkVim.keymap("n", "<leader>as", "<cmd>AvanteStop<CR>", "Stop Avante")
 SinkVim.keymap("n", "<leader>at", "<cmd>AvanteToggle<CR>", "Toggle Avante")
 SinkVim.keymap("n", "<leader>ac", "<cmd>AvanteClear<CR>", "Avante Clear")
-
-require("avante").setup(opts)

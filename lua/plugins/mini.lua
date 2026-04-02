@@ -1,7 +1,5 @@
-local opts = {}
-
 -- mini.ai
-opts.ai = {
+require("mini.ai").setup({
 	-- Table with textobject id as fields, textobject specification as values.
 	-- Also use this to disable builtin textobjects. See |MiniAi.config|.
 	custom_textobjects = nil,
@@ -37,10 +35,10 @@ opts.ai = {
 	-- This also affects (purely informational) helper messages shown after
 	-- idle time if user input is required.
 	silent = false,
-}
+})
 
 -- mini.move
-opts.move = {
+require("mini.move").setup({
 	-- Module mappings. Use `''` (empty string) to disable one.
 	mappings = {
 		-- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
@@ -61,10 +59,10 @@ opts.move = {
 		-- Automatically reindent selection during linewise vertical move
 		reindent_linewise = true,
 	},
-}
+})
 
 -- mini.pairs
-opts.pairs = {
+require("mini.pairs").setup({
 	-- In which modes mappings from this `config` should be created
 	modes = { insert = true, command = false, terminal = false },
 
@@ -88,10 +86,10 @@ opts.pairs = {
 		["'"] = { action = "closeopen", pair = "''", neigh_pattern = "^[^%a\\]", register = { cr = false } },
 		["`"] = { action = "closeopen", pair = "``", neigh_pattern = "^[^\\]", register = { cr = false } },
 	},
-}
+})
 
 -- mini.surround
-opts.surround = {
+require("mini.surround").setup({
 	-- Add custom surroundings to be used on top of builtin ones. For more
 	-- information with examples, see `:h MiniSurround.config`.
 	custom_surroundings = nil,
@@ -130,9 +128,4 @@ opts.surround = {
 	-- This also affects (purely informational) helper messages shown after
 	-- idle time if user input is required.
 	silent = false,
-}
-
-require("mini.ai").setup(opts.ai)
-require("mini.move").setup(opts.move)
-require("mini.pairs").setup(opts.pairs)
-require("mini.surround").setup(opts.surround)
+})

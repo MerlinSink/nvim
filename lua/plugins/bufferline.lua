@@ -1,4 +1,4 @@
-local opts = {
+require("bufferline").setup({
 	options = {
 		separator_style = "thin", -- "slant" | "slope" | "thick" | "thin" | { "any", "any" },
         -- stylua: ignore start
@@ -29,6 +29,4 @@ local opts = {
 			},
 		},
 	},
-}
-
-require("bufferline").setup(opts)
+})

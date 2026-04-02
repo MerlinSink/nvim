@@ -1,4 +1,4 @@
-local opts = {
+require("gitsigns").setup({
 	signs = {
 		add = { text = "▎" },
 		change = { text = "▎" },
@@ -50,6 +50,4 @@ local opts = {
       map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
       map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
 	end,
-}
-
-require("gitsigns").setup(opts)
+})

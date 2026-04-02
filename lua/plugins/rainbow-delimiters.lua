@@ -1,9 +1,7 @@
-local rainbow_delimiters = require("rainbow-delimiters")
-
-local opts = {
+require("rainbow-delimiters.setup").setup({
 	strategy = {
-		[""] = rainbow_delimiters.strategy["global"],
-		vim = rainbow_delimiters.strategy["local"],
+		[""] = require("rainbow-delimiters").strategy["global"],
+		vim = require("rainbow-delimiters").strategy["local"],
 	},
 	query = {
 		[""] = "rainbow-delimiters",
@@ -18,6 +16,24 @@ local opts = {
 		"RainbowDelimiterViolet",
 		"RainbowDelimiterCyan",
 	},
-}
-
-require("rainbow-delimiters.setup").setup(opts)
+	condition = function(bufnr)
+		local ft = vim.bo[bufnr].filetype
+		local skip_patterns = {
+			"snacks",
+			"noice",
+			"nui",
+			"notify",
+			"Telescope",
+			"neo%-tree",
+			"lazy",
+			"mason",
+		}
+		for _, pattern in ipairs(skip_patterns) do
+			if ft:match(pattern) then
+				return false
+			end
+		end
+		local ok, parser = pcall(vim.treesitter.get_parser, bufnr)
+		return ok and parser ~= nil
+	end,
+})

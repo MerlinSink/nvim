@@ -1,4 +1,4 @@
-local opts = {
+require("snacks").setup({
 	explorer = { enabled = true },
 	dashboard = { enabled = false },
 	indent = {
@@ -20,6 +20,4 @@ local opts = {
 	picker = { enabled = true },
 	scroll = { enabled = true },
 	terminal = { enabled = true, win = { style = "terminal" } },
-}
-
-require("snacks").setup(opts)
+})

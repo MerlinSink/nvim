@@ -1,3 +1,7 @@
+vim.pack.add({
+	{ src = "https://github.com/p00f/clangd_extensions.nvim" },
+})
+
 -- clangd_extensions
 local clangd_extensions_opts = {
 	inlay_hints = {

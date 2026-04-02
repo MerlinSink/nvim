@@ -69,9 +69,9 @@ opt.fillchars = {
 	eob = " ",
 }
 opt.foldlevel = 99
--- opt.foldexpr = "v:lua.SinkVim.fold.foldexpr()"
--- opt.foldmethod = "expr"
--- opt.foldtext = "v:lua.SinkVim.fold.foldtext()"
+opt.foldexpr = "v:lua.SinkVim.fold.foldexpr()"
+opt.foldmethod = "expr"
+opt.foldtext = "v:lua.SinkVim.fold.foldtext()"
 
 -- if SinkVim.check_sys("Linux") then
 --   opt.shell = "fish"

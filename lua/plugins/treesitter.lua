@@ -1,4 +1,4 @@
-local opts = {
+require("nvim-treesitter").setup({
 	ensure_installed = {
 		"astro",
 		"bash",
@@ -15,6 +15,7 @@ local opts = {
 		"luap",
 		"markdown",
 		"markdown_inline",
+		"nix",
 		"printf",
 		"python",
 		"query",
@@ -35,6 +36,4 @@ local opts = {
 		enable = true,
 		additional_vim_regex_highlighting = false,
 	},
-}
-
-require("nvim-treesitter").setup(opts)
+})

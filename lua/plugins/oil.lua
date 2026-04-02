@@ -1,4 +1,4 @@
-local opts = {
+require("oil").setup({
 	default_file_explorer = false,
 	columns = {
 		"icon",
@@ -146,9 +146,7 @@ local opts = {
 	keymaps_help = {
 		border = "rounded",
 	},
-}
+})
 
 SinkVim.keymap("n", "<leader>O", "<Cmd>Oil<CR>", "Oil")
 SinkVim.keymap("n", "<leader>o", "<Cmd>Oil --float<CR>", "Oil Float")
-
-require("oil").setup(opts)

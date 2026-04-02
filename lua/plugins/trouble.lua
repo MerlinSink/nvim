@@ -1,11 +1,10 @@
-local opts = {
+require("trouble").setup({
 	modes = {
 		lsp = {
 			win = { position = "right" },
 		},
 	},
-}
-require("trouble").setup(opts)
+})
 
 SinkVim.keymap("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", "Diagnostics (Trouble)")
 SinkVim.keymap("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "Buffer Diagnostics (Trouble)")

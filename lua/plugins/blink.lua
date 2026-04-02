@@ -1,4 +1,4 @@
-local opts = {
+require("blink.cmp").setup({
 	snippets = {
 		preset = "luasnip",
 	},
@@ -109,8 +109,7 @@ local opts = {
 			avante = {
 				module = "blink-cmp-avante",
 				name = "Avante",
-				opts = {
-				},
+				opts = {},
 			},
 			cmdline = {
 				min_keyword_length = function(ctx)
@@ -129,7 +128,8 @@ local opts = {
 		["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
 		["<C-e>"] = { "hide" },
 		["<C-y>"] = { "accept", "fallback" },
-		["<CR>"] = { "accept", "fallback" },
+		["<A-y>"] = { "accept", "fallback" },
+		-- ["<CR>"] = { "accept", "fallback" },
 
 		["<C-k>"] = { "select_prev", "fallback" },
 		["<C-j>"] = { "select_next", "fallback" },
@@ -140,6 +140,4 @@ local opts = {
 		["<C-u>"] = { "scroll_documentation_up", "fallback" },
 		["<C-d>"] = { "scroll_documentation_down", "fallback" },
 	},
-}
-
-require("blink.cmp").setup(opts)
+})

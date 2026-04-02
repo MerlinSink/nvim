@@ -72,10 +72,12 @@ vim.diagnostic.config(diagnostics)
 local lsp = {
 	"astro",
 	"lua_ls",
+	-- "nil_ls",
+    "nixd",
 	"ccls",
-    "fish_lsp",
+	-- "fish_lsp",
 	-- "clangd",
-    "bash_ls",
+	"bash_ls",
 	"basedpyright",
 }
 

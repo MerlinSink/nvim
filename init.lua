@@ -11,6 +11,7 @@ local modules = {
 	"options",
 	"pack",
 	"keymaps",
+    "highlight",
 	"autocmds",
 	"lsp",
 }

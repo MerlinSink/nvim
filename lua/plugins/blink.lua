@@ -90,6 +90,10 @@ require("blink.cmp").setup({
 			["<C-y>"] = { "select_and_accept", "fallback" },
 			["<C-k>"] = { "select_prev", "fallback" },
 			["<C-j>"] = { "select_next", "fallback" },
+
+			["<A-y>"] = { "select_and_accept", "fallback" },
+			["<A-k>"] = { "select_prev", "fallback" },
+			["<A-j>"] = { "select_next", "fallback" },
 		},
 		completion = { menu = { auto_show = true } },
 	},
@@ -133,6 +137,9 @@ require("blink.cmp").setup({
 
 		["<C-k>"] = { "select_prev", "fallback" },
 		["<C-j>"] = { "select_next", "fallback" },
+
+		["<A-k>"] = { "select_prev", "fallback" },
+		["<A-j>"] = { "select_next", "fallback" },
 
 		["<Tab>"] = { "snippet_forward", "fallback" },
 		["<S-Tab>"] = { "snippet_backward", "fallback" },

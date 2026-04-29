@@ -1,4 +1,4 @@
-require("render-markdown").setup({
+local opts = {
 	file_types = { "markdown", "vimwiki", "Avante" },
 	heading = {
 		enabled = true,
@@ -25,7 +25,9 @@ require("render-markdown").setup({
 			},
 		},
 	},
-})
+}
+
+require("render-markdown").setup(opts)
 
 if Snacks then
 	Snacks.toggle({

@@ -1,4 +1,4 @@
-require("rainbow-delimiters.setup").setup({
+local opts = {
 	strategy = {
 		[""] = require("rainbow-delimiters").strategy["global"],
 		vim = require("rainbow-delimiters").strategy["local"],
@@ -36,4 +36,8 @@ require("rainbow-delimiters.setup").setup({
 		local ok, parser = pcall(vim.treesitter.get_parser, bufnr)
 		return ok and parser ~= nil
 	end,
-})
+}
+
+SinkVim.lazyload.UIEnterLoad(function()
+	require("rainbow-delimiters.setup").setup(opts)
+end)

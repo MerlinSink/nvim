@@ -1,4 +1,4 @@
-require("avante").setup({
+local opts = {
 	instructions_file = "avante.md",
 	provider = "SiliconCloud",
 	providers = {
@@ -75,7 +75,11 @@ require("avante").setup({
 			rounded = true,
 		},
 	},
-})
+}
+
+SinkVim.lazyload.ReadPreLoad(function()
+	require("avante").setup(opts)
+end)
 
 SinkVim.keymap({ "n", "v" }, "<leader>aa", "<cmd>AvanteAsk<CR>", "Ask Avate")
 SinkVim.keymap("n", "<leader>ac", "<cmd>AvanteChat<CR>", "Chat with Avante")

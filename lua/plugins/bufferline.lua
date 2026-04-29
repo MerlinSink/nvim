@@ -1,4 +1,4 @@
-require("bufferline").setup({
+local opts = {
 	options = {
 		separator_style = "thin", -- "slant" | "slope" | "thick" | "thin" | { "any", "any" },
         -- stylua: ignore start
@@ -29,4 +29,8 @@ require("bufferline").setup({
 			},
 		},
 	},
-})
+}
+
+SinkVim.lazyload.ReadPreLoad(function()
+	require("bufferline").setup(opts)
+end)

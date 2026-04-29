@@ -1,4 +1,4 @@
-require("gitsigns").setup({
+local opts = {
 	signs = {
 		add = { text = "▎" },
 		change = { text = "▎" },
@@ -50,4 +50,8 @@ require("gitsigns").setup({
       map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
       map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
 	end,
-})
+}
+
+SinkVim.lazyload.ReadPreLoad(function()
+	require("gitsigns").setup(opts)
+end)

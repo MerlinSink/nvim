@@ -33,8 +33,12 @@ require("luasnip").config.setup({
 	},
 })
 
-require("luasnip").setup({
+local opts = {
 	history = true,
 	delete_check_events = "TextChanged",
 	enable_autosnippets = true,
-})
+}
+
+SinkVim.lazyload.ReadPreLoad(function()
+	require("luasnip").setup(opts)
+end)

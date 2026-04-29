@@ -6,12 +6,13 @@ local function load(name)
 end
 
 _G.SinkVim = require("util")
+require("plugins.colorscheme")
 
 local modules = {
 	"options",
 	"pack",
 	"keymaps",
-    "highlight",
+	"highlight",
 	"autocmds",
 	"lsp",
 }
@@ -19,15 +20,6 @@ local modules = {
 for _, module in ipairs(modules) do
 	load("config." .. module)
 end
-
-require("plugins.colorscheme")
-require("plugins.Sancks")
-require("plugins.mini")
-require("plugins.LuaSnip")
-require("plugins.mason")
-
--- === Setup Plugins ===
-require("plugins.render-markdown")
 
 -- lazydev
 require("lazydev").setup({

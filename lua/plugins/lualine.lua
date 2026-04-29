@@ -169,4 +169,6 @@ ins("sections", "z", {
 	padding = { left = 0, right = 0 },
 })
 
-require("lualine").setup(opts)
+SinkVim.lazyload.ReadPreLoad(function()
+	require("lualine").setup(opts)
+end)

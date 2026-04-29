@@ -1,4 +1,4 @@
-require("which-key").setup({
+local opts = {
 	preset = "helix",
 	defaults = {},
 	spec = {
@@ -39,7 +39,11 @@ require("which-key").setup({
 			{ "gx", desc = "Open with system app" },
 		},
 	},
-})
+}
+
+SinkVim.lazyload.UIEnterLoad(function()
+	require("which-key").setup(opts)
+end)
 
 SinkVim.keymap("n", "<leader>?", function()
 	require("which-key").show({ global = false })

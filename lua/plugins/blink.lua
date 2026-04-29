@@ -1,4 +1,9 @@
-require("blink.cmp").setup({
+local opts = {
+	fuzzy = {
+		prebuilt_binaries = {
+			force_version = "v*",
+		},
+	},
 	snippets = {
 		preset = "luasnip",
 	},
@@ -80,7 +85,7 @@ require("blink.cmp").setup({
 
 	-- experimental signature help support
 	-- signature = { enabled = true },
-	--
+
 	cmdline = {
 		enabled = true,
 		keymap = {
@@ -147,4 +152,8 @@ require("blink.cmp").setup({
 		["<C-u>"] = { "scroll_documentation_up", "fallback" },
 		["<C-d>"] = { "scroll_documentation_down", "fallback" },
 	},
-})
+}
+
+SinkVim.lazyload.InsertLoad(function()
+  require("blink-cmp").setup(opts)
+end)

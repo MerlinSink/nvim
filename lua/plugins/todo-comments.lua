@@ -1,4 +1,4 @@
-require("todo-comments").setup({
+local opts = {
 	signs = true, -- show icons in the signs column
 	sign_priority = 8, -- sign priority
 	-- keywords recognized as todo comments
@@ -61,7 +61,11 @@ require("todo-comments").setup({
 		pattern = [[\b(KEYWORDS):]], -- ripgrep regex
 		-- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
 	},
-})
+}
+
+SinkVim.lazyload.ReadPreLoad(function()
+	require("todo-comments").setup(opts)
+end)
 
 -- stylua: ignore start
 SinkVim.keymap("n", "]t", function() require("todo-comments").jump_next() end, "Next Todo Comment")

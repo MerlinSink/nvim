@@ -1,6 +1,6 @@
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
-require("conform").setup({
+local opts = {
 	-- Define your formatters
 	formatters_by_ft = {
 		lua = { "stylua" },
@@ -30,8 +30,13 @@ require("conform").setup({
 		-- 	prepend_args = { "-i", "2" },
 		-- },
 	},
-})
+}
 
+SinkVim.lazyload.ReadPreLoad(function()
+	require("conform").setup(opts)
+end)
+
+-- stylua: ignore start
 SinkVim.keymap("n", "<leader>ci", "<cmd>ConformInfo<CR>", "Conform Info")
--- stylua: ignore
 SinkVim.keymap({ "n", "v" }, "<leader>cf", function() require("conform").format() end, "Format buffer")
+-- stylua: ignore end

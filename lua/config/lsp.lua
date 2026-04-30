@@ -69,28 +69,20 @@ end
 vim.diagnostic.config(diagnostics)
 
 -- Setup LSP Server
-local lsp = {
-	"astro",
-	"lua_ls",
-	-- "nil_ls",
-    "nixd",
-	"ccls",
-	-- "fish_lsp",
-	-- "clangd",
-	"bash_ls",
-	"basedpyright",
-}
+local lsp = {}
 
-local capabilities = {
-	textDocument = {
-		foldingRange = {
-			dynamicRegistration = false,
-			lineFoldingOnly = true,
-		},
-	},
-}
+local lsp_path = vim.fn.stdpath("config") .. "/lsp"
+if vim.fn.isdirectory(lsp_path) == 1 then
+	for name, type in vim.fs.dir(lsp_path) do
+		if type == "file" and name:match("%.lua$") then
+			table.insert(lsp, (name:gsub("%.lua$", "")))
+		end
+	end
+end
 
+local capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
 vim.lsp.config("*", capabilities)
+
 vim.lsp.enable(lsp)
 
 -- Set Keymaps

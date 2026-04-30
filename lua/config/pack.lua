@@ -29,6 +29,8 @@ vim.pack.add({
 	{ src = "https://github.com/folke/flash.nvim" },
 	{ src = "https://github.com/folke/which-key.nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
+	{ src = "https://github.com/kevinhwang91/promise-async" },
+	{ src = "https://github.com/kevinhwang91/nvim-ufo" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 
 	-- dap
@@ -39,7 +41,6 @@ vim.pack.add({
 
 	{ src = "https://github.com/folke/snacks.nvim" },
 	{ src = "https://github.com/folke/lazydev.nvim" },
-
 
 	-- mini
 	{ src = "https://github.com/nvim-mini/mini.ai" },

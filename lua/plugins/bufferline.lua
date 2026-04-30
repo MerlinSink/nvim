@@ -10,6 +10,7 @@ local opts = {
 			style = "icon", -- "icon" | "underline" | "none",
 		},
 		diagnostics = "nvim_lsp",
+		diagnostics_update_in_insert = false,
 		always_show_bufferline = true,
 		diagnostics_indicator = function(_, _, diag)
 			local icons = SinkVim.icons.diagnostics

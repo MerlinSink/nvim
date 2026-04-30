@@ -102,6 +102,7 @@ local opts = {
 		telescope = true,
 		treesitter = true,
 		treesitter_context = true,
+		ufo = true,
 		which_key = true,
 	},
 }
